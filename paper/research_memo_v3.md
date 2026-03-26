@@ -316,6 +316,30 @@ Standard errors are computed from the observed Fisher information (numerical Hes
 
 **Summary.** The complete model reduces prediction market pricing to three objects: a state variable ($x_t = \text{logit}(p_t)$), a dynamics specification (log-odds diffusion with belief volatility $\sigma$), and a one-parameter risk distortion ($\lambda$). It takes a market price as input and outputs a risk-adjusted probability; or takes a probability forecast and outputs a model-implied fair price. The empirical calibration of $\lambda$ is the subject of Section 5.
 
+## 3.6 Economic Interpretation of $\lambda$
+
+The Wang transform decomposition in Section~3.3 is estimated as a reduced-form pricing model: $\lambda$ is calibrated from the cross-section of market prices and resolution outcomes without imposing a structural model of trader preferences or market equilibrium. This subsection provides a benchmark economic interpretation of $\lambda$ that connects the empirical framework to standard asset pricing concepts. The interpretation is offered as a special-case lens, not as the estimated model of the paper.
+
+\medskip
+\noindent\textbf{Benchmark setup.}
+Section~3.3 noted that $\lambda$ has an interpretation as the market-wide Sharpe ratio for bearing event risk, following the equilibrium foundation established by Kijima and Muromachi (2008). To make this interpretation concrete, consider a benchmark CARA-normal environment: a representative agent with constant absolute risk aversion $a > 0$ prices a binary event claim under Gaussian residual uncertainty about the event outcome. In this setting, the certainty-equivalent valuation of the binary payoff takes the form of equation~(1) with $\lambda = a \cdot \tilde{\sigma}$, where $\tilde{\sigma}$ measures residual event uncertainty. This closed-form relationship is a special case of the stochastic discount factor characterization derived by Johnston (2007), who showed that in a CARA-normal economy the Wang parameter equals the product of absolute risk aversion and the standard deviation of the priced risk factor. The benchmark is not a general-equilibrium derivation of the paper's framework. It is a convenient special case that gives $\lambda$ an economic interpretation in terms of two quantities: the effective risk aversion of the marginal pricing agent and the residual uncertainty about the event outcome.
+
+\medskip
+\noindent\textbf{Implications for the empirical patterns.}
+The representation $\lambda = a \cdot \tilde{\sigma}$ provides economic intuition for three patterns documented in Sections~5 and~6. First, the positive $\hat{\lambda}$ on all real-money platforms is consistent with risk-averse agents demanding compensation for bearing unhedgeable event risk. The estimated $\hat{\lambda} \approx 0.18$ is consistent with nontrivial effective risk aversion applied to residual event uncertainty, though the benchmark does not separately identify these two components.
+
+Second, the time-varying decay documented in Section~5.4---where the risk premium declines from $\hat{\lambda}(0.05) = 0.173$ at market opening to $\hat{\lambda}(0.80) = 0.037$ near resolution---maps naturally onto the benchmark: as information arrives over the contract's lifetime, residual event uncertainty $\tilde{\sigma}$ decreases, reducing $\lambda$. This interpretation is consistent with Ostrovsky (2012), who proves that in dynamic trading with separable securities, prices converge to the pooled-information posterior as trading proceeds.
+
+Third, the negative coefficient on $\ln(\text{Volume})$ in the hierarchical model (Table~5) is consistent with equilibrium models of prediction market pricing under heterogeneous beliefs. He and Treich (2017) showed that prediction market prices equal mean beliefs if and only if the common utility function is logarithmic; for non-logarithmic utility, prices deviate systematically from physical probabilities. Greater trading activity, proxied by volume, is consistent with a more compressed pricing wedge---potentially through deeper participation, faster information aggregation, or stronger competition among traders and market makers.
+
+\medskip
+\noindent\textbf{Scope and limitations.}
+Several caveats are essential. First, the benchmark assumes CARA utility, Gaussian uncertainty, and a representative agent. Prediction markets feature heterogeneous beliefs, non-Gaussian information arrivals (jumps), and diverse participant types. The benchmark provides a convenient closed-form interpretation, not a complete description of price formation.
+
+Second, prediction market event contracts are typically unspanned: event outcomes such as elections, weather events, and sporting results have low or zero correlation with aggregate consumption or wealth. In a standard consumption-based asset pricing framework, this would imply $\lambda \approx 0$. A positive $\hat{\lambda}$ therefore suggests that the effective risk aversion governing prediction market pricing reflects factors beyond the consumption-CAPM---potentially including market incompleteness (Proposition~1), limited participation, or behavioral probability distortion.
+
+Third, the estimated $\hat{\lambda}$ from Sections~5--6 remains a reduced-form object. It may absorb multiple forces simultaneously: rational risk compensation by risk-averse market makers, behavioral probability weighting (Snowberg and Wolfers, 2010; Jullien and Salani\'{e}, 2000), and microstructure frictions such as bid-ask spreads and stale quotes. The benchmark interpretation identifies one economically grounded channel---risk aversion applied to event uncertainty---but does not claim to decompose $\hat{\lambda}$ into its constituent sources. The empirical framework of this paper is reduced-form, and should be read accordingly.
+
 ---
 
 # 4. Data and Descriptive Statistics
@@ -967,7 +991,9 @@ No prior work has applied the Wang transform to prediction markets, and the empi
 - Harrison, J.M. and Pliska, S.R. (1981). Martingales and Stochastic Integrals in the Theory of Continuous Trading. *Stochastic Processes and their Applications*, 11(3), 215--260.
 - Harrison, J.M. and Pliska, S.R. (1983). A Stochastic Calculus Model of Continuous Trading: Complete Markets. *Stochastic Processes and their Applications*, 15(3), 313--316.
 - Hasbrouck, J. (1995). One Security, Many Markets: Determining the Contributions to Price Discovery. *Journal of Finance*, 50(4), 1175--1199.
+- He, X.-Z. and Treich, N. (2017). Prediction Market Prices under Risk Aversion and Heterogeneous Beliefs. *Journal of Mathematical Economics*, 70, 105--114.
 - Hosmer, D.W. and Lemeshow, S. (2000). *Applied Logistic Regression*, 2nd ed. Wiley.
+- Johnston, M. (2007). Extension of the Capital Asset Pricing Model to Non-normal Dependence Structures. *ASTIN Bulletin*, 37(1), 35--52.
 - Jullien, B. and Salanié, B. (2000). Estimating Preferences under Risk: The Case of Racetrack Bettors. *Journal of Political Economy*, 108(3), 503--530.
 - Huang, H.H., Sun, J. and Zhang, S. (2024). Asset Pricing for the Lottery-Like Security Under Probability Weighting: Based on Generalized Wang Transform. *North American Journal of Economics and Finance*, 71, 102078.
 - Kijima, M. and Muromachi, Y. (2008). An Extension of the Wang Transform Derived from Bühlmann's Economic Premium Principle for Insurance Risk. *Insurance: Mathematics and Economics*, 42(3), 887--896.
