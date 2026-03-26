@@ -1,0 +1,38 @@
+\begin{table}[H]
+\centering
+\small
+\caption{External benchmark: contract-level $\hat{\lambda}_i$ for NBA game contracts. Physical probability $\hat{p}^*$ estimated from pre-game Elo ratings (2025--26 season, $K=28$, home-court advantage $= 42$ Elo points). $\hat{\lambda}_i = \Phi^{-1}(p_i^{\text{Polymarket}}) - \Phi^{-1}(\hat{p}_i^{\text{Elo}})$.}
+\label{tab:external_benchmark}
+\vspace{0.3em}
+\textbf{Panel A: Summary Statistics}\\[3pt]
+\begin{tabular}{lr}
+\toprule
+Statistic & Value \\
+\midrule
+$N$ matched contracts & 51 \\
+Mean $\hat{\lambda}_i$ & 0.1247 \\
+Median $\hat{\lambda}_i$ & 0.0985 \\
+Std.~dev. & 0.3484 \\
+IQR & [-0.1061, 0.3438] \\
+$t$-test ($H_0\colon \lambda = 0$) & $t = 2.56$, $p = 0.0137$ \\
+Wilcoxon signed-rank & $p = 0.0196$ \\
+\midrule
+Aggregate Sports $\hat{\lambda}$ (Table 14) & 0.070 (SE $= 0.042$) \\
+\bottomrule
+\end{tabular}
+
+\vspace{0.5em}
+\textbf{Panel B: OLS Regression} $\hat{\lambda}_i = \alpha + \beta_1 \ln(\text{Vol}_i) + \beta_2 |p_i - 0.5| + \varepsilon_i$\\[3pt]
+\begin{tabular}{lrrrr}
+\toprule
+Variable & Coef. & SE & $t$ & $p$ \\
+\midrule
+Constant & -1.0078 & 1.5858 & -0.64 & 0.5281 \\
+$\ln(\text{Volume})$ & 0.0832 & 0.1068 & 0.78 & 0.4399 \\
+$|p - 0.5|$ & -0.7177 & 0.4195 & -1.71 & 0.0935 \\
+\midrule
+$R^2$ & \multicolumn{4}{r}{0.0801} \\
+$N$ & \multicolumn{4}{r}{51} \\
+\bottomrule
+\end{tabular}
+\end{table}

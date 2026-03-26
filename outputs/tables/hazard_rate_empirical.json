@@ -1,0 +1,415 @@
+{
+  "status": "success",
+  "n_families": 16,
+  "n_ns_fits": 0,
+  "families": {
+    "Khamenei seen in public": [
+      {
+        "id": "1467207",
+        "question": "Khamenei seen in public by February 28?",
+        "days": 0.0,
+        "p_mkt": 0.1,
+        "p_phys": 0.07387125258892435,
+        "resolved": 0,
+        "hazard": null
+      },
+      {
+        "id": "1466786",
+        "question": "Khamenei seen in public by March 1?",
+        "days": 0.0002546296296296296,
+        "p_mkt": 0.215,
+        "p_phys": 0.16974039316159434,
+        "resolved": 0,
+        "hazard": 429.15205906245467
+      },
+      {
+        "id": "1466787",
+        "question": "Khamenei seen in public by March 2?",
+        "days": 0.0002546296296296296,
+        "p_mkt": 0.29,
+        "p_phys": 0.2359519545893941,
+        "resolved": 0,
+        "hazard": null
+      },
+      {
+        "id": "1466788",
+        "question": "Khamenei seen in public by March 3?",
+        "days": 0.0005092592592592592,
+        "p_mkt": 0.34,
+        "p_phys": 0.28147574165037414,
+        "resolved": 0,
+        "hazard": 241.25710154693417
+      },
+      {
+        "id": "1466789",
+        "question": "Khamenei seen in public by March 4?",
+        "days": 0.0005555555555555556,
+        "p_mkt": 0.385,
+        "p_phys": 0.32334156201155606,
+        "resolved": 0,
+        "hazard": 1296.7094466939275
+      },
+      {
+        "id": "1466790",
+        "question": "Khamenei seen in public by March 7?",
+        "days": 0.022199074074074072,
+        "p_mkt": 0.355,
+        "p_phys": 0.29533820271197253,
+        "resolved": 0,
+        "hazard": -1.8736022440457742
+      },
+      {
+        "id": "1466791",
+        "question": "Khamenei seen in public by March 14?",
+        "days": 0.022916666666666665,
+        "p_mkt": 0.465,
+        "p_phys": 0.39980771602345083,
+        "resolved": 0,
+        "hazard": 223.61976982142713
+      }
+    ],
+    "Will ChatGPT be out as the #1 Free App in the US Apple Store": [
+      {
+        "id": "1402599",
+        "question": "Will ChatGPT be out as the #1 Free App in the US Apple Store by February 24?",
+        "days": 0.0,
+        "p_mkt": 0.03,
+        "p_phys": 0.020339176764327553,
+        "resolved": 0,
+        "hazard": null
+      },
+      {
+        "id": "1402600",
+        "question": "Will ChatGPT be out as the #1 Free App in the US Apple Store by February 26?",
+        "days": 1.2159837962962963,
+        "p_mkt": 0.06,
+        "p_phys": 0.04264595787812308,
+        "resolved": 0,
+        "hazard": 0.018941979392095642
+      },
+      {
+        "id": "1402601",
+        "question": "Will ChatGPT be out as the #1 Free App in the US Apple Store by February 28?",
+        "days": 2.9558217592592593,
+        "p_mkt": 0.11,
+        "p_phys": 0.08188126624236625,
+        "resolved": 1,
+        "hazard": 0.024051981872825923
+      },
+      {
+        "id": "1449762",
+        "question": "Will ChatGPT be out as the #1 Free App in the US Apple Store by March 15?",
+        "days": 2.9558217592592593,
+        "p_mkt": 0.58,
+        "p_phys": 0.5143163522951181,
+        "resolved": 1,
+        "hazard": null
+      },
+      {
+        "id": "1449763",
+        "question": "Will ChatGPT be out as the #1 Free App in the US Apple Store by March 31?",
+        "days": 2.9558680555555554,
+        "p_mkt": 0.445,
+        "p_phys": 0.380448069797485,
+        "resolved": 1,
+        "hazard": -5258.283312486118
+      },
+      {
+        "id": "1537697",
+        "question": "Will ChatGPT be out as the #1 Free App in the US Apple Store by March 10?",
+        "days": 13.168483796296297,
+        "p_mkt": 0.225,
+        "p_phys": 0.17841689328912946,
+        "resolved": 0,
+        "hazard": -0.027636070970151885
+      }
+    ],
+    "Will Khamenei tweet again": [
+      {
+        "id": "1466751",
+        "question": "Will Khamenei tweet again by March 14?",
+        "days": 0.0,
+        "p_mkt": 0.51,
+        "p_phys": 0.44396218980672597,
+        "resolved": 1,
+        "hazard": null
+      },
+      {
+        "id": "1466747",
+        "question": "Will Khamenei tweet again by March 2?",
+        "days": 0.03763888888888889,
+        "p_mkt": 0.275,
+        "p_phys": 0.22250510137154533,
+        "resolved": 1,
+        "hazard": -8.90676629399907
+      },
+      {
+        "id": "1466746",
+        "question": "Will Khamenei tweet again by March 1?",
+        "days": 0.03763888888888889,
+        "p_mkt": 0.21,
+        "p_phys": 0.16542051301172456,
+        "resolved": 1,
+        "hazard": null
+      },
+      {
+        "id": "1466749",
+        "question": "Will Khamenei tweet again by March 4?",
+        "days": 0.03837962962962963,
+        "p_mkt": 0.5,
+        "p_phys": 0.43407847508611463,
+        "resolved": 1,
+        "hazard": 524.4379689218441
+      },
+      {
+        "id": "1466748",
+        "question": "Will Khamenei tweet again by March 3?",
+        "days": 0.03837962962962963,
+        "p_mkt": 0.5,
+        "p_phys": 0.43407847508611463,
+        "resolved": 1,
+        "hazard": null
+      },
+      {
+        "id": "1466750",
+        "question": "Will Khamenei tweet again by March 7?",
+        "days": 0.03914351851851852,
+        "p_mkt": 0.525,
+        "p_phys": 0.4588651274305367,
+        "resolved": 1,
+        "hazard": 58.63008424086251
+      }
+    ],
+    "Will Iran name a successor to Khamenei": [
+      {
+        "id": "1470007",
+        "question": "Will Iran name a successor to Khamenei by March 1?",
+        "days": 0.0,
+        "p_mkt": 0.165,
+        "p_phys": 0.1271194306239805,
+        "resolved": 0,
+        "hazard": null
+      },
+      {
+        "id": "1469316",
+        "question": "Will Iran name a successor to Khamenei by March 2?",
+        "days": 1.0069675925925925,
+        "p_mkt": 0.28,
+        "p_phys": 0.2269763694275177,
+        "resolved": 0,
+        "hazard": 0.12064849401764116
+      },
+      {
+        "id": "1485770",
+        "question": "Will Iran name a successor to Khamenei by March 3?",
+        "days": 2.0103472222222223,
+        "p_mkt": 0.12,
+        "p_phys": 0.08996237045881544,
+        "resolved": 0,
+        "hazard": -0.16262671366840123
+      },
+      {
+        "id": "1485771",
+        "question": "Will Iran name a successor to Khamenei by March 4?",
+        "days": 3.104652777777778,
+        "p_mkt": 0.175,
+        "p_phys": 0.1355377242102731,
+        "resolved": 0,
+        "hazard": 0.04695058194263915
+      },
+      {
+        "id": "1516739",
+        "question": "Will Iran name a successor to Khamenei by March 11?",
+        "days": 6.686921296296297,
+        "p_mkt": 0.315,
+        "p_phys": 0.2585808175753772,
+        "resolved": 1,
+        "hazard": 0.042861528308672035
+      }
+    ],
+    "Will US or Israel strike Iran": [
+      {
+        "id": "1198479",
+        "question": "Will US or Israel strike Iran by February 28, 2026?",
+        "days": 0.0,
+        "p_mkt": 0.145,
+        "p_phys": 0.11045317607508753,
+        "resolved": 1,
+        "hazard": null
+      },
+      {
+        "id": "1198592",
+        "question": "Will US or Israel strike Iran by December 31, 2026?",
+        "days": 0.0007407407407407407,
+        "p_mkt": 0.76,
+        "p_phys": 0.7055058043741528,
+        "resolved": 1,
+        "hazard": 1492.3613512774707
+      },
+      {
+        "id": "1323373",
+        "question": "Will US or Israel strike Iran by June 30, 2026?",
+        "days": 0.0007638888888888889,
+        "p_mkt": 0.705,
+        "p_phys": 0.645364757553232,
+        "resolved": 1,
+        "hazard": -8027.876802397875
+      },
+      {
+        "id": "1198523",
+        "question": "Will US or Israel strike Iran by March 31, 2026?",
+        "days": 0.0008564814814814815,
+        "p_mkt": 0.605,
+        "p_phys": 0.5399511340628014,
+        "resolved": 1,
+        "hazard": -2810.6237407145877
+      }
+    ],
+    "Military action against Iran ends": [
+      {
+        "id": "1551563",
+        "question": "Military action against Iran ends by March 21, 2026?",
+        "days": 0.0,
+        "p_mkt": 0.23,
+        "p_phys": 0.1827732641047098,
+        "resolved": 0,
+        "hazard": null
+      },
+      {
+        "id": "1551564",
+        "question": "Military action against Iran ends by March 22, 2026?",
+        "days": 2.3148148148148147e-05,
+        "p_mkt": 0.265,
+        "p_phys": 0.2135959649950182,
+        "resolved": 0,
+        "hazard": 1660.8619758532673
+      },
+      {
+        "id": "1551565",
+        "question": "Military action against Iran ends by March 23, 2026?",
+        "days": 0.0021064814814814813,
+        "p_mkt": 0.245,
+        "p_phys": 0.19591349087601845,
+        "resolved": 0,
+        "hazard": -10.673357760409981
+      }
+    ],
+    "Will ChatGPT be back in as the #1 Free App in the US Apple Store": [
+      {
+        "id": "1486147",
+        "question": "Will ChatGPT be back in as the #1 Free App in the US Apple Store by March 2?",
+        "days": 0.0,
+        "p_mkt": 0.49,
+        "p_phys": 0.4242358032317115,
+        "resolved": 0,
+        "hazard": null
+      },
+      {
+        "id": "1486148",
+        "question": "Will ChatGPT be back in as the #1 Free App in the US Apple Store by March 3?",
+        "days": 1.0055092592592592,
+        "p_mkt": 0.315,
+        "p_phys": 0.2585808175753772,
+        "resolved": 0,
+        "hazard": -0.25148248515195004
+      },
+      {
+        "id": "1651447",
+        "question": "Will ChatGPT be back in as the #1 Free App in the US Apple Store by March 20?",
+        "days": 17.96662037037037,
+        "p_mkt": 0.245,
+        "p_phys": 0.19591349087601845,
+        "resolved": 0,
+        "hazard": -0.004783925866888103
+      }
+    ],
+    "US x Iran meeting": [
+      {
+        "id": "1389075",
+        "question": "US x Iran meeting by March 31, 2026?",
+        "days": 0.0,
+        "p_mkt": 0.931,
+        "p_phys": 0.9061276280271393,
+        "resolved": 1,
+        "hazard": null
+      },
+      {
+        "id": "1388695",
+        "question": "US x Iran meeting by February 28, 2026?",
+        "days": 0.0006018518518518519,
+        "p_mkt": 0.92,
+        "p_phys": 0.892340500962377,
+        "resolved": 1,
+        "hazard": -227.69281972184686
+      },
+      {
+        "id": "1455406",
+        "question": "US x Iran meeting by March 15, 2026?",
+        "days": 17.73121527777778,
+        "p_mkt": 0.15,
+        "p_phys": 0.11459782962012144,
+        "resolved": 0,
+        "hazard": -0.11883788005778964
+      }
+    ],
+    "US forces enter Iran": [
+      {
+        "id": "1394298",
+        "question": "US forces enter Iran by February 28?",
+        "days": 0.0,
+        "p_mkt": 0.026,
+        "p_phys": 0.017466519151606092,
+        "resolved": 0,
+        "hazard": null
+      },
+      {
+        "id": "1466029",
+        "question": "US forces enter Iran by March 1?",
+        "days": 0.8707407407407407,
+        "p_mkt": 0.14,
+        "p_phys": 0.10632359004768333,
+        "resolved": 0,
+        "hazard": 0.10886210306206741
+      },
+      {
+        "id": "1466030",
+        "question": "US forces enter Iran by March 3?",
+        "days": 2.8715972222222224,
+        "p_mkt": 0.265,
+        "p_phys": 0.2135959649950182,
+        "resolved": 0,
+        "hazard": 0.06390915764528729
+      }
+    ],
+    "Khamenei out as Supreme Leader of Iran": [
+      {
+        "id": "661699",
+        "question": "Khamenei out as Supreme Leader of Iran by June 30?",
+        "days": 0.0,
+        "p_mkt": 0.345,
+        "p_phys": 0.28608617453585644,
+        "resolved": 1,
+        "hazard": null
+      },
+      {
+        "id": "916732",
+        "question": "Khamenei out as Supreme Leader of Iran by March 31?",
+        "days": 3.0387037037037037,
+        "p_mkt": 0.205,
+        "p_phys": 0.1611130565984678,
+        "resolved": 1,
+        "hazard": -0.0530863483514866
+      },
+      {
+        "id": "1180303",
+        "question": "Khamenei out as Supreme Leader of Iran by February 28?",
+        "days": 3.0438425925925925,
+        "p_mkt": 0.021,
+        "p_phys": 0.01392047901097291,
+        "resolved": 1,
+        "hazard": -31.458367588032974
+      }
+    ]
+  },
+  "nelson_siegel_fits": {}
+}

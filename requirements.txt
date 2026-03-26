@@ -1,0 +1,10 @@
+# Core scientific computing
+numpy>=1.24,<2.0
+scipy>=1.11
+pandas>=2.0
+
+# Data fetching (optional, for raw data collection)
+urllib3>=2.0
+
+# Recommended but not required
+matplotlib>=3.7        # for figure reproduction

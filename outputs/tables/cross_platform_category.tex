@@ -1,0 +1,21 @@
+\begin{table}[H]
+\centering
+\small
+\caption{Cross-platform category-level Wang parameter comparison. Each cell reports $\hat{\lambda}_{MLE}$ estimated separately by category. $\Delta\lambda = \hat{\lambda}_{\text{Kalshi}} - \hat{\lambda}_{\text{Polymarket}}$; positive values indicate higher risk loading on the less liquid platform.}
+\label{tab:cross_platform_category}
+\begin{tabular}{lrrrrrrr}
+\toprule
+ & \multicolumn{3}{c}{Polymarket} & \multicolumn{3}{c}{Kalshi} & \\
+\cmidrule(lr){2-4} \cmidrule(lr){5-7}
+Category & $N$ & $\hat{\lambda}$ & SE & $N$ & $\hat{\lambda}$ & SE & $\Delta\lambda$ \\
+\midrule
+Sports & 973 & 0.070 & 0.042 & 122 & 0.573$^{***}$ & 0.158 & +0.503 \\
+Politics & 71 & 0.054 & 0.157 & 750 & 0.400$^{***}$ & 0.066 & +0.346 \\
+Crypto & 305 & 0.253 & 0.077 & 12,975 & 0.297$^{***}$ & 0.015 & +0.044 \\
+Tech & 414 & 0.268 & 0.079 & 8,246 & -0.022 & 0.017 & -0.290 \\
+Other & 692 & 0.282 & 0.051 & 178,133 & 0.178$^{***}$ & 0.004 & -0.104 \\
+\midrule
+\textit{Pooled} & 2,460 & 0.176 & 0.027 & 200,226 & 0.178$^{***}$ & 0.004 & +0.002 \\
+\bottomrule
+\end{tabular}
+\end{table}

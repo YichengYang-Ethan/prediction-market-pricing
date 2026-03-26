@@ -1,0 +1,22 @@
+\begin{table}[H]
+\centering
+\small
+\caption{Polymarket hierarchical MLE: sensitivity to price timing. Opening (5\% of lifetime), mid-life (50\%), and late-life (80\%) prices used as the market price in $\Phi^{-1}(p^{\text{mkt}})$. If covariate signs shift toward the Kalshi pattern at later prices, the cross-platform reversal is price-timing-driven.}
+\label{tab:polymarket_price_timing}
+\begin{tabular}{lrrrrrr}
+\toprule
+ & \multicolumn{2}{c}{Opening (5%) ($N=13,274$)} & \multicolumn{2}{c}{Mid-life (50%) ($N=12,482$)} & \multicolumn{2}{c}{Late-life (80%) ($N=10,583$)} \\
+\cmidrule(lr){2-3} \cmidrule(lr){4-5} \cmidrule(lr){6-7} 
+Variable & Coef. & SE & Coef. & SE & Coef. & SE \\
+\midrule
+Constant & 0.2599$^{***}$ & (0.0627) & 0.1737$^{**}$ & (0.0652) & 0.2862$^{***}$ & (0.0757) \\
+  & [0.0636] &  & [0.0653] &  & [0.0747] &  \\
+$\ln(\text{Volume})$ & -0.0716$^{***}$ & (0.0052) & -0.0539$^{***}$ & (0.0053) & -0.0468$^{***}$ & (0.0057) \\
+  & [0.0053] &  & [0.0053] &  & [0.0057] &  \\
+$\ln(\text{Duration})$ & 0.1431$^{***}$ & (0.0121) & 0.1059$^{***}$ & (0.0128) & 0.0568$^{***}$ & (0.0152) \\
+  & [0.0122] &  & [0.0126] &  & [0.0149] &  \\
+$|p - 0.5|$ & -0.4778$^{***}$ & (0.0994) & -0.2172$^{*}$ & (0.1002) & -0.2258$^{*}$ & (0.1083) \\
+  & [0.0985] &  & [0.0971] &  & [0.1038] &  \\
+\bottomrule
+\end{tabular}
+\end{table}

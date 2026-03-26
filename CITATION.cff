@@ -1,0 +1,33 @@
+cff-version: 1.2.0
+message: "If you use this software or data, please cite the paper below."
+title: "Pricing Prediction Markets: Risk Premiums, Incomplete Markets, and a Decomposition Framework"
+type: software
+authors:
+  - family-names: Yang
+    given-names: Yicheng
+    email: yy85@illinois.edu
+    affiliation: University of Illinois Urbana-Champaign
+    orcid: ""
+repository-code: "https://github.com/YichengYang-Ethan/prediction-market-pricing"
+url: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=XXXXXXX"
+date-released: "2026-03-26"
+keywords:
+  - prediction markets
+  - Wang transform
+  - risk premium
+  - incomplete markets
+  - binary options
+  - favorite-longshot bias
+  - Polymarket
+  - Kalshi
+license: MIT
+preferred-citation:
+  type: article
+  authors:
+    - family-names: Yang
+      given-names: Yicheng
+  title: "Pricing Prediction Markets: Risk Premiums, Incomplete Markets, and a Decomposition Framework"
+  year: 2026
+  journal: "Working Paper"
+  institution:
+    name: University of Illinois Urbana-Champaign

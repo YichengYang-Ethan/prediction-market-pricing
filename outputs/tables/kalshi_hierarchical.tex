@@ -1,0 +1,37 @@
+\begin{table}[H]
+\centering
+\small
+\caption{One-stage hierarchical Wang MLE on Kalshi contracts. Dependent variable: binary outcome $y_i$. Model: $\Pr(y_i = 1) = \Phi(\Phi^{-1}(p_i^{\text{mkt}}) - X_i\beta)$. Fisher standard errors reported; sandwich robust SEs in brackets.}
+\label{tab:kalshi_hierarchical}
+\begin{tabular}{lrrrr}
+\toprule
+ & \multicolumn{2}{c}{Main spec} & \multicolumn{2}{c}{Year FE} \\
+\cmidrule(lr){2-3} \cmidrule(lr){4-5}
+Variable & Coef. & SE & Coef. & SE \\
+\midrule
+Constant & 0.1400$^{***}$ & (0.0198) & 0.3357$^{**}$ & (0.1102) \\
+ & [0.0188] & & [0.1032] & \\
+$\ln(\text{Volume})$ & 0.0384$^{***}$ & (0.0031) & 0.0300$^{***}$ & (0.0032) \\
+ & [0.0029] & & [0.0031] & \\
+$\ln(\text{Duration})$ & -0.1101$^{***}$ & (0.0032) & -0.1241$^{***}$ & (0.0035) \\
+ & [0.0030] & & [0.0033] & \\
+$|p - 0.5|$ & 0.1917$^{***}$ & (0.0267) & 0.1768$^{***}$ & (0.0268) \\
+ & [0.0261] & & [0.0262] & \\
+Year=2022 & & & 0.0725 & (0.1115) \\
+ & & & [0.1045] & \\
+Year=2023 & & & 0.0444 & (0.1083) \\
+ & & & [0.1012] & \\
+Year=2024 & & & 0.0028 & (0.1077) \\
+ & & & [0.1005] & \\
+Year=2025 & & & -0.0847 & (0.1079) \\
+ & & & [0.1007] & \\
+Year=2026 & & & -0.1272 & (0.1070) \\
+ & & & [0.1001] & \\
+\midrule
+$N$ & \multicolumn{2}{r}{200,226} & \multicolumn{2}{r}{200,226} \\
+Log-lik. & \multicolumn{2}{r}{-75541.5} & \multicolumn{2}{r}{-75475.4} \\
+LR $\chi^2$ (covariates) & \multicolumn{2}{r}{1267.2} & \multicolumn{2}{r}{1399.4} \\
+Pseudo $R^2$ & \multicolumn{2}{r}{0.024828} & \multicolumn{2}{r}{0.025681} \\
+\bottomrule
+\end{tabular}
+\end{table}

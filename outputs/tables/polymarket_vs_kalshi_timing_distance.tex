@@ -1,0 +1,18 @@
+\begin{table}[H]
+\centering
+\small
+\caption{Distance between Polymarket and Kalshi slope coefficients at each timing point. $\Delta\beta_j = \hat{\beta}^{\text{PM}}_j - \hat{\beta}^{\text{Kalshi}}_j$ for each covariate $j$. Decreasing distances indicate convergence toward the Kalshi coefficient pattern.}
+\label{tab:polymarket_vs_kalshi_distance}
+\begin{tabular}{lcccccc}
+\toprule
+ & \multicolumn{3}{c}{Signed difference $\Delta\beta$} & \multicolumn{2}{c}{Distance} & \\
+\cmidrule(lr){2-4} \cmidrule(lr){5-6}
+Timing & $\Delta\beta_{\text{vol}}$ & $\Delta\beta_{\text{dur}}$ & $\Delta\beta_{\text{ext}}$ & $L_1$ & $L_2$ & Reduction \\
+\midrule
+PM 5\% (opening) & -0.1101 & +0.2532 & -0.6695 & 1.0328 & 0.7242 & --- \\
+PM 20\% & -0.1000 & +0.2349 & -0.5535 & 0.8883 & 0.6095 & 14\% \\
+PM 50\% (mid-life) & -0.0925 & +0.2151 & -0.3824 & 0.6900 & 0.4484 & 33\% \\
+PM 80\% (late-life) & -0.0851 & +0.1662 & -0.3997 & 0.6510 & 0.4411 & 37\% \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -1,0 +1,16 @@
+\begin{table}[H]
+\centering
+\small
+\caption{Sensitivity of $\hat{\lambda}_{MLE}$ to opening price construction. Each row uses a different method to extract the opening price from the hourly CLOB price history. All other estimation details are identical to the baseline specification (Section 5.2).}
+\label{tab:opening_robustness}
+\begin{tabular}{lrrrrr}
+\toprule
+Opening Measure & $N$ & $\hat{\lambda}_{MLE}$ & SE & $p$-value & $\Delta\%$ \\
+\midrule
+First-5\% midpoint (baseline) & 13,196 & 0.1656$^{***}$ & 0.0115 & 0.00e+00 & --- \\
+Post-settle (skip first 2h) & 13,098 & 0.1489$^{***}$ & 0.0117 & 0.00e+00 & -10.1\% \\
+5-price average & 13,221 & 0.1537$^{***}$ & 0.0117 & 0.00e+00 & -7.2\% \\
+Filtered (non-stale, low-spread) & 9,010 & 0.1314$^{***}$ & 0.0139 & 0.00e+00 & -20.7\% \\
+\bottomrule
+\end{tabular}
+\end{table}

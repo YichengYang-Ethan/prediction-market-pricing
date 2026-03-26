@@ -1,0 +1,23 @@
+\begin{table}[H]
+\centering
+\small
+\caption{Comparison: two-step OLS (Section 5.3 original) vs.\ one-stage hierarchical MLE. The one-stage model jointly estimates all parameters, eliminating the generated-regressor problem.}
+\label{tab:twostep_vs_onestage}
+\begin{tabular}{lrrrr}
+\toprule
+ & \multicolumn{2}{c}{Two-step OLS} & \multicolumn{2}{c}{One-stage MLE} \\
+\cmidrule(lr){2-3} \cmidrule(lr){4-5}
+Variable & Coef. & HC1 SE & Coef. & Robust SE \\
+\midrule
+Constant & 0.2470$^{**}$ & (0.0210) & 0.2590$^{***}$ & (0.0637) \\
+ln(Volume) & -0.0100$^{**}$ & (0.0020) & -0.0716$^{***}$ & (0.0053) \\
+ln(Duration) & 0.0160$^{**}$ & (0.0040) & 0.1431$^{***}$ & (0.0122) \\
+$|p - 0.5|$ (extremity) & -0.3610$^{**}$ & (0.0280) & -0.4772$^{***}$ & (0.0985) \\
+Spread & -0.6120 & (0.8220) & 0.1273 & (0.4229) \\
+\midrule
+$R^2$ / Pseudo-$R^2$ & \multicolumn{2}{r}{0.072} & \multicolumn{2}{r}{0.0346} \\
+$N$ & \multicolumn{2}{r}{2,460} & \multicolumn{2}{r}{13,274} \\
+Generated-regressor problem & \multicolumn{2}{r}{Yes} & \multicolumn{2}{r}{No} \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -1,0 +1,30 @@
+\begin{table}[H]
+\centering
+\small
+\caption{Stacked panel time-varying $\hat{\lambda}$ with natural cubic spline. Model: $\Pr(y_i = 1 \mid p_{it}) = \Phi(\Phi^{-1}(p_{it}) - f(\tau_{it}) - X_i\beta)$. Contract-clustered standard errors (Liang--Zeger).}
+\label{tab:stacked_panel}
+\begin{tabular}{lrrrr}
+\toprule
+ & \multicolumn{2}{c}{(1) $f(\tau)$ only} & \multicolumn{2}{c}{(2) $f(\tau) + X_i\beta$} \\
+\cmidrule(lr){2-3} \cmidrule(lr){4-5}
+Parameter & Estimate & Cluster SE & Estimate & Cluster SE \\
+\midrule
+\textit{Spline parameters} & & & & \\
+$f(\tau)$ basis coefficients & \multicolumn{2}{c}{(2 params)} & \multicolumn{2}{c}{(2 params)} \\
+\midrule
+\textit{Covariates} & & & & \\
+τ & --- & --- & -0.3133$^{***}$ & (0.0671) \\
+τ^2 & --- & --- & 0.1672$^{*}$ & (0.0712) \\
+Constant ($\beta_0$) & 0.1917$^{***}$ & (0.0293) & 0.3962$^{**}$ & (0.1480) \\
+ln(Volume) & --- & --- & -0.0932$^{***}$ & (0.0138) \\
+ln(Duration) & --- & --- & 0.1511$^{***}$ & (0.0234) \\
+$|p - 0.5|$ (extremity) & --- & --- & -0.2213 & (0.2013) \\
+Spread & --- & --- & -11.4618 & (10.8587) \\
+\midrule
+Log-likelihood & \multicolumn{2}{r}{-10140.7} & \multicolumn{2}{r}{-9778.1} \\
+AIC & \multicolumn{2}{r}{20287.4} & \multicolumn{2}{r}{19570.1} \\
+Contracts (clusters) & \multicolumn{2}{r}{2,151} & \multicolumn{2}{r}{2,151} \\
+Total observations & \multicolumn{2}{r}{17,519} & \multicolumn{2}{r}{17,519} \\
+\bottomrule
+\end{tabular}
+\end{table}

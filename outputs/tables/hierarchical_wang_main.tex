@@ -1,0 +1,24 @@
+\begin{table}[H]
+\centering
+\small
+\caption{One-stage hierarchical Wang MLE. Dependent variable: binary outcome $y_i$. Model: $\Pr(y_i = 1) = \Phi(\Phi^{-1}(p_i^{\text{mkt}}) - X_i\beta)$. Fisher and sandwich robust standard errors reported.}
+\label{tab:hierarchical}
+\begin{tabular}{lrrrrrr}
+\toprule
+ & \multicolumn{3}{c}{Full sample ($N = 13274$)} & \multicolumn{3}{c}{12-day subsample ($N = 2134$)} \\
+\cmidrule(lr){2-4} \cmidrule(lr){5-7}
+Variable & Coef. & SE (Fisher) & SE (Robust) & Coef. & SE (Fisher) & SE (Robust) \\
+\midrule
+Constant & 0.2590$^{***}$ & (0.0628) & (0.0637) & 0.3870$^{**}$ & (0.1438) & (0.1461) \\
+ln(Volume) & -0.0716$^{***}$ & (0.0052) & (0.0053) & -0.0998$^{***}$ & (0.0134) & (0.0135) \\
+ln(Duration) & 0.1431$^{***}$ & (0.0121) & (0.0122) & 0.1764$^{***}$ & (0.0237) & (0.0238) \\
+$|p - 0.5|$ (extremity) & -0.4772$^{***}$ & (0.0995) & (0.0985) & -0.6975$^{**}$ & (0.2517) & (0.2593) \\
+Spread & 0.1273 & (0.3842) & (0.4229) & -10.0000$^{*}$ & (4.4659) & (5.8928) \\
+\midrule
+Log-likelihood & \multicolumn{3}{r}{-7937.9} & \multicolumn{3}{r}{-1263.5} \\
+LR test ($\lambda = \text{const}$) & \multicolumn{3}{r}{$\chi^2 = 361.3$, $p = 0.00e+00$} & \multicolumn{3}{r}{$\chi^2 = 124.5$, $p = 0.00e+00$} \\
+AIC & \multicolumn{3}{r}{15885.8} & \multicolumn{3}{r}{2537.1} \\
+$N$ & \multicolumn{3}{r}{13,274} & \multicolumn{3}{r}{2,134} \\
+\bottomrule
+\end{tabular}
+\end{table}
