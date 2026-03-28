@@ -17,7 +17,15 @@ The analysis-ready datasets are included in `data/`. To reproduce from raw API p
 # Optional: re-fetch raw data from public APIs
 python fetch_polymarket.py       # Polymarket Gamma + CLOB APIs
 python fetch_kalshi_v2.py        # Kalshi public market data API
+
+# Download HuggingFace datasets for cross-platform validation (Section 6)
+pip install datasets
+python data/download_huggingface.py
 ```
+
+The HuggingFace script downloads two public datasets:
+- **LightningRodLabs/outcome-rl-test-dataset**: Polymarket 2025 sample (N=985)
+- **YuehHanChen/forecasting**: Multi-platform data covering Metaculus, GJOpen, INFER, Manifold (N=4,887)
 
 ## Step 1: Core Wang Transform Estimation (Section 4-5)
 
