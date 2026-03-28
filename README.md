@@ -4,8 +4,6 @@
 
 **Working Paper** -- March 2026
 
-Submitted to the **Financial Management Association (FMA) 2026 Annual Meeting**
-
 **Blog**: [https://yichengyang-ethan.github.io/](https://yichengyang-ethan.github.io/)
 
 ---
