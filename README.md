@@ -4,7 +4,7 @@
 
 **Working Paper** -- March 2026
 
-SSRN: [https://papers.ssrn.com/sol3/papers.cfm?abstract_id=XXXXXXX](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=XXXXXXX)
+Submitted to the **Financial Management Association (FMA) 2026 Annual Meeting**
 
 ---
 
@@ -15,6 +15,42 @@ Prediction markets---binary contracts on real-world events---lack the pricing in
 $$p^{\text{mkt}} = \Phi\bigl(\Phi^{-1}(p^*) + \lambda\bigr)$$
 
 Calibration on 2,460 resolved Polymarket contracts yields $\hat{\lambda}_{\text{MLE}} = 0.176$ ($p < 10^{-10}$). Cross-platform validation across $N = 291{,}309$ contracts from six platforms (Polymarket, Kalshi, Metaculus, Good Judgment Open, INFER, Manifold) confirms a positive, significant $\lambda$ on all real-money platforms (pooled $\hat{\lambda} = 0.183$), while the play-money platform Manifold exhibits $\hat{\lambda} < 0$, consistent with overconfidence absent financial stakes.
+
+## Methodology
+
+**Layer 1 (Incomplete markets).** Prediction market contracts are cash-or-nothing binary options in an incomplete market. No-arbitrage bounds form an interval; the market price selects a point within it.
+
+**Layer 2 (Dynamics).** The log-odds state variable $x_t = \log\bigl(p_t/(1-p_t)\bigr)$ follows a jump-diffusion:
+
+$$dx_t = \mu(x_t,t)\,dt + \sigma\,dW_t + J_t\,dN_t$$
+
+**Layer 3 (Wang Transform).** A single-parameter distortion maps physical to risk-neutral probabilities:
+
+$$p^{\text{mkt}} = \Phi\bigl(\Phi^{-1}(p^*) + \lambda\bigr)$$
+
+The MLE objective is a probit model with known offset:
+
+$$\hat{\lambda} = \arg\max_\lambda \sum_{i=1}^{N} \bigl[y_i \ln \Phi(z_i - \lambda) + (1-y_i)\ln(1-\Phi(z_i-\lambda))\bigr], \quad z_i = \Phi^{-1}(p_i^{\text{mkt}})$$
+
+**Hierarchical extension.** Contract-level covariates modulate the risk premium:
+
+$$\lambda_i = \beta_0 + \beta_1 \ln(1+V_i) + \beta_2 \ln(1+D_i) + \beta_3 |p_i - 0.5| + \beta_4 S_i$$
+
+**Theorem 1 (Favorite-longshot bias).** Under $\lambda > 0$: (a) all events are overpriced ($p^{\text{mkt}} > p^*$), (b) the overpricing ratio $p^{\text{mkt}}/p^*$ is monotonically decreasing in $p^*$. The bias is a structural consequence of risk pricing, not a behavioral anomaly.
+
+## Cross-Platform Results
+
+| Platform | $N$ | $\hat{\lambda}$ | SE | $p$-value |
+|----------|-----|------------------|----|-----------|
+| Polymarket | 13,738 | 0.166 | 0.011 | $<10^{-15}$ |
+| Kalshi | 271,699 | 0.187 | 0.003 | $<10^{-15}$ |
+| Metaculus | 1,845 | 0.287 | 0.033 | $<10^{-15}$ |
+| Good Judgment Open | 692 | 0.570 | 0.055 | $<10^{-15}$ |
+| INFER | 90 | 0.635 | 0.180 | $<0.001$ |
+| Manifold (play-money) | 1,681 | **-0.218** | 0.032 | $<10^{-11}$ |
+| **Pooled** | **291,309** | **0.183** | **0.003** | **$<10^{-15}$** |
+
+Manifold's negative $\lambda$ serves as a natural negative control: absent real financial stakes, participants are overconfident rather than risk-averse.
 
 ## Repository Structure
 
