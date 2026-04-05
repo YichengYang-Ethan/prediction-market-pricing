@@ -85,6 +85,12 @@ prediction-market-pricing/
 └── data_dictionary.md         # Variable definitions for all datasets
 ```
 
+## Case Studies
+
+| Study | Data | Finding |
+|-------|------|---------|
+| [**2026 Final Four**](case-studies/final-four-2026/) | Kalshi + Polymarket tick data, ESPN play-by-play | Intra-game $\lambda \approx +0.13$ at competitive probabilities, consistent with cross-sectional estimate. [Blog post](https://yichengyang-ethan.github.io/final-four) |
+
 ## Quick Start
 
 ```bash

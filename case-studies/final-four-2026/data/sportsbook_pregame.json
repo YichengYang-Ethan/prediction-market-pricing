@@ -1,0 +1,48 @@
+{
+  "snapshot_time": "2026-04-04T16:15:00-05:00",
+  "source": "DraftKings/FanDuel/VegasInsider consensus (Apr 4)",
+  "game1_illinois_vs_uconn": {
+    "tip_off": "2026-04-05T17:09:00-05:00",
+    "illinois_spread": -2,
+    "uconn_spread": 2,
+    "spread_juice_ill": -110,
+    "spread_juice_uconn": -110,
+    "over_under": 139.5,
+    "ou_juice_over": -110,
+    "ou_juice_under": -110,
+    "notes": "Line moved from ILL -2.5 to -2 through the week"
+  },
+  "game2_michigan_vs_arizona": {
+    "tip_off": "2026-04-05T19:49:00-05:00",
+    "michigan_spread": -1.5,
+    "arizona_spread": 1.5,
+    "spread_juice_mich": -105,
+    "spread_juice_ariz": -115,
+    "over_under": 157.5,
+    "ou_juice_over": -110,
+    "ou_juice_under": -110,
+    "notes": "Total moved from 156.5 opener to 157.5"
+  },
+  "championship_winner_futures": {
+    "michigan": {"odds": "+160", "implied_prob_raw": 0.385},
+    "arizona": {"odds": "+165", "implied_prob_raw": 0.377},
+    "illinois": {"odds": "+400", "implied_prob_raw": 0.200},
+    "uconn": {"odds": "+700", "implied_prob_raw": 0.125}
+  },
+  "polymarket_pregame_snapshot": {
+    "game1_ill_ml": 0.555,
+    "game1_uconn_ml": 0.445,
+    "game1_ill_spread_minus1_5": 0.515,
+    "game1_ou_139_5_over": 0.495,
+    "game2_mich_ml": 0.505,
+    "game2_ariz_ml": 0.495,
+    "game2_mich_spread_minus1_5": 0.465,
+    "game2_ou_157_5_over": 0.495
+  },
+  "kalshi_pregame_snapshot": {
+    "ill_championship": 0.175,
+    "uconn_championship": 0.145,
+    "mich_championship": 0.345,
+    "ariz_championship": 0.335
+  }
+}
