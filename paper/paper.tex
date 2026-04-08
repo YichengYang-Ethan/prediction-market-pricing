@@ -1,4 +1,4 @@
-% === REVISION VERSION: v10 (2026-04-08 submission-track) ===
+% === REVISION VERSION: v11 (2026-04-08 final mechanical patch) ===
 % Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
@@ -828,16 +828,14 @@ sensitivities of the market price to model inputs:
   the local amplification factor of the Wang distortion.
 \item
   \textit{Overpricing}: \(\Delta p = p^{\text{mkt}} - p^*\), maximized
-  near \(p^* = 0.5\) (Theorem 1).
+  near \(p^* = 0.5\) (Corollary 1).
 \end{itemize}
 
 \textbf{Summary.} The complete model reduces prediction market pricing
-to three objects: a state variable (\(x_t = \text{logit}(p_t)\)), a
-dynamics specification (log-odds diffusion with belief volatility
-\(\sigma\)), and a one-parameter risk distortion (\(\lambda\)). It takes
+to three objects: an observation-space representation (log-odds of quoted prices), a latent physical event model (Gaussian threshold factor), and a maintained pricing-measure selection rule (one-parameter exponential tilt yielding the Wang transform). It takes
 a market price as input and outputs a risk-adjusted probability; or
 takes a probability forecast and outputs a model-implied fair price. The
-empirical calibration of \(\lambda\) is the subject of Section 5.
+empirical calibration of $\lambda$ is the subject of Section~5.
 
 \subsection{Economic Interpretation and Scope of \texorpdfstring{$\lambda$}{lambda}}\label{economic-interpretation-of-lambda}
 
@@ -1642,7 +1640,7 @@ medium-volume contracts:
 \begin{table}[H]
 \centering
 \small
-\caption{Wang parameter by trading volume. High-volume markets ($>$\$10K) show zero pricing wedge; the aggregate $\hat{\lambda} = 0.176$ is driven by less-liquid contracts.}
+\caption{Wang parameter by trading volume. High-volume markets ($>$\$10K) show pricing wedges statistically indistinguishable from zero; the aggregate $\hat{\lambda} = 0.176$ is driven by less-liquid contracts.}
 \begin{tabular}{lrrrr}
 \toprule
 Volume tier & $N$ & $\hat{\lambda}_{MLE}$ & SE & $p$-value \\
