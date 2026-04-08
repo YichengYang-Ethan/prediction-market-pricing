@@ -1,4 +1,4 @@
-% === REVISION VERSION: v9 (2026-04-07 final polish) ===
+% === REVISION VERSION: v10 (2026-04-08 submission-track) ===
 % Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
@@ -2035,12 +2035,12 @@ cycle and its aftermath.
 The cross-platform results have three implications for the theoretical
 framework:
 
-First, the positive \(\lambda\) is not a microstructure artifact. It
+First, the positive $\hat\lambda$ is not confined to a single platform or market structure. It
 persists across centralized limit order books (Polymarket, Kalshi) and
 forecasting tournaments (Metaculus, GJ Open), which have fundamentally
-different price formation mechanisms. This suggests that the pricing
-wedge is intrinsic to prediction markets as an asset class, consistent
-with the incomplete market interpretation in Section 3.
+different price formation mechanisms. This cross-platform persistence is consistent
+with the incomplete-market interpretation in Section~3, though it does not by itself rule out
+platform-specific explanations.
 
 Second, the magnitude gradient across platforms is consistent with the
 liquidity-premium hypothesis: deeper, more efficient markets price risk
@@ -2156,58 +2156,9 @@ rather than continuous flow.
 \label{fig:eiv_distribution}
 \end{figure}
 
-\subsection{Hazard Rate Term
-Structure}\label{hazard-rate-term-structure}
-
-This section presents a theoretical extension that awaits empirical
-implementation; current data limitations prevent successful calibration,
-as discussed below.
-
-For events with contracts at multiple maturities
-\(T_1 < T_2 < \cdots < T_n\), the framework extends to an event hazard
-rate term structure. Define the event intensity:
-
-\[h(t) = -\frac{d}{dt}\ln(1 - p^*(t))\]
-
-\textbf{Procedure:}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  \textbf{Strip pricing wedge}:
-  \(\hat{p}_i^* = \Phi(\Phi^{-1}(p_i^{\text{mkt}}) - \hat{\lambda})\)
-\item
-  \textbf{Bootstrap hazard rates}:
-  \(\hat{h}_i = -[\ln(1-\hat{p}_i^*) - \ln(1-\hat{p}_{i-1}^*)]\,/\,(T_i - T_{i-1})\)
-\item
-  \textbf{Parameterize} with Nelson-Siegel:
-\end{enumerate}
-
-\[h(T) = \beta_0 + \beta_1 \frac{1-e^{-T/\tau}}{T/\tau} + \beta_2\left(\frac{1-e^{-T/\tau}}{T/\tau} - e^{-T/\tau}\right)\]
-
-This is directly analogous to CDS curve bootstrapping in credit markets:
-strip the pricing wedge, extract default intensities, and fit a
-parametric term structure. The analogy is suggestive: a prediction
-market contract on ``event \(E\) occurs by time \(T\)'' is structurally
-similar to a credit default swap on ``entity \(X\) defaults by time
-\(T\),'' with \(h(t)\) playing the role of the default intensity. This
-hazard rate extension does not appear to have been explored in the
-prediction market literature.
-
-\textbf{Empirical feasibility.} A systematic search of the current
-sample identifies 16 multi-maturity contract families (same event,
-\(\geq 3\) expiry dates). However, the bootstrapped hazard rates are
-noisy: most families have closely spaced maturities (often created
-simultaneously with different resolution dates), producing extreme or
-negative point estimates of \(\hat{h}_i\). Nelson-Siegel fitting fails
-to converge for all 16 families. The hazard rate term structure thus
-remains a theoretical extension; empirical implementation at scale
-requires multi-maturity contract data with well-separated expiry
-dates---a data structure that may become available as prediction markets
-mature and exchanges begin listing standardized maturity strips for
-recurring events (e.g., monthly employment reports, quarterly GDP
-releases).
+% Section 7.2 (Hazard Rate Term Structure) moved to Appendix B.
+% The extension awaits empirical implementation; Nelson-Siegel fitting
+% fails to converge on current multi-maturity data (16 families tested).
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
