@@ -961,183 +961,80 @@ a market price as input and outputs a risk-adjusted probability; or
 takes a probability forecast and outputs a model-implied fair price. The
 empirical calibration of \(\lambda\) is the subject of Section 5.
 
-\subsection{\texorpdfstring{Economic Interpretation of
-\(\lambda\)}{Economic Interpretation of lambda}}\label{economic-interpretation-of-lambda}
+\subsection{Economic Interpretation and Scope of \texorpdfstring{$\lambda$}{lambda}}\label{economic-interpretation-of-lambda}
 
-The Wang transform decomposition in Section\textasciitilde3.3 is
-estimated as a reduced-form pricing model: \(\lambda\) is calibrated
-from the cross-section of market prices and resolution outcomes without
-imposing a structural model of trader preferences or market equilibrium.
-This subsection develops a benchmark economic interpretation of
-\(\lambda\) that serves two purposes: (i) it justifies the Wang
-transform as the equilibrium pricing rule under specific conditions,
-reinforcing the tool choice in Section 3.3; and (ii) it generates a
-puzzle---the benchmark predicts \(\lambda \approx 0\) for most
-prediction market events, motivating the empirical investigation of
-\(\lambda\)'s cross-sectional and time-series variation in Sections
-5.3--5.4 as evidence for alternative structural mechanisms.
+Within the model of Sections~3.3--3.5, $\lambda$ is the selection parameter of the maintained pricing family $\{Q^\lambda\}$. It measures the shift, in probit space, between the physical event probability and the market-selected pricing measure:
+\[
+p_t^{\mathrm{mkt}}
+=
+\Phi\!\left(\Phi^{-1}(p_t^*)+\lambda_t\right).
+\]
+Equivalently, $\lambda_t$ is the mean shift applied to the standardized latent event factor under the selected pricing measure. In this sense, $\lambda$ is a structural object \emph{within the maintained Gaussian selection family}, not merely an arbitrary calibration constant.
 
-\medskip
+\paragraph{A benchmark equilibrium mapping.}
+To connect $\lambda$ to standard asset-pricing objects, suppose the latent event index admits the decomposition
+\[
+Y_T = m_t + \beta_t F_{t,T} + \varepsilon_{t,T},
+\]
+where, conditional on $\mathcal F_t$,
+\[
+F_{t,T}\sim N(0,1), \qquad \varepsilon_{t,T}\sim N(0,\sigma_{\varepsilon,t}^2),
+\]
+and $F_{t,T}$ and $\varepsilon_{t,T}$ are independent. Here $F_{t,T}$ is a priced aggregate factor and $\varepsilon_{t,T}$ is idiosyncratic event risk. Then
+\[
+\Sigma_{t,T}^2 = \beta_t^2 + \sigma_{\varepsilon,t}^2,
+\qquad
+p_t^* = \Phi\!\left(\frac{m_t}{\Sigma_{t,T}}\right).
+\]
 
-\noindent\textbf{Benchmark setup.} Section\textasciitilde3.3 established
-that the Wang transform is axiomatically distinguished among distortion
-functions. This subsection provides an independent, equilibrium-based
-justification through two complementary derivations.
+Now suppose the pricing kernel tilts the priced factor $F_{t,T}$ according to
+\[
+\frac{dQ^\theta}{dP}\Big|_{\mathcal F_T}
+=
+\exp\!\left(-\theta_t F_{t,T}-\frac12\theta_t^2\right).
+\]
+Then under $Q^\theta$,
+\[
+F_{t,T}\mid\mathcal F_t \sim N(-\theta_t,1),
+\]
+so the latent event index satisfies
+\[
+Y_T\mid\mathcal F_t \sim N(m_t-\beta_t\theta_t,\Sigma_{t,T}^2).
+\]
+Therefore
+\[
+p_t^{\mathrm{mkt}}
+=
+Q^\theta(E\mid\mathcal F_t)
+=
+\Phi\!\left(\frac{m_t-\beta_t\theta_t}{\Sigma_{t,T}}\right)
+=
+\Phi\!\left(\Phi^{-1}(p_t^*)+\lambda_t\right),
+\]
+with
+\begin{equation}
+\lambda_t = -\frac{\beta_t\theta_t}{\Sigma_{t,T}}.
+\tag{2}
+\end{equation}
 
-\medskip
+This benchmark gives $\lambda_t$ a standard economic interpretation: it is proportional to the event's loading on a priced factor ($\beta_t$) and the market price of that factor ($\theta_t$), scaled by total event uncertainty ($\Sigma_{t,T}$). The sign of $\lambda_t$ depends on whether the event payoff loads positively or negatively on states with high marginal value: $\lambda_t>0$ when the event tends to pay in high-marginal-utility states; $\lambda_t<0$ when it pays more in good states.
 
-\noindent\textbf{Derivation 1: Bühlmann exchange economy.} Wang (2003)
-derives the Wang transform from Bühlmann's (1980) pure risk exchange
-economy. Consider \(n\) agents with exponential utility
-\(u_i(x) = -\exp(-a_i x)\), where \(a_i > 0\) is agent \(i\)'s
-coefficient of absolute risk aversion. Agents trade risks in competitive
-equilibrium. The equilibrium pricing kernel (stochastic discount factor)
-is: \[m = \frac{\exp(-a \cdot Z)}{E[\exp(-a \cdot Z)]}\] where \(Z\) is
-aggregate risk and \(a = \left(\sum_{i=1}^n 1/a_i\right)^{-1}\) is the
-aggregate (harmonic-mean) risk aversion coefficient. When \(Z\) is
-normally distributed, applying this pricing kernel to any jointly normal
-payoff produces a pure location shift in its distribution, preserving
-variances. Wang (2003) shows that when this equilibrium pricing rule is
-expressed as a distortion of survival functions, it takes the form
-\(g(u) = \Phi(\Phi^{-1}(u) + \lambda)\) with
-\(\lambda = a \cdot \sigma_Z\), where \(\sigma_Z\) is the standard
-deviation of aggregate risk. The Wang transform thus emerges as the
-equilibrium pricing rule in a Gaussian exchange economy with
-exponential-utility agents. This derivation applies to risks correlated
-with the aggregate economy; Derivation 2 below shows that for largely
-unspanned prediction market events, the Bühlmann benchmark predicts
-\(|\lambda| \approx 0\), motivating the empirical investigation of
-alternative sources of positive \(\hat{\lambda}\) in Sections 5.3--5.4.
+\paragraph{Why the benchmark may predict small aggregate-risk loadings.}
+For many prediction-market events---geopolitical outcomes, sporting results, scientific milestones---exposure to broad aggregate risk may be limited, implying a small $\beta_t$ and hence a small aggregate-risk component of $\lambda_t$. Persistent positive estimates of $\hat\lambda$ in the data therefore suggest that additional structural channels contribute to the market's selection rule, including market-maker inventory risk (Whelan, 2024; Avellaneda and Stoikov, 2008), adverse selection (Shin, 1991), intermediary capital constraints (He and Krishnamurthy, 2013), capital lockup opportunity costs (Page and Clemen, 2013), and ambiguity aversion (Gilboa and Schmeidler, 1989). The role of the Wang specification is not to claim that these mechanisms are identical, but to provide a common one-parameter selection rule that captures the resulting probability compression in a tractable way.
 
-\medskip
+\paragraph{Empirical signatures across structural channels.}
+The empirical patterns documented in Sections~5--6 are consistent with multiple structural sources of $\lambda$ and help distinguish among them:
 
-\noindent\textbf{Derivation 2: CARA-normal representative agent.} As a
-special case, consider a single representative agent with constant
-absolute risk aversion \(a > 0\) pricing a binary event claim. The
-agent's information about event \(E\) comes from a Gaussian signal:
-\(\mathbb{1}_E = \mathbb{1}\{Z > 0\}\) where
-\(Z \sim N(\mu_Z, \sigma_Z^2)\) under \(P\), so
-\(p^* = \Phi(\mu_Z / \sigma_Z)\). In this CARA-normal setting, the
-equilibrium pricing kernel from Derivation 1 (with a single agent)
-produces a Wang-form valuation of the binary payoff, where the magnitude
-of \(\lambda\) is proportional to \(a \cdot \tilde{\sigma}\)
-(\(\tilde{\sigma}\) = residual event uncertainty), following the
-exponential-SDF framework of Johnston (2007). Specifically, applying the
-pricing kernel \(m \propto \exp(-a Z)\) to the binary payoff
-\(\mathbf{1}_{\{Z > 0\}}\) tilts the distribution of \(Z\) to
-\(N(\mu_Z - a\sigma_Z^2, \sigma_Z^2)\), yielding:
-\[p^{\mathbb{Q}} = \Phi\!\left(\Phi^{-1}(p^*) - a\sigma_Z\right)\] which
-corresponds to equation\textasciitilde(1) with
-\(\lambda = -a\sigma_Z < 0\). The negative sign reflects that, in this
-benchmark, the event \(\{Z > 0\}\) pays in ``good states'\,' (high
-\(Z\)), which the risk-averse agent discounts. More generally, the sign
-of \(\lambda\) depends on how the event payoff loads on the pricing
-agent's marginal utility: if the event tends to pay in states where
-marginal utility is high (bad states), then \(\lambda > 0\); if it pays
-in good states, \(\lambda < 0\). For prediction market events that are
-largely unspanned---bearing little systematic relationship to the
-pricing agent's wealth or aggregate consumption---this benchmark
-predicts \(|\lambda| \approx 0\).
+\emph{Time-varying decay.} The pricing wedge declines from $\hat\lambda(0.05)=0.173$ at market opening to $\hat\lambda(0.80)=0.037$ near resolution (Section~5.4). Under equation~(2), this is predicted whenever residual event uncertainty $\Sigma_{t,T}$ decreases as information arrives, reducing $|\lambda_t|$ regardless of its structural source.
 
-\medskip
+\emph{Volume effect.} The negative coefficient on $\ln(\text{Volume})$ in the hierarchical model (Table~5) is predicted by market-structure models---inventory risk, adverse selection, capital constraints---but is \emph{not} predicted by pure cognitive bias explanations, which imply $\lambda$ should be invariant to liquidity.
 
-\noindent\textbf{The puzzle: why is $\hat{\lambda} > 0$?} The
-CARA-normal benchmark does not, by itself, explain why
-\(\hat{\lambda} > 0\) on real-money prediction market platforms: most
-prediction market events are unspanned, so Derivation 2 predicts
-\(\lambda \approx 0\). This gap between theory and evidence is not a
-failure of the framework---it is the central empirical puzzle that the
-framework reveals. Multiple structural models predict probability
-compression toward 0.5 in binary markets through mechanisms that do not
-require correlation with aggregate consumption: market-maker inventory
-risk (Whelan, 2024; Avellaneda and Stoikov, 2008), adverse selection
-(Shin, 1991), intermediary capital constraints (He and Krishnamurthy,
-2013), capital lockup opportunity costs (Page and Clemen, 2013), and
-ambiguity aversion (Gilboa and Schmeidler, 1989). Each produces a
-distinct functional form, but all generate qualitatively the same
-compression pattern that the Wang transform captures with a single
-parameter.
+\emph{Category heterogeneity.} Sports and politics markets ($\hat\lambda\approx 0.05$--$0.07$, insignificant) show near-zero pricing wedges, while thinner categories (crypto, science/tech) exhibit large significant wedges ($\hat\lambda\approx 0.25$--$0.28$). The pricing wedge is competed away in liquid, well-followed markets but persists where risk-bearing capacity is scarce.
 
-\medskip
+\emph{Play-money sign reversal.} Manifold ($\hat\lambda=-0.22$) vs.\ all real-money platforms ($\hat\lambda>0$) provides a natural control: removing financial stakes eliminates the risk-bearing cost channel while preserving cognitive biases, consistent with the sign flip.
 
-\noindent\textbf{$\lambda$ as a measurement framework.} The Wang
-transform therefore serves as a \textit{measurement framework} for the
-pricing wedge in prediction markets, analogous to the role of implied
-volatility in option markets or the Sharpe ratio in portfolio
-management. Like implied volatility, \(\lambda\) is a reduced-form
-quantity that aggregates multiple underlying economic forces into a
-single, estimable, and cross-sectionally comparable parameter. The
-axiomatic foundations of Wang, Young, and Panjer (1997) ensure the
-measurement framework is theoretically principled; the equilibrium
-derivations above provide structural interpretations under specific
-conditions; and the empirical patterns documented in Sections 5--6
-confirm that the estimated \(\hat{\lambda}\) behaves as multiple
-independent structural models predict. Specifically:
-
-First, the time-varying decay documented in
-Section\textasciitilde5.4---where the pricing wedge declines from
-\(\hat{\lambda}(0.05) = 0.173\) at market opening to
-\(\hat{\lambda}(0.80) = 0.037\) near resolution---is predicted by all
-uncertainty-based models: as information arrives over the contract's
-lifetime, residual event uncertainty \(\tilde{\sigma}\) decreases,
-reducing \(|\lambda|\) regardless of its structural source. This
-interpretation is consistent with Ostrovsky (2012), who proves that in
-dynamic trading with separable securities, prices converge to the
-pooled-information posterior.
-
-Second, the negative coefficient on \(\ln(\text{Volume})\) in the
-hierarchical model (Table\textasciitilde5) is predicted by
-market-structure models---market-maker inventory risk (Whelan, 2024),
-adverse selection (Shin, 1991), and intermediary capital constraints (He
-and Krishnamurthy, 2013)---but is \textit{not} predicted by pure
-cognitive bias explanations (prospect-theoretic probability weighting),
-which imply that \(\lambda\) should be invariant to market liquidity.
-The volume effect therefore provides suggestive evidence for
-market-structure mechanisms over pure behavioral accounts, though volume
-is endogenous and correlated with other market characteristics.
-
-Third, the category heterogeneity documented in Section 6---where sports
-and politics markets (\(\hat{\lambda} \approx 0.05\)--\(0.07\),
-insignificant) show near-zero pricing wedges while thinner categories
-(crypto, science/tech) exhibit large significant wedges
-(\(\hat{\lambda} \approx 0.25\)--\(0.28\))---reinforces this
-interpretation: the pricing wedge is competed away in liquid,
-well-followed markets but persists where risk-bearing capacity is
-scarce.
-
-Fourth, the play-money sign reversal (\(\hat{\lambda} = -0.22\) on
-Manifold vs.~\(\hat{\lambda} > 0\) on all real-money platforms) provides
-a natural control: removing financial stakes eliminates the risk-bearing
-cost channel while preserving cognitive biases. The sign flip can be
-interpreted through a decomposition-like lens in which risk-bearing
-forces and cognitive forces load with opposite signs: on real-money
-platforms, risk-bearing costs (\(> 0\)) dominate overconfidence
-(\(< 0\)), yielding \(\hat{\lambda} > 0\); on play-money platforms, only
-cognitive forces remain, yielding \(\hat{\lambda} < 0\).
-
-\medskip
-
-\noindent\textbf{Scope and limitations.} Several caveats are essential.
-First, the benchmark assumes CARA utility, Gaussian uncertainty, and a
-representative agent. Prediction markets feature heterogeneous beliefs,
-non-Gaussian information arrivals (jumps), and diverse participant
-types. The benchmark provides a convenient closed-form interpretation,
-not a complete description of price formation.
-
-Second, the estimated \(\hat{\lambda}\) from Sections\textasciitilde5--6
-is a reduced-form object. It may absorb multiple forces simultaneously:
-rational risk compensation by risk-averse market makers, behavioral
-probability weighting (Snowberg and Wolfers, 2010; Jullien and
-Salani\textquotesingle\{e\}, 2000), and microstructure frictions such as
-bid-ask spreads and stale quotes. No single structural model produces
-the Wang transform as its equilibrium pricing rule for unspanned binary
-events; the Wang transform is best understood as a parsimonious
-approximation to the class of concave probability distortions that
-multiple independent mechanisms generate. The convergence of empirical
-patterns---volume, duration, time decay, category heterogeneity, and the
-play-money sign reversal---provides suggestive evidence for the
-structural composition of \(\hat{\lambda}\), but a full decomposition
-into constituent sources remains a direction for future work.
+\paragraph{Scope and identification.}
+The structural model clarifies what $\lambda$ means within the maintained Gaussian family. However, price--outcome data alone do not separately identify the structural source of the estimated $\hat\lambda$. In particular, the empirical calibration in Sections~5--6 recovers the composite selection parameter consistent with the maintained Wang specification, but does not by itself decompose $\hat\lambda$ into aggregate-risk, inventory, adverse-selection, ambiguity, or microstructure components. That decomposition requires additional data or exogenous variation (Section~8).
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -2499,7 +2396,7 @@ benchmark using Elo-model probabilities for 51 NBA contracts provides
 independent directional support (\(\hat{\lambda} = 0.125\),
 \(p = 0.014\)) without relying on ex-post resolution outcomes.
 
-\textbf{Limitations.} The calibration approach is reduced-form;
+\textbf{Limitations.} The calibration recovers the composite selection parameter within the maintained Wang family;
 separating the pricing wedge from behavioral probability distortion
 (prospect theory weighting, overconfidence) requires instruments or
 natural experiments. Candidates include regulatory shocks (Kalshi CFTC
@@ -2534,7 +2431,7 @@ distortion risk measures in insurance mathematics (Wang, 2000; Yaari,
 (Manski, 2006; Wolfers and Zitzewitz, 2006); and (iii) incomplete market
 pricing in mathematical finance (Harrison and Pliska, 1983). By bridging
 these literatures, it provides practitioners with a principled,
-model-dependent fair-value signal---subject to the reduced-form nature
+model-dependent fair-value signal---subject to the maintained-family nature
 of the calibration and the assumptions underlying the Wang
 specification---and researchers with a testable structural model of
 prediction market mispricing.
