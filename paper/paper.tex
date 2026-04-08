@@ -1,3 +1,4 @@
+% === REVISION VERSION: v7 (2026-04-07 final coherence cleanup) ===
 % Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
@@ -145,14 +146,10 @@ prices, the favorite-longshot bias, and applications of the Wang
 transform.
 
 \textbf{Stochastic modeling.} Dalen (2025) proposes a logit
-jump-diffusion in risk-neutral (\(\mathbb{Q}\)) space with a martingale
+jump-diffusion in risk-neutral ($\mathbb{Q}$) space with a martingale
 drift constraint, calibration pipeline, and belief-volatility surface.
-Dalen's contribution and mine are complementary and address different
-problems. Dalen works entirely within the risk-neutral measure, taking
-\(\mathbb{Q}\) as given and building a market-making kernel; this paper
-asks \emph{which} \(\mathbb{Q}\) the market selects and \emph{how} it
-relates to the physical measure \(P\). This paper asks which admissible pricing measure within an incomplete-market set best organizes observed prices and how that maintained pricing family relates to the physical measure. The Wang specification is not presented as a generic \(P\)-to-\(\mathbb{Q}\) bridge for arbitrary dynamics, but as an exact selection rule under the latent Gaussian threshold model developed in Section~3. In principle, one could use Dalen's logit jump-diffusion for observation-space dynamics and the Wang transform for the pricing-measure selection, combining both frameworks. Earlier, Archak and Ipeirotis
-(2009) modeled InTrade prices using Itô diffusions for latent ability
+Dalen's contribution and mine are complementary but conceptually distinct. Dalen takes an admissible pricing measure as given and develops an observation-space dynamics for market making in logit space. This paper instead asks which admissible pricing measure within an incomplete-market set best organizes observed prices and how that maintained pricing family relates to the physical measure $P$. The Wang specification is not presented as a generic $P$-to-$\mathbb{Q}$ bridge for arbitrary dynamics, but as an exact selection rule under the latent Gaussian threshold model developed in Section~3. In that sense, Dalen provides a useful empirical dynamics in quote space, while this paper provides a maintained pricing-measure selection rule for incomplete event markets. Earlier, Archak and Ipeirotis
+(2009) modeled InTrade prices using It\^o diffusions for latent ability
 processes, deriving contract price volatility as a function of current
 price and time to expiry.
 
@@ -2213,20 +2210,7 @@ releases).
 
 \section{Conclusion}\label{conclusion}
 
-This paper has proposed a pricing and decomposition framework for
-prediction markets---an asset class that, despite annualized trading
-volumes exceeding \$50 billion across major
-platforms\footnote{Based on Polymarket monthly volumes of \$2--5 billion (source: Dune Analytics) and Kalshi's reported settlement volumes, annualized industry activity reaches this order of magnitude, though no single authoritative aggregate series exists.},
-has lacked the theoretical infrastructure available to equities,
-options, credit, and fixed income. The framework rests on three pillars:
-a log-odds state variable, a diffusion-based dynamics specification, and
-a Wang transform pricing wedge decomposition. The central observation,
-rooted in Manski (2006) and formalized here, is that prediction markets
-are \emph{incomplete}: no replication argument pins down a unique price,
-so observed prices embed both event probability and a pricing wedge. The
-Wang transform layer offers a single-parameter decomposition that
-separates the two, and generates the favorite-longshot bias as a direct
-mathematical consequence.
+This paper develops a structural pricing framework for prediction markets based on incomplete markets and maintained pricing-measure selection rules. The central observation is that binary event claims are generally not spanned by traded assets, so no-arbitrage determines a set of admissible pricing measures rather than a unique price. To organize prices within that incomplete-market set, I impose a latent Gaussian threshold model under the physical measure together with a one-parameter exponential tilt of the standardized latent factor. Under this maintained Gaussian family, the Wang transform arises exactly as a variance-preserving pricing-measure selection rule. The framework therefore provides a tractable structural benchmark for mapping between physical probabilities and observed market prices, and yields favorite-longshot bias as a corollary rather than as a separate behavioral primitive.
 
 The empirical results support the framework across multiple dimensions.
 Contract-level calibration on 2,460 Polymarket contracts yields a
@@ -2302,8 +2286,7 @@ pricing in mathematical finance (Harrison and Pliska, 1983). By bridging
 these literatures, it provides practitioners with a principled,
 model-dependent fair-value signal---subject to the maintained-family nature
 of the calibration and the assumptions underlying the Wang
-specification---and researchers with a testable structural model of
-prediction market mispricing.
+specification---and researchers with a testable structural framework for studying price-probability wedges in prediction markets.
 
 \vspace{1em}
 
