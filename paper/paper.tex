@@ -581,119 +581,144 @@ logit and probit functions are approximately proportional
 (\(\text{logit}(p) \approx (\pi/\sqrt{3}) \cdot \Phi^{-1}(p)\)), so the
 qualitative properties documented in Section 4 carry over.
 
-\subsection{The Wang Transform
-Decomposition}\label{the-wang-transform-decomposition}
+\subsection{The Wang Transform as a Maintained Selection Rule}\label{the-wang-transform-selection-rule}
 
-This subsection contains the paper's core theoretical contribution.
+Proposition 1 shows that if the event payoff $H=\mathbf{1}_E$ is not spanned by traded claims, then no-arbitrage leaves a \emph{set} $\mathcal Q$ of admissible pricing measures rather than a unique one. The remaining problem is therefore a \emph{selection problem}: which pricing measure within $\mathcal Q$ maps the physical event probability into the observed market price?
 
-\textbf{The decomposition problem.} Recall from Proposition 1 that the
-observed price \(p_t^{\text{mkt}}\) is
-\(\mathbb{E}^{\mathbb{Q}^*}[\mathbf{1}_E \mid \mathcal{F}_t]\) for some
-\(\mathbb{Q}^* \in \mathcal{Q}\), but \(\mathbb{Q}^*\) is not unique.
-The physical (true) probability is \(p_t^* = P(E \mid \mathcal{F}_t)\).
-We seek a decomposition:
+I do not claim that no-arbitrage or market completeness uniquely selects the Wang transform. Instead, I impose a one-factor Gaussian selection family within the incomplete-market set of admissible pricing measures. Under this maintained family, the Wang transform arises exactly.
 
-\[p_t^{\text{mkt}} = T(p_t^*; \theta)\]
+\textbf{Latent threshold representation.} Let the event occur if and only if a latent terminal information index crosses a threshold:
+\[
+E=\{Y_T\ge 0\}.
+\]
+Assume that under the physical measure $P$,
+\[
+Y_T = m_t + \Sigma_{t,T} Z_{t,T},
+\qquad
+Z_{t,T}\mid \mathcal F_t \sim N(0,1),
+\]
+where $m_t\in\mathbb R$ and $\Sigma_{t,T}>0$ are $\mathcal F_t$-measurable.
 
-where \(T\) is a distortion function parameterized by \(\theta\),
-mapping the physical probability into the market price. The requirements
-are: (i) \(T\) should be a valid probability distortion (\(T(0) = 0\),
-\(T(1) = 1\), \(T\) increasing); (ii) \(T\) should correspond to a
-well-defined change of measure; and (iii) \(\theta\) should be
-economically interpretable.
+Then the physical event probability is
+\[
+p_t^*
+=
+P(E\mid\mathcal F_t)
+=
+P\!\left(Z_{t,T}\ge -\frac{m_t}{\Sigma_{t,T}} \,\middle|\, \mathcal F_t\right)
+=
+\Phi\!\left(\frac{m_t}{\Sigma_{t,T}}\right).
+\]
 
-\begin{definition}[Wang Transform]
-For a random variable $X$ with survival function $S_X(x) = 1 - F_X(x)$, the Wang (2000) transform with parameter $\lambda \in \mathbb{R}$ defines a distorted survival function:
-$$\tilde{S}_X(x) = \Phi\!\left(\Phi^{-1}(S_X(x)) + \lambda\right)$$
-For a binary event with physical probability $p$ (the survival probability that the event occurs), this reduces to:
-$$\tilde{p} = \Phi\!\left(\Phi^{-1}(p) + \lambda\right)$$
-\end{definition}
+\begin{proposition}[Exact Wang pricing under a Gaussian selection rule]
+Suppose the event admits the latent threshold representation above. Assume further that, within the incomplete-market set of admissible pricing measures, the market selects the one-parameter family $\{Q^\lambda\}_{\lambda\in\mathbb R}$ defined by
+\[
+\frac{dQ^\lambda}{dP}\Big|_{\mathcal F_T}
+=
+\exp\!\left(\lambda Z_{t,T}-\frac{1}{2}\lambda^2\right).
+\]
+Then the observed market price of the binary event claim is
+\[
+p_t^{\mathrm{mkt}}
+=
+Q^\lambda(E\mid \mathcal F_t)
+=
+\Phi\!\left(\Phi^{-1}(p_t^*)+\lambda\right).
+\tag{1}
+\]
+\end{proposition}
 
-The Wang transform was originally developed for catastrophe bond and
-insurance pricing (Wang, 2000, 2004) and has been axiomatically
-characterized within the theory of distortion risk measures (Wang,
-Young, and Panjer, 1997; Yaari, 1987). Its theoretical foundations rest
-on three independent pillars: an axiomatic characterization, a
-measure-theoretic interpretation, and an equilibrium derivation.
+\begin{proof}
+By construction,
+\[
+p_t^*
+=
+P(E\mid\mathcal F_t)
+=
+P\!\left(Y_T\ge 0\mid\mathcal F_t\right)
+=
+P\!\left(Z_{t,T}\ge -\frac{m_t}{\Sigma_{t,T}} \,\middle|\, \mathcal F_t\right)
+=
+\Phi\!\left(\frac{m_t}{\Sigma_{t,T}}\right).
+\]
+Hence
+\[
+\Phi^{-1}(p_t^*)=\frac{m_t}{\Sigma_{t,T}}.
+\]
 
-\textbf{Axiomatic foundation.} The Wang transform is not an arbitrary
-functional form. Its uniqueness emerges from a two-stage
-characterization in the theory of distortion risk measures.
+Under the exponential tilt
+\[
+\frac{dQ^\lambda}{dP}\Big|_{\mathcal F_T}
+=
+\exp\!\left(\lambda Z_{t,T}-\frac{1}{2}\lambda^2\right),
+\]
+the standard normal factor is shifted from $N(0,1)$ to $N(\lambda,1)$. Therefore
+\[
+p_t^{\mathrm{mkt}}
+=
+Q^\lambda(E\mid\mathcal F_t)
+=
+Q^\lambda\!\left(Z_{t,T}\ge -\frac{m_t}{\Sigma_{t,T}} \,\middle|\, \mathcal F_t\right)
+=
+\Phi\!\left(\frac{m_t}{\Sigma_{t,T}}+\lambda\right).
+\]
+Substituting $\Phi^{-1}(p_t^*)=m_t/\Sigma_{t,T}$ yields
+\[
+p_t^{\mathrm{mkt}}
+=
+\Phi\!\left(\Phi^{-1}(p_t^*)+\lambda\right).
+\qedhere
+\]
+\end{proof}
 
-\emph{Stage 1: From axioms to the distortion class.} Wang, Young, and
-Panjer (1997) prove that a pricing functional \(H\) satisfying four
-axioms---law invariance (price depends only on the distribution of the
-payoff), monotonicity (preserving first-order stochastic dominance),
-comonotonic additivity (additive pricing for perfectly concordant risks
-that offer no diversification), and continuity---must admit a Choquet
-integral representation
-\(H(X) = \int_0^\infty g(S_X(x))\,dx + \int_{-\infty}^0 [g(S_X(x)) - 1]\,dx\),
-where \(g: [0,1] \to [0,1]\) is a distortion function with \(g(0) = 0\),
-\(g(1) = 1\), \(g\) nondecreasing. This representation builds on Yaari's
-(1987) dual theory of choice under risk, in which agents evaluate
-prospects by distorting probabilities rather than transforming
-outcomes---the exact dual of expected utility theory. Denneberg (1994)
-provides the rigorous measure-theoretic foundations; Schmeidler (1986)
-establishes the connection between comonotonic additivity and Choquet
-integrals. If subadditivity (coherence in the sense of Artzner et al.,
-1999) is additionally required, \(g\) must be concave---a result
-established in the distortion risk measure literature (Wang, 1996; Wirch
-and Hardy, 1999). The Wang transform with \(\lambda > 0\) satisfies this
-concavity condition and therefore defines a coherent risk measure.
+\begin{remark}[Generalized probit-linear family]
+The Wang transform is the variance-preserving special case of a broader Gaussian family. If the selected pricing measure changes both the conditional mean and variance of the latent index so that
+\[
+Y_T\mid \mathcal F_t \sim N(m_t+\delta_t,\tilde\Sigma_{t,T}^2),
+\]
+then
+\[
+p_t^{\mathrm{mkt}}
+=
+\Phi\!\left(\frac{m_t+\delta_t}{\tilde\Sigma_{t,T}}\right)
+=
+\Phi\!\left(\alpha_t+\beta_t\Phi^{-1}(p_t^*)\right),
+\]
+where
+\[
+\alpha_t:=\frac{\delta_t}{\tilde\Sigma_{t,T}},
+\qquad
+\beta_t:=\frac{\Sigma_{t,T}}{\tilde\Sigma_{t,T}}.
+\]
+The Wang transform is the exact restriction $\beta_t=1$, i.e.\ the selected pricing measure shifts the latent mean but preserves conditional variance.
+\end{remark}
 
-\emph{Stage 2: Normal family preservation pins down the specific form.}
-Wang (2000) demonstrates that the distortion
-\(g(u) = \Phi(\Phi^{-1}(u) + \lambda)\) preserves the normal
-distribution family: distorting the survival function of any
-\(N(\mu, \sigma^2)\) distribution produces
-\(N(\mu + \lambda\sigma, \sigma^2)\)---a pure location shift with
-preserved variance. The following argument shows this property uniquely
-characterizes the Wang transform among all distortion functions. Define
-\(h(z) = \Phi^{-1}(g(\Phi(z)))\), so that
-\(g(u) = \Phi(h(\Phi^{-1}(u)))\). For \(X \sim N(\mu, \sigma^2)\), the
-survival function is \(S_X(x) = \Phi((\mu - x)/\sigma)\). The distorted
-survival function \(g(S_X(x)) = \Phi(h((\mu - x)/\sigma))\) is again
-normal with preserved variance \(\sigma^2\) if and only if
-\(h(z) = z + \lambda\) for a constant \(\lambda\). This yields
-\(g(u) = \Phi(\Phi^{-1}(u) + \lambda)\). Without the
-variance-preservation constraint, one obtains the broader probit-linear
-family \(g(u) = \Phi(\alpha + \beta\Phi^{-1}(u))\) with \(\beta > 0\);
-the constraint \(\beta = 1\) is forced because the distorted variance
-would otherwise be \(\sigma^2/\beta^2 \neq \sigma^2\). The normal-family
-preservation requirement is natural in the prediction market setting:
-the physical probability \(p^* = \Phi(S_t/(\sigma\sqrt{\tau}))\) arises
-from a Gaussian information state (Section 3.2), and preserving this
-Gaussian structure under the pricing distortion ensures that the
-risk-adjusted probability retains the same parametric form.
+\begin{remark}[When jumps break exact Wang]
+If the latent terminal index contains an additional jump component,
+\[
+Y_T = m_t + \Sigma_{t,T} Z_{t,T} + J_{t,T},
+\]
+then under the same Gaussian tilt of $Z_{t,T}$,
+\[
+p_t^{\mathrm{mkt}}
+=
+E\!\left[
+\Phi\!\left(\frac{m_t+J_{t,T}}{\Sigma_{t,T}}+\lambda\right)
+\middle| \mathcal F_t
+\right].
+\]
+This is generally a mixture of Wang curves rather than a single Wang transform of $p_t^*$. Exact Wang therefore requires the conditional Gaussian latent-index specification or another restriction that preserves the probit-linear family.
+\end{remark}
 
-\emph{Comonotonic additivity in prediction markets.} The comonotonic
-additivity axiom has a natural interpretation in the prediction market
-context: it requires that the pricing of non-overlapping events---those
-whose outcomes are perfectly concordant or whose payoffs move in the
-same direction across all information states---is additive, with no
-diversification discount. This is a weaker condition than the
-no-arbitrage requirement of complete markets but is economically
-consistent with it: in a world where event risks are unhedgeable
-(Proposition 1), there is no diversification benefit from holding
-comonotonic event contracts, and pricing should reflect this.
+\textbf{Axiomatic background.} The Wang transform is not chosen arbitrarily. It is a standard distortion operator in the theory of distortion risk measures (Wang, Young, and Panjer, 1997; Yaari, 1987; Denneberg, 1994) and can be justified from multiple directions: as a probability distortion satisfying the usual monotonicity and boundary conditions, as the variance-preserving member of the Gaussian probit-linear family, and as the survival-function representation induced by an exponential tilt of a latent normal factor. For present purposes, the key point is narrower: in an incomplete market, Wang is not forced by no-arbitrage, but it is a tractable, economically interpretable, and exactly derived selection rule under the maintained Gaussian specification. A detailed axiomatic treatment is provided in Appendix~A.
 
-\textbf{Measure-theoretic interpretation.} The Wang transform with
-parameter \(\lambda\) corresponds to a Girsanov change of measure with
-constant market price of risk \(\lambda\). Specifically, if
-\(Z \sim N(0,1)\) under \(P\), then under the distorted measure
-\(\tilde{P}\):
-
-\[\frac{d\tilde{P}}{dP} = \exp\!\left(\lambda Z - \frac{\lambda^2}{2}\right)\]
-
-This is the Radon-Nikodym derivative for a Girsanov change of measure
-with constant market price of risk in a single-period Gaussian
-setting---the same exponential tilt that underlies Black-Scholes pricing
-when applied to a single terminal normal factor. In continuous-time
-settings with general stochastic processes, the Wang transform does not
-necessarily coincide with the Girsanov measure change (Pelsser, 2008);
-the present application uses the static form appropriate for the
-binary-event decomposition. When the underlying follows GBM, the Wang
-transform recovers the Black-Scholes formula (Hamada and Sherris, 2003).
+\textbf{Measure-change interpretation.} In the maintained one-factor Gaussian setting above, the selected pricing family is generated by an exponential tilt of the latent standardized event factor:
+\[
+\frac{dQ^\lambda}{dP}\Big|_{\mathcal F_T}
+=
+\exp\!\left(\lambda Z_{t,T}-\frac{1}{2}\lambda^2\right).
+\]
+This is the single-factor Gaussian analogue of a Girsanov shift: it changes the conditional mean of the latent event factor while preserving its variance. The Wang transform is therefore exact \emph{within this maintained family}. I do not claim that arbitrary continuous-time incomplete-market models imply Wang, nor that the Wang transform is the unique arbitrage-free pricing rule outside this specification. Pelsser (2008) showed that the Wang transform is not consistent with arbitrage-free pricing for general stochastic processes; that critique targets dynamic replication in complete markets and does not apply to the static, incomplete-market setting of this paper.
 
 \textbf{Consistency with financial theory.} Kijima and Muromachi (2008)
 showed that the Wang transform can be derived from Bühlmann's economic
@@ -706,53 +731,67 @@ largely uncorrelated with aggregate risk, \(\lambda\) is better
 interpreted as a reduced-form pricing wedge whose structural sources are
 examined empirically in Sections 5.3--5.4.
 
-\textbf{Scope and limitations.} Pelsser (2008) showed that the Wang
-transform is not consistent with arbitrage-free pricing for general
-stochastic processes, implying it is not a universal pricing framework.
-This is a significant theoretical restriction---but one that does not
-apply to the setting of this paper. Pelsser's critique targets the use
-of the Wang transform for dynamic replication pricing in complete
-markets (i.e., as a substitute for Black-Scholes). In prediction
-markets, the market is incomplete and no replication is possible; the
-Wang transform is used not for dynamic pricing but for \emph{static}
-probability distortion, which is its original actuarial application and
-remains fully valid.
-
-\textbf{Application to prediction markets.} I propose that the observed
-market price \(p_t^{\text{mkt}}\) is the Wang-distorted version of the
-physical probability \(p_t^*\):
-
-\[p_t^{\text{mkt}} = \Phi\!\left(\Phi^{-1}(p_t^*) + \lambda\right) \tag{1}\]
-
-where \(\lambda\) is the pricing wedge parameter. When \(\lambda = 0\),
-the price equals the physical probability. When \(\lambda > 0\), the
-market price exceeds the physical probability, embedding a positive
-pricing wedge.
-
-\begin{theorem}[Pricing Wedge Properties]
-Under the Wang transform decomposition (1) with $\lambda > 0$:
+\begin{corollary}[Pricing wedge properties]
+Under
+\[
+p^{\mathrm{mkt}}=\Phi(\Phi^{-1}(p^*)+\lambda),
+\qquad \lambda>0,
+\]
+the following hold:
 \begin{enumerate}
-\item $p^{\text{mkt}} > p^*$ for all $p^* \in (0, 1)$: the YES contract price exceeds the physical probability. Under the complementarity constraint $p_{YES} + p_{NO} \equiv 1$, this is equivalent to stating that the NO contract is underpriced by the same amount. The net effect is a compression of the price distribution toward 0.5 relative to the physical probability distribution: longshots ($p^* < 0.5$) are proportionally more inflated than favorites ($p^* > 0.5$), narrowing the spread between extreme prices.
-\item The overpricing $\Delta p = p^{\text{mkt}} - p^*$ is maximized at $p^* = \Phi(-\lambda/2) \approx 0.5$ for small $\lambda$, and vanishes at the boundaries.
-\item The overpricing \textit{ratio} $p^{\text{mkt}} / p^*$ is monotonically decreasing in $p^*$: longshots are proportionally more overpriced than favorites.
-\item This overpricing-ratio pattern is qualitatively consistent with the \textbf{favorite-longshot bias} documented by Bürgi, Deng, and Whelan (2025) across 300,000+ Kalshi contracts and by Snowberg and Wolfers (2010) across 6.4 million horse racing starts.
+\item $p^{\mathrm{mkt}}>p^*$ for all $p^*\in(0,1)$.
+\item The level overpricing $\Delta(p^*)=p^{\mathrm{mkt}}-p^*$ is maximized at
+\[
+p^*=\Phi(-\lambda/2).
+\]
+\item The ratio $R(p^*)=p^{\mathrm{mkt}}/p^*$ is strictly decreasing in $p^*$.
 \end{enumerate}
-\end{theorem}
+This overpricing-ratio pattern is qualitatively consistent with the \textbf{favorite-longshot bias} documented by Bürgi, Deng, and Whelan (2025) across 300,000+ Kalshi contracts and by Snowberg and Wolfers (2010) across 6.4 million horse racing starts.
+\end{corollary}
 
-\emph{Proof.} For (1): \(\lambda > 0\) implies
-\(\Phi^{-1}(p^{\text{mkt}}) = \Phi^{-1}(p^*) + \lambda > \Phi^{-1}(p^*)\),
-so \(p^{\text{mkt}} > p^*\). For (3): define
-\(R(p) = \Phi(\Phi^{-1}(p) + \lambda)/p\). Taking the derivative and
-using \(\phi(\Phi^{-1}(p)) > 0\), one can show \(R'(p) < 0\) for
-\(\lambda > 0\). For (4): Property (3) predicts longshots (low \(p^*\))
-have higher overpricing ratios than favorites (high \(p^*\)), which is
-the definition of FLB. \(\square\)
+\begin{proof}
+Let $z=\Phi^{-1}(p^*)$. Then $p^{\mathrm{mkt}}=\Phi(z+\lambda)$.
+Part (1) follows immediately from the strict monotonicity of $\Phi$.
 
-The monotonicity of the overpricing ratio \(R(p)\) is a known property
+For part (2), define
+\[
+\Delta(z)=\Phi(z+\lambda)-\Phi(z).
+\]
+Then
+\[
+\Delta'(z)=\phi(z+\lambda)-\phi(z).
+\]
+Setting $\Delta'(z)=0$ yields
+\[
+\phi(z+\lambda)=\phi(z)
+\quad\Longleftrightarrow\quad
+(z+\lambda)^2=z^2
+\quad\Longleftrightarrow\quad
+z=-\lambda/2.
+\]
+Hence the maximizer is $p^*=\Phi(-\lambda/2)$.
+
+For part (3), define
+\[
+R(z)=\frac{\Phi(z+\lambda)}{\Phi(z)}.
+\]
+Then
+\[
+R'(z)
+=
+\frac{\phi(z+\lambda)\Phi(z)-\Phi(z+\lambda)\phi(z)}{\Phi(z)^2}.
+\]
+Since the inverse Mills ratio $h(z):=\phi(z)/\Phi(z)$ is strictly decreasing in $z$ and $z+\lambda>z$, we have
+\[
+\frac{\phi(z+\lambda)}{\Phi(z+\lambda)}<\frac{\phi(z)}{\Phi(z)},
+\]
+which implies $R'(z)<0$. Since $p^*=\Phi(z)$ is increasing in $z$, $R(p^*)$ is strictly decreasing in $p^*$.
+\end{proof}
+
+The monotonicity of the overpricing ratio is a known property
 of concave probability distortion functions (Yaari, 1987); the
-contribution here is to show that the Wang transform provides a
-specific, one-parameter functional form that generates this pattern with
-a directly interpretable risk-loading parameter \(\lambda\).
+contribution here is that under the maintained Gaussian selection rule,
+this pattern emerges with a single interpretable parameter $\lambda$.
 
 \begin{remark}[Relation to alternative FLB explanations]
 The FLB has been attributed to risk-loving preferences (Ali, 1977), probability misperceptions via prospect theory (Snowberg and Wolfers, 2010), adverse selection among informed bettors (Shin, 1991, 1993), and noise-to-signal ratios (Ottaviani and Sorensen, 2010). The Wang transform explanation is complementary: it provides a structural, risk-premium-based mechanism through the supply side. Whelan's (2024) competitive bookmaker model, in which FLB arises from risk-averse market makers, is the closest analog---$\lambda$ in the Wang transform can be interpreted as the aggregate risk aversion of market makers.
@@ -774,7 +813,7 @@ The framework generates two testable predictions and a set of
 quantitative benchmarks.
 
 \textbf{Prediction 1: Favorite-longshot bias.} If \(\lambda > 0\),
-Theorem 1 predicts that market prices systematically overstate event
+the Corollary predicts that market prices systematically overstate event
 probabilities, with the overpricing ratio decreasing in \(p^*\). This is
 testable by comparing market prices to realized resolution frequencies.
 
@@ -811,52 +850,88 @@ True prob.\ $p^*$ & $\lambda = 0$ & $\lambda = 0.1$ & $\lambda = 0.3$ & $\lambda
 \subsection{The Complete Pricing
 Model}\label{the-complete-pricing-model}
 
-The preceding subsections developed three components: the binary option
-structure (3.1), the log-odds state variable (3.2), and the Wang
-transform decomposition (3.3). This subsection assembles them into a
-single, implementable pricing model---the prediction market analog of
-Black-Scholes for equity options or Merton/Jarrow-Turnbull for credit
-risk.
+The framework has three conceptually distinct layers: an observed quote representation, a latent physical event model, and a maintained pricing-measure selection rule.
 
-\begin{definition}[Prediction Market Pricing Model]
-Let $p_t^{\text{mkt}} \in (0,1)$ denote the observed market price of a binary contract on event $E$ with time-to-expiry $\tau = T - t$. The model has three layers:
+\begin{definition}[Prediction market pricing model]
+Let $p_t^{\mathrm{mkt}}\in(0,1)$ denote the observed market price of a binary contract on event $E$ with time-to-expiry $\tau=T-t$.
 
-\textbf{Layer 1 --- State variable.} The log-odds transformation maps bounded prices to an unbounded state space:
-$$x_t = \text{logit}(p_t) = \ln\!\left(\frac{p_t}{1-p_t}\right), \quad x_t \in \mathbb{R}$$
+\textbf{Layer 1 --- Observation space.}
+Observed quotes live on the bounded interval $(0,1)$. For empirical time-series analysis, I map them into log-odds space:
+\[
+x_t^{\mathrm{mkt}}=\logit(p_t^{\mathrm{mkt}})
+=\ln\!\left(\frac{p_t^{\mathrm{mkt}}}{1-p_t^{\mathrm{mkt}}}\right).
+\]
+This transformation is useful for descriptive dynamics and empirical stylized facts, but it is not the primitive object from which the Wang pricing equation is derived.
 
-\textbf{Layer 2 --- Dynamics.} The log-odds follow a jump-diffusion:
-$$dx_t = \mu(x_t,t)\,dt + \sigma\,dW_t + J_t\,dN_t$$
-where $\sigma$ is the belief volatility, $J_t$ the jump amplitude, and $N_t$ a Poisson process with intensity $\eta$. Layer 2 operates entirely under the physical measure $P$ and delivers the physical probability $p_t^*$ as a function of the latent information state $S_t$ (see Section 3.2). In the baseline constant-volatility, no-jump case, $p_t^* = \Phi(S_t / (\sigma\sqrt{\tau}))$.
+\textbf{Layer 2 --- Physical event model.}
+The event is generated by a latent threshold factor:
+\[
+E=\{Y_T\ge 0\},
+\qquad
+Y_T=m_t+\Sigma_{t,T}Z_{t,T},
+\qquad
+Z_{t,T}\mid\mathcal F_t\sim N(0,1).
+\]
+Hence the physical event probability is
+\[
+p_t^*
+=
+P(E\mid\mathcal F_t)
+=
+\Phi\!\left(\frac{m_t}{\Sigma_{t,T}}\right).
+\]
 
-\textbf{Layer 3 --- Pricing wedge.} The observed market price is the Wang-distorted physical probability. Layer 3 performs the unique $P$-to-$\mathbb{Q}$ transformation: the observed market price $p_t^{\text{mkt}}$ is the Wang-distorted physical probability. This is the only point in the framework where the change of measure occurs, paralleling the role of the Girsanov theorem in Black-Scholes.
-\begin{equation}
-p_t^{\text{mkt}} = \Phi\!\left(\Phi^{-1}(p_t^*) + \lambda\right) \tag{1}
-\end{equation}
-where $p_t^*$ is the physical probability and $\lambda$ is the pricing wedge parameter.
+\textbf{Layer 3 --- Pricing-measure selection rule.}
+Because the event claim is unattainable, no-arbitrage leaves a non-singleton set of admissible pricing measures. I impose the maintained one-parameter family
+\[
+\frac{dQ^\lambda}{dP}\Big|_{\mathcal F_T}
+=
+\exp\!\left(\lambda Z_{t,T}-\frac{1}{2}\lambda^2\right),
+\]
+which yields the observed market price
+\[
+p_t^{\mathrm{mkt}}
+=
+Q^\lambda(E\mid\mathcal F_t)
+=
+\Phi\!\left(\Phi^{-1}(p_t^*)+\lambda\right).
+\]
+Thus uniqueness holds only \emph{conditional on the maintained family}: the Wang transform is not the unique arbitrage-free price system, but the unique variance-preserving member of the Gaussian probit-linear selection family.
 \end{definition}
 
-\textbf{Forward pricing.} Given a physical probability estimate
-\(\hat{p}^*\) and a calibrated pricing wedge \(\hat{\lambda}\), the
-model-implied market price is:
-\[\hat{p}^{\text{mkt}} = \Phi\!\left(\Phi^{-1}(\hat{p}^*) + \hat{\lambda}\right)\]
+\textbf{Forward pricing.}
+Given a physical probability estimate $\hat p_t^*$ and a calibrated pricing-wedge parameter $\hat\lambda$,
+\[
+\hat p_t^{\mathrm{mkt}}
+=
+\Phi\!\left(\Phi^{-1}(\hat p_t^*)+\hat\lambda\right).
+\]
 
-\textbf{Inverse: physical probability extraction.} Given an observed
-market price \(p^{\text{mkt}}\) and a calibrated \(\hat{\lambda}\), the
-risk-adjusted probability is:
-\[\hat{p}^* = \Phi\!\left(\Phi^{-1}(p^{\text{mkt}}) - \hat{\lambda}\right)\]
+\textbf{Inverse mapping.}
+Given an observed market price $p_t^{\mathrm{mkt}}$ and a calibrated $\hat\lambda$,
+\[
+\hat p_t^*
+=
+\Phi\!\left(\Phi^{-1}(p_t^{\mathrm{mkt}})-\hat\lambda\right).
+\]
 
-This is the central empirical application: recovering physical
-probabilities from observed market prices.
-
-\textbf{Calibration procedure.} The parameter \(\lambda\) is estimated
-from a cross-section of \(N\) resolved contracts
-\((p_i^{\text{mkt}}, y_i)\), where \(y_i \in \{0,1\}\) is the resolution
-outcome:
-\[\hat{\lambda}_{MLE} = \arg\max_\lambda \sum_{i=1}^{N} \left[y_i \ln \Phi\!\left(\Phi^{-1}(p_i^{\text{mkt}}) - \lambda\right) + (1-y_i)\ln\!\left(1 - \Phi\!\left(\Phi^{-1}(p_i^{\text{mkt}}) - \lambda\right)\right)\right]\]
+\textbf{Calibration.}
+The parameter $\lambda$ is estimated from a cross-section of resolved contracts $(p_i^{\mathrm{mkt}},y_i)$, where $y_i\in\{0,1\}$ is the resolution outcome:
+\[
+\hat\lambda_{\mathrm{MLE}}
+=
+\arg\max_\lambda
+\sum_{i=1}^N
+\left[
+y_i\ln \Phi\!\left(\Phi^{-1}(p_i^{\mathrm{mkt}})-\lambda\right)
++
+(1-y_i)\ln\!\left(1-\Phi\!\left(\Phi^{-1}(p_i^{\mathrm{mkt}})-\lambda\right)\right)
+\right].
+\]
 
 Standard errors are computed from the observed Fisher information
 (numerical Hessian). The likelihood ratio test against
-\(H_0: \lambda = 0\) (prices are perfectly calibrated probabilities) has
+$H_0: \lambda = 0$ (prices are perfectly calibrated probabilities) has
 one degree of freedom.
 
 \textbf{Model sensitivities.} The Wang transform implies analytic
