@@ -74,7 +74,7 @@
 \vspace*{-2.5em}
 \begin{center}
 {\LARGE\textbf{Pricing Prediction Markets:}}\\[4pt]
-{\LARGE\textbf{Risk Premiums, Incomplete Markets, and a Decomposition Framework}}
+{\LARGE\textbf{Incomplete Markets, Selection Rules, and Risk Premia}}
 \vspace{0.4cm}
 
 {\large Yicheng Yang\footnote{University of Illinois Urbana-Champaign. Email: \texttt{yy85@illinois.edu}. I thank Polymarket for making market data publicly available via its Gamma and CLOB APIs. All errors are my own. This paper was developed independently; I welcome comments and suggestions.}}\\[2pt]
@@ -89,7 +89,7 @@ University of Illinois Urbana-Champaign\\[6pt]
 \[
 p_t^{\mathrm{mkt}}=\Phi\!\left(\Phi^{-1}(p_t^*)+\lambda_t\right),
 \]
-so the Wang transform arises exactly as a variance-preserving pricing-measure selection rule. The model implies favorite-longshot bias as a corollary and nests a broader probit-linear family when conditional variance is not preserved. I estimate the selection parameter from resolved prediction market contracts and find a positive and statistically significant wedge on real-money platforms, with larger values in lower-liquidity and longer-duration markets and a monotone decline over contract life. Across 291,309 contracts from multiple platforms, the estimated parameter is positive on real-money venues and negative on the play-money platform Manifold. The results support the view that prediction market prices are systematically compressed relative to physical probabilities and that the maintained Wang family provides a tractable structural benchmark for pricing and probability extraction in incomplete event markets.
+so the Wang transform arises exactly as a variance-preserving pricing-measure selection rule. The model implies favorite-longshot bias as a corollary and nests a broader probit-linear family when conditional variance is not preserved. I estimate the selection parameter from resolved prediction market contracts and find a positive and statistically significant wedge on real-money platforms, with larger values in lower-liquidity and longer-duration markets and a monotone decline over contract life. Across 291,309 contracts from multiple platforms, the estimated parameter is positive on real-money venues and negative on the play-money platform Manifold. The results support the view that prediction market prices are systematically distorted relative to physical probabilities: longshots are disproportionately inflated, and under complementarity the cross-sectional price distribution is compressed toward 0.5. Within incomplete event markets, the maintained Wang family provides a tractable structural benchmark for pricing and probability extraction.
 \end{abstract}
 \vspace{0.3em}
 
@@ -101,7 +101,6 @@ incomplete markets, binary options, favorite-longshot bias, pricing
 wedge, distortion risk measures, Polymarket, Kalshi
 
 \newpage
-\newpage
 
 \section{Introduction}\label{introduction}
 
@@ -111,9 +110,9 @@ This paper proposes a structural selection framework that addresses these gaps. 
 \[
 p_t^{\mathrm{mkt}}=\Phi\!\left(\Phi^{-1}(p_t^*)+\lambda\right),
 \]
-where $\lambda$ is the pricing-measure selection parameter. Favorite-longshot bias emerges as a corollary, and a broader probit-linear family nests the Wang restriction as the variance-preserving special case.
+where $\lambda$ is the pricing-measure selection parameter. Favorite-longshot bias emerges as a corollary, and a broader probit-linear family nests the Wang restriction as the variance-preserving special case. This claim is conditional on the maintained Gaussian family; it is not implied by no-arbitrage alone.
 
-Empirically, I estimate the implied selection parameter from resolved prediction market contracts and find a positive, statistically significant wedge on real-money platforms, with larger values in lower-liquidity and longer-duration markets and a monotone decline over contract life. Across 291,309 contracts from Polymarket, Kalshi, Metaculus, Good Judgment Open, INFER, and Manifold, the estimated parameter is positive on all real-money venues and negative on the play-money platform Manifold---consistent with the view that risk-bearing costs dominate on real-money platforms while cognitive biases dominate absent financial stakes.
+Empirically, I estimate the implied selection parameter from resolved prediction market contracts and find a positive, statistically significant wedge on real-money platforms, with larger values in lower-liquidity and longer-duration markets and a monotone decline over contract life. Across 291,309 contracts from Polymarket, Kalshi, Metaculus, Good Judgment Open, INFER, and Manifold, the estimated parameter is positive on all real-money venues and negative on the play-money platform Manifold---patterns consistent with the interpretation that risk-bearing costs are more important on real-money platforms, while confidence-related distortions dominate when financial stakes are absent.
 
 The framework provides practitioners with a tractable benchmark for extracting physical probabilities, comparing contracts across platforms, and organizing the pricing wedge's cross-sectional and temporal variation.
 
@@ -152,10 +151,7 @@ Dalen's contribution and mine are complementary and address different
 problems. Dalen works entirely within the risk-neutral measure, taking
 \(\mathbb{Q}\) as given and building a market-making kernel; this paper
 asks \emph{which} \(\mathbb{Q}\) the market selects and \emph{how} it
-relates to the physical measure \(P\). The Wang transform provides the
-\(P\)-to-\(\mathbb{Q}\) bridge. In principle, one could use Dalen's
-logit jump-diffusion for the dynamics and the Wang transform for the
-measure change, combining both frameworks. Earlier, Archak and Ipeirotis
+relates to the physical measure \(P\). This paper asks which admissible pricing measure within an incomplete-market set best organizes observed prices and how that maintained pricing family relates to the physical measure. The Wang specification is not presented as a generic \(P\)-to-\(\mathbb{Q}\) bridge for arbitrary dynamics, but as an exact selection rule under the latent Gaussian threshold model developed in Section~3. In principle, one could use Dalen's logit jump-diffusion for observation-space dynamics and the Wang transform for the pricing-measure selection, combining both frameworks. Earlier, Archak and Ipeirotis
 (2009) modeled InTrade prices using Itô diffusions for latent ability
 processes, deriving contract price volatility as a function of current
 price and time to expiry.
@@ -198,9 +194,7 @@ stochastic processes, implying it is not a universal pricing framework;
 the present application to incomplete markets sidesteps this critique.
 Huang, Sun, and Zhang (2024) recently generalized the transform to
 flexible probability weighting functions for lottery-like equities,
-embedding it within the Pi-CAPM framework. The present paper appears to
-be the first to apply the Wang transform to prediction markets or to
-derive the favorite-longshot bias as a consequence of the transform.
+embedding it within the Pi-CAPM framework. To the best of my knowledge, this is the first paper to apply the Wang transform to prediction markets and to derive favorite-longshot bias as a corollary of that maintained pricing rule.
 
 \textbf{Prediction market design and calibration.} Wolfers and Zitzewitz
 (2004) provide the standard survey on prediction market contract design
@@ -2318,7 +2312,7 @@ contracts, provides directional support for a positive pricing wedge
 and the Elo model is noisier than sportsbook closing lines. Replication
 with commercial closing-line data would strengthen this identification.
 
-No prior work has applied the Wang transform to prediction markets, and
+To the best of my knowledge, no prior work has applied the Wang transform to prediction markets, and
 the empirical results---spanning 291,309 contracts across eight data
 sources, six platforms, and eleven years---confirm that the framework
 captures economically meaningful structure in the data. The framework
