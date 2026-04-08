@@ -156,15 +156,7 @@ relates to the physical measure \(P\). This paper asks which admissible pricing 
 processes, deriving contract price volatility as a function of current
 price and time to expiry.
 
-\textbf{Probability interpretation.} Manski (2006) showed that
-interpreting prediction market prices directly as probabilities lacks
-formal justification: equilibrium price reflects a quantile of the
-belief distribution and only partially identifies the mean belief.
-Wolfers and Zitzewitz (2006) showed prices approximate mean beliefs
-under log utility and that broader model classes often yield similar
-results; Gjerstad (2004) proved the sufficiency of the log-utility
-condition. This paper operationalizes the Manski critique by providing a
-specific functional form for the distortion.
+\textbf{Probability interpretation.} Manski (2006) showed that interpreting prediction market prices directly as probabilities lacks general formal justification: equilibrium price reflects a functional of heterogeneous beliefs and need not equal the mean belief. Wolfers and Zitzewitz (2006) showed that under log utility and related specifications, prices can approximate mean beliefs; Gjerstad (2004) proved the sufficiency of the log-utility condition. This paper does not attempt a nonparametric recovery of beliefs from prices alone. Instead, it imposes a maintained pricing family within the incomplete-market admissible set and uses that family to map between physical probabilities and observed prices. In this sense, the paper operationalizes the Manski critique through a structural selection rule rather than through a generic calibration map.
 
 \textbf{Favorite-longshot bias.} The FLB has been documented in horse
 racing (Griffith, 1949; Snowberg and Wolfers, 2010), sports betting
@@ -617,10 +609,7 @@ premium principle, establishing an equilibrium foundation for risks
 correlated with the aggregate economy. The parameter \(\lambda\) is
 economically interpretable: under the Bühlmann benchmark, it equals the
 product of aggregate risk aversion and the standard deviation of
-aggregate risk (Section 3.6). For prediction market events that are
-largely uncorrelated with aggregate risk, \(\lambda\) is better
-interpreted as a reduced-form pricing wedge whose structural sources are
-examined empirically in Sections 5.3--5.4.
+aggregate risk (Section 3.6). For prediction market events that are largely uncorrelated with aggregate risk, the aggregate-risk component of $\lambda$ may be small. In that case, the estimated selection parameter should be interpreted as a composite object within the maintained pricing family, potentially reflecting inventory risk, adverse selection, capital constraints, ambiguity, or other market-specific frictions (Sections~5.3--5.4).
 
 \begin{corollary}[Pricing wedge properties]
 Under
@@ -1052,49 +1041,38 @@ diffusion-based modeling approach adopted in Section 3.2.
 
 \subsection{Identification Strategy}\label{identification-strategy}
 
-The physical probability \(p^*\) is unobservable at any
-individual-contract level. At resolution, one observes only the realized
-outcome \(Y_i \in \{0,1\}\), not the ex ante probability. However, for a
-cross-section of resolved contracts, a calibration approach is
-available: by grouping contracts into bins by market price and computing
-the empirical resolution frequency \(\hat{p}^*_k\) in each bin, one can
-estimate the relationship between market prices and physical
-probabilities under an exchangeability assumption---that contracts with
-similar market prices share similar physical probabilities.
+The empirical objective is to estimate the \emph{composite pricing-measure selection parameter} implied by the maintained Wang family, not to nonparametrically recover contract-level physical probabilities or to separately identify the structural source of $\lambda$ from price--outcome data alone.
 
-From equation (1):
+At the individual-contract level, the physical probability $p_i^*$ is unobserved. Upon resolution one observes only the realized outcome $Y_i \in \{0,1\}$, not the ex ante physical probability. Under the maintained Wang specification,
+\[
+p_i^{\mathrm{mkt}}=\Phi\!\left(\Phi^{-1}(p_i^*)+\lambda_i\right),
+\]
+so equivalently
+\[
+p_i^*(\lambda_i)=\Phi\!\left(\Phi^{-1}(p_i^{\mathrm{mkt}})-\lambda_i\right).
+\]
 
-\[\lambda = \Phi^{-1}(p^{\text{mkt}}) - \Phi^{-1}(p^*)\]
+If $\lambda_i=\lambda$ is constant across contracts, the model implies
+\[
+\Pr(Y_i=1\mid p_i^{\mathrm{mkt}})=\Phi\!\left(\Phi^{-1}(p_i^{\mathrm{mkt}})-\lambda\right),
+\]
+which yields a Bernoulli likelihood for $\lambda$. The maximum-likelihood estimator therefore recovers the constant selection parameter that best rationalizes the cross-section of observed prices and realized outcomes under the maintained Wang family:
+\[
+\hat\lambda_{\mathrm{MLE}}
+=
+\arg\max_\lambda
+\sum_{i=1}^N
+\left[
+y_i\ln \Phi\!\left(\Phi^{-1}(p_i^{\mathrm{mkt}})-\lambda\right)
++
+(1-y_i)\ln\!\left(1-\Phi\!\left(\Phi^{-1}(p_i^{\mathrm{mkt}})-\lambda\right)\right)
+\right].
+\]
+Standard errors are computed from the observed Fisher information (numerical Hessian). A likelihood ratio test against $H_0:\lambda=0$ (prices are perfectly calibrated probabilities) has one degree of freedom.
 
-The cross-sectional estimator is:
+This interpretation is important. Resolved-contract data identify a calibration relationship of the form $E[Y\mid p^{\mathrm{mkt}}]$ under exchangeability-type assumptions. The Wang model maps that empirical relationship into an estimated $\lambda$, but the result remains model-based: the data do not, by themselves, decompose $\hat\lambda$ into aggregate-risk, inventory, adverse-selection, ambiguity, or microstructure components.
 
-\[\hat{\lambda} = \frac{1}{K}\sum_{k=1}^K \left[\Phi^{-1}(\bar{p}_k^{\text{mkt}}) - \Phi^{-1}(\hat{p}_k^*)\right]\]
-
-where \(\bar{p}_k^{\text{mkt}}\) is the average market price in bin
-\(k\) and \(\hat{p}_k^*\) is the empirical resolution frequency.
-
-\subsection{Wang Parameter
-Estimation}\label{wang-parameter-estimation}
-
-\textbf{MLE estimation.} I estimate a global \(\lambda\) by maximum
-likelihood. Under the Wang transform, the probability of resolution
-conditional on market price is
-\(\Pr(Y_i = 1 \mid p_i^{\text{mkt}}) = \Phi(\Phi^{-1}(p_i^{\text{mkt}}) - \lambda)\),
-giving Bernoulli log-likelihood:
-
-\[\hat{\lambda}_{MLE} = \arg\max_\lambda \sum_{i=1}^N \left[y_i \ln \hat{p}_i^*(\lambda) + (1 - y_i)\ln(1 - \hat{p}_i^*(\lambda))\right]\]
-
-where
-\(\hat{p}_i^*(\lambda) = \Phi(\Phi^{-1}(p_i^{\text{mkt}}) - \lambda)\).
-The standard error is computed from the observed Fisher information
-(numerical Hessian). A likelihood ratio test against
-\(H_0: \lambda = 0\) (perfect calibration) has 1 degree of freedom.
-
-\textbf{Binned calibration.} As a nonparametric complement, I group
-contracts into quantile bins by market price, compute the empirical
-resolution rate \(\hat{p}^*_k\) in each bin, and estimate
-\(\hat{\lambda}_k = \Phi^{-1}(\bar{p}_k^{\text{mkt}}) - \Phi^{-1}(\hat{p}_k^*)\)
-with bootstrap standard errors (2,000 replications).
+\textbf{Binned calibration.} As a descriptive nonparametric complement, I group contracts into quantile bins by market price, compute the empirical resolution rate $\hat p_k^*$ in each bin, and estimate $\hat\lambda_k = \Phi^{-1}(\bar p_k^{\mathrm{mkt}}) - \Phi^{-1}(\hat p_k^*)$ with bootstrap standard errors (2,000 replications). This binned estimator is used as a calibration diagnostic and robustness check, not as the paper's primary structural identification device.
 
 \begin{table}[H]
 \centering
