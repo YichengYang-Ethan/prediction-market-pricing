@@ -1,4 +1,4 @@
-% === REVISION VERSION: v7 (2026-04-07 final coherence cleanup) ===
+% === REVISION VERSION: v8 (2026-04-07 claim-strength + prose cleanup) ===
 % Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
@@ -1656,9 +1656,10 @@ Very high ($>$\$10K) & 968 & $-$0.031 & 0.043 & 0.472 \\
 
 This finding has implications for market efficiency: the Wang pricing
 wedge vanishes in the most liquid markets, where competitive trading
-eliminates mispricing. The residual wedge in low-volume markets is
-consistent with illiquidity-driven overpricing, analogous to the
-small-stock premium in equities.
+compresses the price-probability distortion.
+The residual wedge in low-volume markets is consistent with
+illiquidity-driven overpricing, analogous to liquidity premia elsewhere
+in asset markets.
 
 \textbf{Power analysis.} Monte Carlo power simulations using the
 empirical price distribution establish minimum sample size requirements.
@@ -2213,41 +2214,16 @@ releases).
 This paper develops a structural pricing framework for prediction markets based on incomplete markets and maintained pricing-measure selection rules. The central observation is that binary event claims are generally not spanned by traded assets, so no-arbitrage determines a set of admissible pricing measures rather than a unique price. To organize prices within that incomplete-market set, I impose a latent Gaussian threshold model under the physical measure together with a one-parameter exponential tilt of the standardized latent factor. Under this maintained Gaussian family, the Wang transform arises exactly as a variance-preserving pricing-measure selection rule. The framework therefore provides a tractable structural benchmark for mapping between physical probabilities and observed market prices, and yields favorite-longshot bias as a corollary rather than as a separate behavioral primitive.
 
 The empirical results support the framework across multiple dimensions.
-Contract-level calibration on 2,460 Polymarket contracts yields a
-statistically significant positive pricing wedge
-(\(\hat{\lambda}_{MLE} = 0.176\), \(p < 10^{-10}\)), confirmed on an
-expanded 28-day sample (\(N = 13{,}738\), \(\hat{\lambda} = 0.166\)).
-Cross-platform validation on \(N = 291{,}309\) contracts across
-Polymarket, Kalshi, Metaculus, Good Judgment Open, and INFER yields a
-pooled estimate of \(\hat{\lambda} = 0.183\) (SE \(= 0.003\)), with
-every real-money platform exhibiting a significant positive pricing
-wedge. The play-money platform Manifold shows \(\hat{\lambda} = -0.22\),
-providing a natural control that is inconsistent with purely behavioral
-explanations and supports the presence of a nontrivial risk-bearing
-component in \(\lambda > 0\) on real-money platforms. Year-by-year
-Kalshi estimates over 2022--2026 confirm temporal stability
-(\(\hat{\lambda} \in [0.14, 0.29]\)). The estimate is economically
-interpretable: an event with 10\% physical probability trades at
-approximately 13.5\%, a 35\% overpricing that longshot buyers
-effectively pay as a pricing wedge. A one-stage hierarchical MLE jointly
-estimates the baseline pricing wedge and covariate effects, confirming
-that volume reduces the wedge (\(\hat{\beta}_{\text{vol}} < 0\)),
-duration increases it (\(\hat{\beta}_{\text{dur}} > 0\)), and extremity
-amplifies it (\(\hat{\beta}_{\text{ext}} < 0\); LR
-\(\chi^2 = 361.3\))---generating the favorite-longshot bias pattern as a
-direct consequence. A novel finding is that the pricing wedge is
-time-varying: a stacked panel model with contract-clustered standard
-errors reveals that the wedge is significant at market opening and
-decays with a half-life of 33\% of contract lifetime (12-day sample),
-with slower decay on the full 28-day sample where the minimum is reached
-at 77\% of lifetime, linking the duration effect in the cross section to
-the time-decay pattern within contracts. Four alternative opening-price
-constructions yield \(\hat{\lambda} \in [0.131, 0.166]\), indicating
-that approximately 80\% of the baseline estimate reflects the structural
-pricing wedge rather than microstructure artifacts. An external
-benchmark using Elo-model probabilities for 51 NBA contracts provides
-independent directional support (\(\hat{\lambda} = 0.125\),
-\(p = 0.014\)) without relying on ex-post resolution outcomes.
+On Polymarket, the estimated selection parameter is positive and highly
+significant in both the baseline and expanded samples. Across 291,309
+contracts from multiple platforms, the estimate remains positive on
+real-money venues and turns negative on the play-money platform
+Manifold. The wedge is larger in lower-liquidity and longer-duration
+markets, declines over contract life, and is robust to alternative
+opening-price constructions. An external benchmark using Elo
+probabilities for NBA contracts provides independent directional support
+for a positive wedge, though sharper benchmark data such as sportsbook
+closing lines would strengthen identification.
 
 \textbf{Limitations.} The calibration recovers the composite selection parameter within the maintained Wang family;
 separating the pricing wedge from behavioral probability distortion
@@ -2265,9 +2241,10 @@ calibration improvements (ECE, Brier score) for Kalshi, though the
 \(\hat{\lambda}\) point estimates remain valid as they reflect the
 systematic relationship between price levels and resolution rates. At
 extreme probabilities, the elevated \(\hat{\lambda}\) may reflect
-overconfidence rather than pure pricing wedge; the extended model finds
-extremity is a significant predictor but cannot distinguish risk from
-misperception. The external benchmark analysis (Section 5.6), using an
+confidence-related distortions rather than a purely risk-bearing
+interpretation of the estimated selection parameter; the extended model
+finds extremity is a significant predictor but cannot distinguish risk
+from misperception. The external benchmark analysis (Section 5.6), using an
 Elo rating model as an independent probability estimate for 51 NBA
 contracts, provides directional support for a positive pricing wedge
 (\(\hat{\lambda} = 0.125\), \(p = 0.014\)), though the sample is small
@@ -2284,9 +2261,10 @@ distortion risk measures in insurance mathematics (Wang, 2000; Yaari,
 (Manski, 2006; Wolfers and Zitzewitz, 2006); and (iii) incomplete market
 pricing in mathematical finance (Harrison and Pliska, 1983). By bridging
 these literatures, it provides practitioners with a principled,
-model-dependent fair-value signal---subject to the maintained-family nature
-of the calibration and the assumptions underlying the Wang
-specification---and researchers with a testable structural framework for studying price-probability wedges in prediction markets.
+model-dependent pricing benchmark---conditional on the
+maintained Wang family and its identifying assumptions---and researchers
+with a testable structural framework for studying price-probability
+wedges in prediction markets.
 
 \vspace{1em}
 
