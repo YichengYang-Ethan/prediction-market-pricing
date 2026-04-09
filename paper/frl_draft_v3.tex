@@ -1,0 +1,142 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage[hidelinks]{hyperref}
+% references handled manually
+
+\linespread{1.25}\selectfont
+
+\title{Do Prediction Market Prices Equal Probabilities?\\Evidence from a Play-Money Contrast}
+\author{Yicheng Yang\thanks{University of Illinois Urbana-Champaign. Email: \texttt{yy85@illinois.edu}. Replication code and data: \url{https://github.com/YichengYang-Ethan/prediction-market-pricing}.}}
+\date{April 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent Prediction market prices are widely interpreted as event probabilities, yet whether they embed systematic distortions is difficult to assess without either an external benchmark or a credible contrast case. This note exploits a natural contrast: the play-money platform Manifold, where participants face no financial stakes. Using a one-parameter Wang specification as a measurement device, I estimate platform-level price--probability wedges on 290,730 resolved contracts across six platforms. The two traded real-money venues, Polymarket and Kalshi, yield positive and highly significant estimates, while Manifold yields a negative estimate---a sign reversal consistent with confidence-related distortions becoming relatively more important when financial stakes are absent. Three forecasting platforms also exhibit positive estimates, though their economic interpretation differs from traded venues. The cross-platform sign pattern is robust to sample restrictions and complement-invariant specifications. The results provide compact evidence that prediction market prices need not equal physical probabilities and that play-money markets offer a useful contrast case for interpreting price--probability wedges.
+
+\medskip
+\noindent\textbf{JEL Classification:} G13, G14, D81\\
+\noindent\textbf{Keywords:} prediction markets, Wang transform, price--probability wedge, play-money markets, favorite-longshot bias
+\end{abstract}
+
+\newpage
+
+%% ============================================================
+\section{Introduction}
+%% ============================================================
+
+Prediction market prices are routinely read as event probabilities by media, policymakers, and market participants (Wolfers and Zitzewitz, 2004). Yet Manski (2006) showed that in general, equilibrium prices in markets with heterogeneous beliefs need not equal mean beliefs or physical probabilities. Testing whether prediction market prices embed systematic distortions is difficult because the physical probability of a unique real-world event is fundamentally unobservable.
+
+Prediction markets are nonetheless widely used as probability proxies (Wolfers and Zitzewitz, 2004), and prior work comparing real-money and play-money venues has found broadly similar accuracy (Servan-Schreiber et al., 2004), though systematic distortion patterns have not been examined through a unified measurement framework.
+
+This note sidesteps the benchmark problem by exploiting a \emph{natural contrast}: the play-money platform Manifold, where participants trade tokens with no financial value. If the price--probability wedge on real-money platforms reflects risk-bearing costs---inventory risk, capital lockup, adverse selection (Whelan, 2024; Shin, 1991)---then removing financial stakes should attenuate or possibly reverse the wedge. If instead the wedge mainly reflects cognitive distortions, it should be more likely to persist with similar sign.
+
+I estimate a one-parameter Wang transform specification on 290,730 resolved contracts across six platforms. The main finding is a \emph{sign reversal}: traded real-money venues (Polymarket, Kalshi) exhibit positive wedges, while Manifold exhibits a negative wedge. This pattern is consistent with the interpretation that risk-bearing forces are more important on traded venues, while confidence-related distortions dominate when financial stakes are absent.
+
+This note uses the Wang transform purely as a measurement device. A separate working paper (Yang, 2026) develops one structural foundation for this specification.
+
+%% ============================================================
+\section{Measurement framework}
+%% ============================================================
+
+The Wang (2000) transform maps physical event probabilities into market prices via a single parameter:
+\begin{equation}\label{eq:wang}
+p^{\mathrm{mkt}} = \Phi\!\left(\Phi^{-1}(p^*) + \lambda\right),
+\end{equation}
+where $\Phi$ is the standard normal CDF, $p^*$ is the physical probability, and $\lambda$ is the price--probability wedge parameter. When $\lambda > 0$, market prices lie systematically above physical probabilities; when $\lambda < 0$, they lie below.
+
+For a cross-section of $N$ resolved contracts $(p_i^{\mathrm{mkt}}, Y_i)$, where $Y_i \in \{0,1\}$ is the resolution outcome, the maximum-likelihood estimator is:
+\[
+\hat\lambda_{\mathrm{MLE}} = \arg\max_\lambda \sum_{i=1}^N \left[ Y_i \ln \Phi\!\left(\Phi^{-1}(p_i^{\mathrm{mkt}}) - \lambda\right) + (1 - Y_i) \ln\!\left(1 - \Phi\!\left(\Phi^{-1}(p_i^{\mathrm{mkt}}) - \lambda\right)\right) \right].
+\]
+Standard errors are from the observed Fisher information. Throughout, $\lambda$ is used as a one-parameter measurement device for price--probability wedges; this note does not claim to separately identify the structural source of the estimated parameter.
+
+%% ============================================================
+\section{Data}
+%% ============================================================
+
+I estimate platform-level wedges on six platforms spanning three distinct institutional architectures:
+
+\begin{itemize}
+\item \textbf{Traded real-money venues.} Polymarket (blockchain-based central limit order book (CLOB); $N = 14{,}723$, pooling $13{,}738$ contracts from the 2026 CLOB sample and $985$ from a 2025 HuggingFace archive) and Kalshi (CFTC-regulated exchange; $N = 271{,}699$; 2021--2026). Participants risk real capital.
+
+\item \textbf{Forecasting tournaments.} Metaculus ($N = 1{,}845$), Good Judgment Open ($N = 692$), and INFER ($N = 90$), sourced from HuggingFace (2015--2024). Participants submit probability estimates under reputational or prize-based incentives. These platforms are included as ancillary evidence; their economic object differs from traded venues since participants do not bear direct financial risk.
+
+\item \textbf{Play-money platform.} Manifold ($N = 1{,}681$), sourced from HuggingFace (2015--2024). Participants trade with tokens carrying no financial value, providing a natural contrast that removes risk-bearing costs while preserving cognitive factors.
+\end{itemize}
+
+All contracts are filtered to $p \in (0.05, 0.95)$ to exclude near-certain outcomes. Total sample: $N = 290{,}730$ resolved contracts across six platforms spanning 2015--2026.\footnote{A separate working paper (Yang, 2026) reports a pooled total of 291,309 contracts including 579 Polymarket observations sourced from a multi-platform forecasting dataset. Those observations are excluded here to maintain a clean one-row-per-platform structure.}
+
+%% ============================================================
+\section{Results}
+%% ============================================================
+
+Table~\ref{tab:platform} reports the central result: the sign of the estimated Wang parameter differs between traded real-money venues and the play-money platform.
+
+\begin{table}[h]
+\centering
+\small
+\caption{Platform-level Wang parameter estimates. Traded real-money venues (Panel A) and the play-money platform (Panel C) are the primary comparison; forecasting tournaments (Panel B) provide ancillary evidence. Standard errors from observed Fisher information; significance: $^{***}p<0.001$, $^{**}p<0.01$, $^{*}p<0.05$.}
+\label{tab:platform}
+\begin{tabular}{llrrrl}
+\toprule
+& Platform & $N$ & $\hat\lambda_{\mathrm{MLE}}$ & SE & Significance \\
+\midrule
+\multicolumn{6}{l}{\textit{Panel A: Traded real-money venues}} \\
+& Polymarket (pooled) & 14,723 & 0.164$^{***}$ & 0.011 & $p < 10^{-15}$ \\
+& Kalshi (2021--2026) & 271,699 & 0.187$^{***}$ & 0.003 & $p < 10^{-15}$ \\
+\midrule
+\multicolumn{6}{l}{\textit{Panel B: Forecasting tournaments (ancillary)}} \\
+& Metaculus & 1,845 & 0.287$^{***}$ & 0.033 & $p < 10^{-15}$ \\
+& Good Judgment Open & 692 & 0.570$^{***}$ & 0.055 & $p < 10^{-15}$ \\
+& INFER & 90 & 0.635$^{***}$ & 0.180 & $p < 0.001$ \\
+\midrule
+\multicolumn{6}{l}{\textit{Panel C: Play-money platform}} \\
+& Manifold & 1,681 & $-$0.218$^{***}$ & 0.032 & $p < 10^{-11}$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Three findings emerge. First, both traded real-money venues yield positive and highly significant estimates ($\hat\lambda \approx 0.16$--$0.19$), indicating a positive price--probability wedge. Second, Manifold yields $\hat\lambda = -0.218$---a sign reversal. Removing financial stakes does not merely attenuate the wedge; it flips its direction. This is consistent with confidence-related distortions (overconfidence, miscalibration) dominating when risk-bearing costs are absent. Third, forecasting tournaments also exhibit positive estimates, though typically larger in magnitude. The economic interpretation of $\lambda$ on these platforms differs from traded venues: participants submit probability assessments rather than placing capital at risk, so the positive distortion may reflect different mechanisms (e.g., extremity aversion in forecast elicitation rather than inventory risk).
+
+The magnitude gradient across traded venues---Polymarket ($\hat\lambda \approx 0.17$) slightly below Kalshi ($\hat\lambda \approx 0.19$)---is consistent with the view that deeper, more liquid markets compress the wedge further, though differences in price timing and contract ecology preclude a clean causal interpretation.
+
+%% ============================================================
+\section{Robustness}
+%% ============================================================
+
+The sign reversal is robust along several dimensions. Re-estimating with alternative price measures (5-price opening average, midlife price, near-settlement price) preserves the positive sign on Polymarket and Kalshi and the negative sign on Manifold. Using a complement-invariant specification, which averages $\hat\lambda$ from the YES and NO directions, attenuates the magnitude on all platforms but preserves the sign pattern. Restricting to $p \in (0.10, 0.90)$ or to contracts with duration $> 7$ days leaves the sign pattern unchanged.
+
+%% ============================================================
+\section{Conclusion}
+%% ============================================================
+
+Prediction market prices on traded real-money venues embed a positive price--probability wedge that reverses sign on the play-money platform Manifold. This sign reversal provides a natural contrast case: the positive wedge on traded venues is consistent with risk-bearing costs that vanish when financial stakes are removed, while the negative wedge on Manifold is consistent with confidence-related distortions. Forecasting tournaments, which operate under different incentive structures, provide ancillary evidence of positive distortion but should not be interpreted as economically identical to traded markets.
+
+These results do not constitute a full structural decomposition of the wedge into constituent sources; that requires additional data or exogenous variation.
+
+%% ============================================================
+\small
+\begin{thebibliography}{9}
+
+\bibitem[Manski(2006)]{manski2006} Manski, C.F. (2006). Interpreting the predictions of prediction markets. \textit{Economics Letters}, 91(3), 425--429.
+
+\bibitem[Shin(1991)]{shin1991} Shin, H.S. (1991). Optimal betting odds against insider traders. \textit{Economic Journal}, 101(408), 1179--1185.
+
+\bibitem[Servan-Schreiber et al.(2004)]{servan2004} Servan-Schreiber, E., Wolfers, J., Pennock, D.M. and Galebach, B. (2004). Prediction markets: Does money matter? \textit{Electronic Markets}, 14(3), 243--251.
+
+\bibitem[Wang(2000)]{wang2000} Wang, S.S. (2000). A class of distortion operators for pricing financial and insurance risks. \textit{Journal of Risk and Insurance}, 67(1), 15--36.
+
+\bibitem[Whelan(2024)]{whelan2024} Whelan, K. (2024). Risk aversion and favourite-longshot bias in a competitive fixed-odds betting market. \textit{Economica}, 91(361), 188--209.
+
+\bibitem[Wolfers and Zitzewitz(2004)]{wolfers2004} Wolfers, J. and Zitzewitz, E. (2004). Prediction markets. \textit{Journal of Economic Perspectives}, 18(2), 107--126.
+
+\bibitem[Yang(2026)]{yang2026pricing} Yang, Y. (2026). Pricing prediction markets: Incomplete markets, selection rules, and risk premia. Working paper, University of Illinois Urbana-Champaign. Available at SSRN: \url{https://ssrn.com/abstract=6468338}.
+
+\end{thebibliography}
+
+\end{document}

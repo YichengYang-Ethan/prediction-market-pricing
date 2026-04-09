@@ -1,0 +1,29 @@
+\documentclass[12pt]{letter}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\usepackage{url}
+
+\signature{Yicheng Yang\\University of Illinois Urbana-Champaign\\yy85@illinois.edu}
+\address{Yicheng Yang\\Department of Computer Science, Statistics, and Economics\\University of Illinois Urbana-Champaign\\Champaign, IL 61820}
+
+\begin{document}
+\begin{letter}{The Editors\\Review of Derivatives Research}
+
+\opening{Dear Editors,}
+
+I am writing to submit my paper, ``Pricing Prediction Markets: Incomplete Markets, Selection Rules, and Risk Premia,'' for consideration at the \textit{Review of Derivatives Research}.
+
+\textbf{Summary.} Prediction market contracts are cash-or-nothing binary options written on real-world events whose underlying is typically not traded. This paper develops a structural pricing framework for these derivative instruments in incomplete markets. The event payoff is modeled via a latent Gaussian threshold factor under the physical measure, and the market-selected pricing measure is a maintained one-parameter exponential tilt of the standardized latent factor. Under this specification, the Wang (2000) transform arises exactly as a variance-preserving pricing-measure selection rule---yielding favorite-longshot bias as a corollary and nesting a broader probit-linear family when conditional variance is not preserved.
+
+\textbf{Empirical contribution.} I estimate the selection parameter on 291,309 resolved contracts across six platforms. In the traded-market subsamples, the estimated parameter is consistently positive; it increases with duration and illiquidity, and reverses sign on the play-money platform Manifold.
+
+\textbf{Why Review of Derivatives Research.} The paper addresses the pricing of derivative claims on non-traded underlyings in incomplete markets, a topic that lies close to the journal's core scope. Methodologically, it combines incomplete-market pricing, maintained selection families, and distortion-based valuation; empirically, it studies binary event contracts as cash-or-nothing options written on real-world events. For these reasons, I believe the paper would be a strong fit for the journal's readership in derivatives valuation under non-standard conditions.
+
+The paper has not been submitted to any other journal. A preprint is available on SSRN (\href{https://ssrn.com/abstract=6468338}{ssrn.com/abstract=6468338}) and Zenodo (\href{https://doi.org/10.5281/zenodo.19447557}{doi.org/10.5281/zenodo.19447557}). Replication code and data are at \href{https://github.com/YichengYang-Ethan/prediction-market-pricing}{github.com/YichengYang-Ethan/prediction-market-pricing}.
+
+Thank you for your consideration.
+
+\closing{Sincerely,}
+
+\end{letter}
+\end{document}

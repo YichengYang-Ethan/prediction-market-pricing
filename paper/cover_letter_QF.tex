@@ -1,0 +1,29 @@
+\documentclass[12pt]{letter}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\usepackage{url}
+
+\signature{Yicheng Yang\\University of Illinois Urbana-Champaign\\yy85@illinois.edu}
+\address{Yicheng Yang\\Department of Computer Science, Statistics, and Economics\\University of Illinois Urbana-Champaign\\Champaign, IL 61820}
+
+\begin{document}
+\begin{letter}{The Editors\\Quantitative Finance}
+
+\opening{Dear Professors Gatheral and Tebaldi,}
+
+I am writing to submit my paper, ``Pricing Prediction Markets: Incomplete Markets, Selection Rules, and Risk Premia,'' for consideration at \textit{Quantitative Finance}.
+
+\textbf{Summary.} Prediction market contracts are binary contingent claims whose payoffs are generally not spanned by traded assets. In such incomplete markets, no-arbitrage determines a set of admissible pricing measures rather than a unique price. The paper imposes a maintained one-parameter Gaussian selection family within that admissible set: under a latent threshold factor and a variance-preserving exponential tilt of the standardized latent factor, the Wang (2000) transform arises exactly as the pricing-measure selection rule. Beyond applying the Wang transform to a new empirical setting, the paper provides a correct incomplete-markets foundation, an exact structural derivation under the maintained Gaussian specification, and a factor-loading interpretation that connects the estimated parameter to standard asset-pricing objects. Favorite-longshot bias emerges as a corollary.
+
+\textbf{Empirical contribution.} I estimate the implied selection parameter on 291,309 resolved contracts across six platforms. On the two traded real-money venues, Polymarket and Kalshi, the estimate is positive and highly significant; it is larger in lower-liquidity and longer-duration markets and declines monotonically over contract life. The play-money platform Manifold yields a negative estimate, while forecasting tournaments provide ancillary evidence with a different economic interpretation.
+
+\textbf{Why Quantitative Finance.} The paper sits squarely within the journal's scope in derivatives pricing, market dynamics, and financial engineering. It develops a pricing framework for binary event contracts as an incomplete-market derivatives problem, combining formal pricing theory with large-sample empirical validation. I believe the maintained selection-rule approach, the exact Wang derivation, and the cross-platform evidence would be of direct interest to the journal's readership.
+
+The paper has not been submitted to any other journal. A preprint is available on SSRN (\href{https://ssrn.com/abstract=6468338}{ssrn.com/abstract=6468338}). Full replication code and data are publicly available at \href{https://github.com/YichengYang-Ethan/prediction-market-pricing}{github.com/YichengYang-Ethan/prediction-market-pricing}.
+
+Thank you for your consideration.
+
+\closing{Sincerely,}
+
+\end{letter}
+\end{document}
