@@ -1,0 +1,3 @@
+Generative AI (Claude, Anthropic) was used for code assistance during data
+collection, estimation, and manuscript preparation. The author takes full
+responsibility for the content of this work.
