@@ -69,7 +69,7 @@ I estimate platform-level wedges on six platforms spanning three distinct instit
 \item \textbf{Play-money platform.} Manifold ($N = 1{,}681$), sourced from HuggingFace (2015--2024). Participants trade with tokens carrying no financial value, providing a natural contrast that removes risk-bearing costs while preserving cognitive factors.
 \end{itemize}
 
-All contracts are filtered to $p \in (0.05, 0.95)$ to exclude near-certain outcomes. Total sample: $N = 290{,}730$ resolved contracts across six platforms spanning 2015--2026.\footnote{A separate working paper (Yang, 2026) reports a pooled total of 291,309 contracts including 579 Polymarket observations sourced from a multi-platform forecasting dataset. Those observations are excluded here to maintain a clean one-row-per-platform structure.}
+All contracts are filtered to $p \in (0.02, 0.98)$ at the platform level; the reported counts reflect each platform's full filtered sample as used in the companion cross-platform analysis. Total sample: $N = 290{,}730$ resolved contracts across six platforms spanning 2015--2026.\footnote{A separate working paper (Yang, 2026) reports a pooled total of 291,309 contracts including 579 Polymarket observations sourced from a multi-platform forecasting dataset. Those observations are excluded here to maintain a clean one-row-per-platform structure.}
 
 %% ============================================================
 \section{Results}
@@ -109,7 +109,7 @@ The magnitude gradient across traded venues---Polymarket ($\hat\lambda \approx 0
 \section{Robustness}
 %% ============================================================
 
-The sign reversal is robust along several dimensions. Re-estimating with alternative price measures (5-price opening average, midlife price, near-settlement price) preserves the positive sign on Polymarket and Kalshi and the negative sign on Manifold. Using a complement-invariant specification, which averages $\hat\lambda$ from the YES and NO directions, attenuates the magnitude on all platforms but preserves the sign pattern. Restricting to $p \in (0.10, 0.90)$ or to contracts with duration $> 7$ days leaves the sign pattern unchanged.
+The sign reversal is robust along several dimensions. Re-estimating with alternative price measures (5-price opening average, midlife price, near-settlement price) preserves the positive sign on Polymarket and Kalshi and the negative sign on Manifold. Using a complement-invariant specification that reorients each contract to the less-likely outcome attenuates the magnitude on all platforms but preserves the sign pattern. Restricting to $p \in (0.10, 0.90)$ or to contracts with duration $> 7$ days leaves the sign pattern unchanged.
 
 %% ============================================================
 \section{Conclusion}
