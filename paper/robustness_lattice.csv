@@ -1,0 +1,71 @@
+platform,specification,price_filter,direction,N,lambda_hat,SE,z_stat,p_value,sign,source,details
+Polymarket-HF-2025,scalar,"(0.02,0.98)",directional,985,0.142575,0.044680,3.191011,1.42e-03,+,FRESH,"LightningRodLabs/outcome-rl, filter (0.02,0.98)"
+Polymarket-HF-2025,scalar,"(0.02,0.98)",complement-invariant,985,0.106476,0.044715,2.381202,1.73e-02,+,FRESH,"complement-invariant mapping, filter (0.02,0.98)"
+Polymarket-HF-2025,scalar,"(0.05,0.95)",directional,899,0.138806,0.045229,3.068936,2.15e-03,+,FRESH,"LightningRodLabs/outcome-rl, filter (0.05,0.95)"
+Polymarket-HF-2025,scalar,"(0.05,0.95)",complement-invariant,899,0.109818,0.045320,2.423184,1.54e-02,+,FRESH,"complement-invariant mapping, filter (0.05,0.95)"
+Polymarket-HF-2025,scalar,"(0.10,0.90)",directional,829,0.135185,0.046084,2.933455,3.35e-03,+,FRESH,"LightningRodLabs/outcome-rl, filter (0.1,0.9)"
+Polymarket-HF-2025,scalar,"(0.10,0.90)",complement-invariant,829,0.118620,0.046246,2.564989,1.03e-02,+,FRESH,"complement-invariant mapping, filter (0.1,0.9)"
+Polymarket-HF-2025,hierarchical,"(0.05,0.95)",directional,899,0.369106,0.168030,2.196666,2.80e-02,+,FRESH,hierarchical MLE with ln(Volume)
+cset,scalar,"(0.02,0.98)",directional,90,0.634959,0.179754,3.532370,4.12e-04,+,FRESH,"YuehHanChen/forecasting, first community prediction as p_open"
+cset,scalar,"(0.02,0.98)",complement-invariant,90,-0.031711,0.156227,-0.202981,8.39e-01,-,FRESH,"complement-invariant, first community prediction"
+cset,scalar,"(0.05,0.95)",directional,80,0.737691,0.188995,3.903229,9.49e-05,+,FRESH,"YuehHanChen/forecasting, first community prediction as p_open"
+cset,scalar,"(0.05,0.95)",complement-invariant,80,0.008927,0.162078,0.055078,9.56e-01,+,FRESH,"complement-invariant, first community prediction"
+cset,scalar,"(0.10,0.90)",directional,61,0.874644,0.210223,4.160555,3.17e-05,+,FRESH,"YuehHanChen/forecasting, first community prediction as p_open"
+cset,scalar,"(0.10,0.90)",complement-invariant,61,0.116935,0.181573,0.644011,5.20e-01,+,FRESH,"complement-invariant, first community prediction"
+gjopen,scalar,"(0.02,0.98)",directional,692,0.569905,0.055356,10.295327,0.00e+00,+,FRESH,"YuehHanChen/forecasting, first community prediction as p_open"
+gjopen,scalar,"(0.02,0.98)",complement-invariant,692,-0.437852,0.049763,-8.798827,0.00e+00,-,FRESH,"complement-invariant, first community prediction"
+gjopen,scalar,"(0.05,0.95)",directional,622,0.567328,0.057041,9.946040,0.00e+00,+,FRESH,"YuehHanChen/forecasting, first community prediction as p_open"
+gjopen,scalar,"(0.05,0.95)",complement-invariant,622,-0.389511,0.051779,-7.522541,5.37e-14,-,FRESH,"complement-invariant, first community prediction"
+gjopen,scalar,"(0.10,0.90)",directional,538,0.566091,0.059626,9.493980,0.00e+00,+,FRESH,"YuehHanChen/forecasting, first community prediction as p_open"
+gjopen,scalar,"(0.10,0.90)",complement-invariant,538,-0.357905,0.054898,-6.519459,7.06e-11,-,FRESH,"complement-invariant, first community prediction"
+manifold,scalar,"(0.02,0.98)",directional,1681,-0.217966,0.032153,-6.779091,1.21e-11,-,FRESH,"YuehHanChen/forecasting, first community prediction as p_open"
+manifold,scalar,"(0.02,0.98)",complement-invariant,1681,-0.140211,0.031953,-4.388110,1.14e-05,-,FRESH,"complement-invariant, first community prediction"
+manifold,scalar,"(0.05,0.95)",directional,1626,-0.206592,0.032451,-6.366382,1.94e-10,-,FRESH,"YuehHanChen/forecasting, first community prediction as p_open"
+manifold,scalar,"(0.05,0.95)",complement-invariant,1626,-0.123619,0.032269,-3.830906,1.28e-04,-,FRESH,"complement-invariant, first community prediction"
+manifold,scalar,"(0.10,0.90)",directional,1540,-0.187335,0.033093,-5.660856,1.51e-08,-,FRESH,"YuehHanChen/forecasting, first community prediction as p_open"
+manifold,scalar,"(0.10,0.90)",complement-invariant,1540,-0.097954,0.032934,-2.974252,2.94e-03,-,FRESH,"complement-invariant, first community prediction"
+metaculus,scalar,"(0.02,0.98)",directional,1845,0.287324,0.033278,8.634094,0.00e+00,+,FRESH,"YuehHanChen/forecasting, first community prediction as p_open"
+metaculus,scalar,"(0.02,0.98)",complement-invariant,1845,-0.139957,0.031746,-4.408604,1.04e-05,-,FRESH,"complement-invariant, first community prediction"
+metaculus,scalar,"(0.05,0.95)",directional,1679,0.303926,0.033938,8.955257,0.00e+00,+,FRESH,"YuehHanChen/forecasting, first community prediction as p_open"
+metaculus,scalar,"(0.05,0.95)",complement-invariant,1679,-0.127397,0.032503,-3.919529,8.87e-05,-,FRESH,"complement-invariant, first community prediction"
+metaculus,scalar,"(0.10,0.90)",directional,1484,0.328892,0.035278,9.322755,0.00e+00,+,FRESH,"YuehHanChen/forecasting, first community prediction as p_open"
+metaculus,scalar,"(0.10,0.90)",complement-invariant,1484,-0.109704,0.033903,-3.235792,1.21e-03,-,FRESH,"complement-invariant, first community prediction"
+polymarket,scalar,"(0.02,0.98)",directional,579,0.013243,0.056039,0.236315,8.13e-01,+,FRESH,"YuehHanChen/forecasting, first community prediction as p_open"
+polymarket,scalar,"(0.02,0.98)",complement-invariant,579,0.005589,0.056017,0.099772,9.21e-01,+,FRESH,"complement-invariant, first community prediction"
+polymarket,scalar,"(0.05,0.95)",directional,546,0.026949,0.056750,0.474872,6.35e-01,+,FRESH,"YuehHanChen/forecasting, first community prediction as p_open"
+polymarket,scalar,"(0.05,0.95)",complement-invariant,546,0.018407,0.056741,0.324397,7.46e-01,+,FRESH,"complement-invariant, first community prediction"
+polymarket,scalar,"(0.10,0.90)",directional,506,0.055534,0.058133,0.955297,3.39e-01,+,FRESH,"YuehHanChen/forecasting, first community prediction as p_open"
+polymarket,scalar,"(0.10,0.90)",complement-invariant,506,0.045287,0.058154,0.778744,4.36e-01,+,FRESH,"complement-invariant, first community prediction"
+ALL-pooled,scalar,"(0.02,0.98)",directional,4887,0.108349,0.019580,5.533629,3.14e-08,+,FRESH,"All platforms pooled, filter (0.02,0.98)"
+ALL-pooled,scalar,"(0.05,0.95)",directional,4553,0.116694,0.019905,5.862559,4.56e-09,+,FRESH,"All platforms pooled, filter (0.05,0.95)"
+ALL-pooled,scalar,"(0.10,0.90)",directional,4129,0.130700,0.020533,6.365418,1.95e-10,+,FRESH,"All platforms pooled, filter (0.1,0.9)"
+Polymarket-Full,hierarchical,"(0.05,0.95)",directional,13274,0.258957,0.063707,4.064812,4.81e-05,+,PRE-COMPUTED,"28-day full sample, hierarchical MLE"
+Polymarket-Full,hierarchical,"(0.05,0.95) 12-day",directional,2134,0.387043,0.146114,2.648909,8.08e-03,+,PRE-COMPUTED,"12-day subsample, hierarchical MLE"
+Polymarket-Full,hierarchical,"[0.02, 0.98]",directional,13738,,,,0.00e+00,+,PRE-COMPUTED,"LL=-7976.2, AIC=15962.4, pseudo-R2=0.03432"
+Polymarket-Full,hierarchical,"[0.05, 0.95]",directional,13274,,,,0.00e+00,+,PRE-COMPUTED,"LL=-7937.9, AIC=15885.8, pseudo-R2=0.03458"
+Polymarket-Full,hierarchical,"[0.10, 0.90]",directional,12620,,,,0.00e+00,+,PRE-COMPUTED,"LL=-7768.1, AIC=15546.3, pseudo-R2=0.03468"
+Polymarket-Full,hierarchical,"[0.15, 0.85]",directional,12052,,,,0.00e+00,+,PRE-COMPUTED,"LL=-7568.9, AIC=15147.7, pseudo-R2=0.03466"
+Kalshi-Full,hierarchical,"(0.05,0.95)",directional,200226,0.140018,0.018811,7.443581,9.79e-14,+,PRE-COMPUTED,"Kalshi main spec, 4 covariates"
+Kalshi-Full,scalar,"(0.05,0.95)",directional,200226,0.177994,0.003549,50.158399,0.00e+00,+,PRE-COMPUTED,Kalshi pooled scalar MLE
+Kalshi-Sports,scalar (category),"(0.05,0.95)",directional,122,0.573048,0.157627,3.635476,1.66e-04,+,PRE-COMPUTED,Kalshi category=Sports
+Kalshi-Politics,scalar (category),"(0.05,0.95)",directional,750,0.400407,0.065526,6.110693,2.97e-10,+,PRE-COMPUTED,Kalshi category=Politics
+Kalshi-Crypto,scalar (category),"(0.05,0.95)",directional,12975,0.296853,0.014681,20.219657,0.00e+00,+,PRE-COMPUTED,Kalshi category=Crypto
+Kalshi-Tech,scalar (category),"(0.05,0.95)",directional,8246,-0.021794,0.017352,-1.256010,2.10e-01,-,PRE-COMPUTED,Kalshi category=Tech
+Kalshi-Other,scalar (category),"(0.05,0.95)",directional,178133,0.178023,0.003744,47.544422,0.00e+00,+,PRE-COMPUTED,Kalshi category=Other
+Kalshi-Short (<24h),hierarchical (duration),"(0.05,0.95)",directional,173911,0.379030,0.023307,16.262446,0.00e+00,+,PRE-COMPUTED,Kalshi duration split: Short (<24h)
+Kalshi-Medium (24h-7d),hierarchical (duration),"(0.05,0.95)",directional,23637,-0.951045,0.074686,-12.733836,0.00e+00,-,PRE-COMPUTED,Kalshi duration split: Medium (24h-7d)
+Kalshi-Long (>7d),hierarchical (duration),"(0.05,0.95)",directional,2678,0.189319,0.201262,0.940661,4.16e-01,+,PRE-COMPUTED,Kalshi duration split: Long (>7d)
+Kalshi-Weather/Daily,scalar (contract-type),"(0.05,0.95)",directional,221,0.197688,0.110332,1.791752,7.01e-02,+,PRE-COMPUTED,Kalshi contract type=Weather/Daily
+Kalshi-Crypto/Daily,scalar (contract-type),"(0.05,0.95)",directional,13942,0.298178,0.014086,21.168286,0.00e+00,+,PRE-COMPUTED,Kalshi contract type=Crypto/Daily
+Kalshi-Politics,scalar (contract-type),"(0.05,0.95)",directional,747,0.400034,0.065633,6.095011,3.29e-10,+,PRE-COMPUTED,Kalshi contract type=Politics
+Kalshi-Economics/Macro,scalar (contract-type),"(0.05,0.95)",directional,2338,0.091931,0.031737,2.896677,3.66e-03,+,PRE-COMPUTED,Kalshi contract type=Economics/Macro
+Kalshi-Sports,scalar (contract-type),"(0.05,0.95)",directional,51,0.531385,0.245948,2.160556,2.49e-02,+,PRE-COMPUTED,Kalshi contract type=Sports
+Kalshi-Other,scalar (contract-type),"(0.05,0.95)",directional,182927,0.169895,0.003697,45.952925,0.00e+00,+,PRE-COMPUTED,Kalshi contract type=Other
+Polymarket-Full,scalar (First-5\% midpoint (baseline)),"(0.05,0.95)",directional,13196,0.165645,0.011540,14.353826,0.00e+00,+,PRE-COMPUTED,Opening price method: First-5\% midpoint (baseline)
+Polymarket-Full,scalar (Post-settle (skip first 2h)),"(0.05,0.95)",directional,13098,0.148891,0.011718,12.705774,0.00e+00,+,PRE-COMPUTED,Opening price method: Post-settle (skip first 2h)
+Polymarket-Full,scalar (5-price average),"(0.05,0.95)",directional,13221,0.153663,0.011657,13.181632,0.00e+00,+,PRE-COMPUTED,Opening price method: 5-price average
+Polymarket-Full,"scalar (Filtered (non-stale, low-spread))","(0.05,0.95)",directional,9010,0.131398,0.013950,9.419481,0.00e+00,+,PRE-COMPUTED,"Opening price method: Filtered (non-stale, low-spread)"
+Polymarket-Full,"stacked-panel (28-day, nocov)","(0.05,0.95)",directional,111889,0.158697,,,,+,PRE-COMPUTED,"Stacked panel lambda_open (28-day), model=derived_nocov"
+Polymarket-Full,"stacked-panel (28-day, cov)","(0.05,0.95)",directional,111889,0.245809,,,,+,PRE-COMPUTED,"Stacked panel lambda_open (28-day), model=derived_cov"
+Polymarket-Full,"stacked-panel (12-day, nocov)","(0.05,0.95)",directional,17519,0.172981,,,,+,PRE-COMPUTED,"Stacked panel lambda_open (12-day), model=derived_nocov"
+Polymarket-Full,"stacked-panel (12-day, cov)","(0.05,0.95)",directional,17519,0.381601,,,,+,PRE-COMPUTED,"Stacked panel lambda_open (12-day), model=derived_cov"
