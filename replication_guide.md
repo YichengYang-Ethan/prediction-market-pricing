@@ -1,6 +1,6 @@
 # Replication Guide
 
-Step-by-step instructions to reproduce all results in "Pricing Prediction Markets: Risk Premiums, Incomplete Markets, and a Decomposition Framework."
+Step-by-step instructions to reproduce all results in "Pricing Prediction Markets: Incomplete Markets, Selection Rules, and Risk Premia."
 
 ## Prerequisites
 

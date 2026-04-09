@@ -1,4 +1,4 @@
-# Pricing Prediction Markets: Risk Premiums, Incomplete Markets, and a Decomposition Framework
+# Pricing Prediction Markets: Incomplete Markets, Selection Rules, and Risk Premia
 
 **Yicheng Yang** | University of Illinois Urbana-Champaign | [yy85@illinois.edu](mailto:yy85@illinois.edu)
 
@@ -10,7 +10,7 @@
 
 ## Abstract
 
-Prediction markets---binary contracts on real-world events---lack the pricing infrastructure available to every other major asset class. This paper proposes a three-layer decomposition framework that formally separates physical event probability from risk premium. The framework combines a log-odds state variable, jump-diffusion dynamics in log-odds space, and a Wang (2000) probability distortion:
+Prediction market contracts are binary contingent claims written on real-world events whose payoffs are generally not spanned by traded assets. In such incomplete markets, no-arbitrage determines a set of admissible pricing measures rather than a unique price. This paper proposes a structural selection framework: under a latent Gaussian threshold factor and a maintained one-parameter exponential tilt, the Wang (2000) transform arises exactly:
 
 $$p^{\text{mkt}} = \Phi\bigl(\Phi^{-1}(p^*) + \lambda\bigr)$$
 
