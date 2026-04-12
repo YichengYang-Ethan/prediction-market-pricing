@@ -1,8 +1,9 @@
 \begin{table}[H]
 \centering
 \small
-\caption{Polymarket timing ladder: one-stage hierarchical Wang MLE estimated at different lifecycle pricing points. The Kalshi pooled estimate (using near-settlement prices) is shown in the last row for comparison. Robust (sandwich) standard errors in parentheses.}
+\caption{Polymarket timing ladder: one-stage hierarchical Wang MLE estimated at different lifecycle pricing points. The Kalshi pooled estimate (using near-settlement prices) is shown in the last row for comparison. Robust (sandwich) standard errors in parentheses. Significance: $^{***}p<0.001$, $^{**}p<0.01$, $^{*}p<0.05$.}
 \label{tab:polymarket_timing_ladder}
+\resizebox{\textwidth}{!}{%
 \begin{tabular}{lrcccc}
 \toprule
 Timing point & $N$ & $\hat{\beta}_0$ & $\hat{\beta}_{\text{vol}}$ & $\hat{\beta}_{\text{dur}}$ & $\hat{\beta}_{\text{ext}}$ \\
@@ -18,5 +19,6 @@ Kalshi (near-settle.) & 200,226 & 0.1400$^{***}$ (0.0188) & 0.0384$^{***}$ (0.00
 \multicolumn{6}{l}{\textit{Sign comparison (Polymarket opening $\to$ Kalshi):}} \\
  &  & + $\to$ + \checkmark & $-$ $\to$ + $\times$ & + $\to$ $-$ $\times$ & $-$ $\to$ + $\times$ \\
 \bottomrule
-\end{tabular}
+\end{tabular}%
+}
 \end{table}

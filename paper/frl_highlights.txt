@@ -1,3 +1,3 @@
-Prediction market prices embed systematic distortions from probabilities.
-Play-money platform shows sign reversal versus real-money venues.
-Cross-platform pattern is robust to sample and specification changes.
+Wang transform estimates on 290,730 resolved prediction market contracts.
+Real-money venues yield positive wedges; play-money Manifold yields negative.
+Sign reversal is robust to alternative price measures and specifications.

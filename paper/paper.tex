@@ -99,8 +99,6 @@ University of Illinois Urbana-Champaign\\[6pt]
 incomplete markets, binary options, favorite-longshot bias, pricing
 wedge, distortion risk measures, Polymarket, Kalshi
 
-\newpage
-
 \section{Introduction}\label{introduction}
 
 Prediction market prices are widely interpreted as probabilities. However, prediction market contracts are binary contingent claims whose payoffs are typically not spanned by traded assets. In such incomplete markets, no-arbitrage determines a \emph{set} of admissible pricing measures rather than a unique one, so the observed market price need not equal the physical event probability (Manski, 2006; Harrison and Pliska, 1983). This interpretation problem has practical consequences: without a pricing model, there is no principled way to extract physical probabilities from market prices, to compare contracts on a risk-adjusted basis, or to explain systematic biases such as the favorite-longshot bias documented across 300,000+ Kalshi contracts by Bürgi, Deng, and Whelan (2025).
@@ -164,9 +162,9 @@ prospect theory models on racetrack data, finding that inverse-S shaped
 probability weighting---overweighting of small probabilities and
 underweighting of large ones---was a key driver of FLB, with cumulative
 prospect theory providing the best fit. The Wang transform provides a
-parametric complement to these nonparametric estimates. The Wang
-transform provides a unifying structural mechanism that nests the
-risk-averse market maker explanation (Whelan, 2024).
+parametric complement to these nonparametric estimates and a unifying
+structural mechanism that nests the risk-averse market maker explanation
+(Whelan, 2024).
 
 \textbf{Wang transform applications.} Wang (2000, 2004) applied the
 transform to catastrophe bond pricing (\(\hat{\lambda} \approx 0.45\))
@@ -191,10 +189,10 @@ finding similar forecasting accuracy---a result relevant to the
 interpretation of the Manifold play-money control in Section 6. Le
 (2026) argues that prediction market calibration is structured by
 horizon, domain, and trade size, complementing the heterogeneity
-analysis in Sections 5.3 and 5.6. Ostrovsky (2012) proves that in
+analysis in Sections 5.2 and 5.5. Ostrovsky (2012) proves that in
 dynamic trading with separable securities, prices converge to the
 pooled-information posterior---a result relevant to the time-varying
-\(\lambda\) decay documented in Section 5.4. Gneiting, Balabdaoui, and
+\(\lambda\) decay documented in Section 5.3. Gneiting, Balabdaoui, and
 Raftery (2007) provide the foundational treatment of probabilistic
 calibration, against which the Wang transform can be understood as a
 parametric recalibration map.
@@ -242,9 +240,8 @@ contract price. The \textit{risk-adjusted probability}
 \(\hat{p}^* = \Phi(\Phi^{-1}(p^{\text{mkt}}) - \hat{\lambda})\) denotes
 the estimated physical probability after stripping the pricing wedge. I
 avoid the terms
-\texttt{true\ probability,\textquotesingle{}\textquotesingle{}}fair
-value,'\,' and ``actuarially fair value'\,' except where context
-requires them, as they can conflate distinct concepts.
+``true probability,'' ``fair value,'' and ``actuarially fair value''
+except where context requires them, as they can conflate distinct concepts.
 
 For precision, I state the incompleteness argument in a discounted finite-state model; the economic conclusion is the standard one: if the event payoff is not spanned by traded claims, no-arbitrage leaves an interval of admissible prices rather than a unique price.
 
@@ -590,7 +587,7 @@ E\!\left[
 This is generally a mixture of Wang curves rather than a single Wang transform of $p_t^*$. Exact Wang therefore requires the conditional Gaussian latent-index specification or another restriction that preserves the probit-linear family.
 \end{remark}
 
-\textbf{Axiomatic background.} The Wang transform is not chosen arbitrarily. It is a standard distortion operator in the theory of distortion risk measures (Wang, Young, and Panjer, 1997; Yaari, 1987; Denneberg, 1994) and can be justified from multiple directions: as a probability distortion satisfying the usual monotonicity and boundary conditions, as the variance-preserving member of the Gaussian probit-linear family, and as the survival-function representation induced by an exponential tilt of a latent normal factor. For present purposes, the key point is narrower: in an incomplete market, Wang is not forced by no-arbitrage, but it is a tractable, economically interpretable, and exactly derived selection rule under the maintained Gaussian specification. A detailed axiomatic treatment is provided in Appendix~A.
+\textbf{Axiomatic background.} The Wang transform is not chosen arbitrarily. It is a standard distortion operator in the theory of distortion risk measures (Wang, Young, and Panjer, 1997; Yaari, 1987; Denneberg, 1994) and can be justified from multiple directions: as a probability distortion satisfying the usual monotonicity and boundary conditions, as the variance-preserving member of the Gaussian probit-linear family, and as the survival-function representation induced by an exponential tilt of a latent normal factor. For present purposes, the key point is narrower: in an incomplete market, Wang is not forced by no-arbitrage, but it is a tractable, economically interpretable, and exactly derived selection rule under the maintained Gaussian specification.
 
 \textbf{Measure-change interpretation.} In the maintained one-factor Gaussian setting above, the selected pricing family is generated by an exponential tilt of the latent standardized event factor:
 \[
@@ -606,7 +603,7 @@ premium principle, establishing an equilibrium foundation for risks
 correlated with the aggregate economy. The parameter \(\lambda\) is
 economically interpretable: under the Bühlmann benchmark, it equals the
 product of aggregate risk aversion and the standard deviation of
-aggregate risk (Section 3.6). For prediction market events that are largely uncorrelated with aggregate risk, the aggregate-risk component of $\lambda$ may be small. In that case, the estimated selection parameter should be interpreted as a composite object within the maintained pricing family, potentially reflecting inventory risk, adverse selection, capital constraints, ambiguity, or other market-specific frictions (Sections~5.3--5.4).
+aggregate risk (Section 3.6). For prediction market events that are largely uncorrelated with aggregate risk, the aggregate-risk component of $\lambda$ may be small. In that case, the estimated selection parameter should be interpreted as a composite object within the maintained pricing family, potentially reflecting inventory risk, adverse selection, capital constraints, ambiguity, or other market-specific frictions (Sections~5.2--5.3).
 
 \begin{corollary}[Pricing wedge properties]
 Under
@@ -679,7 +676,7 @@ The Wang transform specification in equation (1) is not framing-invariant: relab
 
 Both Kalshi and Polymarket implement \textit{unified order books}: buying YES at price $p$ and selling NO at price $1-p$ are computationally identical operations executed against the same book. On Kalshi, a YES buyer paying \$c is matched with a NO buyer paying \$(1-c), and the combined \$1 is held by the clearinghouse until settlement. On Polymarket, the \texttt{splitPosition()} smart contract mints exactly one YES token and one NO token per 1 USDC deposited; \texttt{mergePositions()} reverses the operation. These mechanisms ensure $p_{YES} + p_{NO} \equiv 1$ not as an equilibrium condition or an arbitrage result, but as a \textit{mathematical property of the contract creation mechanism}---the identity cannot be violated even instantaneously.
 
-This architecture means the observed market price is a single scalar $p \in (0,1)$ without inherent directional content: the label ``YES'' is a naming convention, not an economic primitive. The framing non-invariance of the Wang transform is therefore primarily an artifact of parameterization choice rather than a fundamental economic limitation, though residual framing effects---arising from trader cognition, interface design, or liquidity asymmetries between YES and NO order books---cannot be fully ruled out on theoretical grounds. The complement-invariant specification in Section 5.6 provides an empirical assessment of the magnitude of such effects.
+This architecture means the observed market price is a single scalar $p \in (0,1)$ without inherent directional content: the label ``YES'' is a naming convention, not an economic primitive. The framing non-invariance of the Wang transform is therefore primarily an artifact of parameterization choice rather than a fundamental economic limitation, though residual framing effects---arising from trader cognition, interface design, or liquidity asymmetries between YES and NO order books---cannot be fully ruled out on theoretical grounds. The complement-invariant specification in Section 5.5 provides an empirical assessment of the magnitude of such effects.
 
 Note that executable quotes (best ask for YES plus best ask for NO) \textit{can} exceed 1 due to the bid-ask spread. The spread compensates market makers for immediacy provision---a liquidity premium that is economically and empirically distinct from the mid-price probability distortion captured by $\lambda$.
 \end{remark}
@@ -900,7 +897,7 @@ For many prediction-market events---geopolitical outcomes, sporting results, sci
 \paragraph{Empirical signatures across structural channels.}
 The empirical patterns documented in Sections~5--6 are consistent with multiple structural sources of $\lambda$ and help distinguish among them:
 
-\emph{Time-varying decay.} The pricing wedge declines from $\hat\lambda(0.05)=0.173$ at market opening to $\hat\lambda(0.80)=0.037$ near resolution (Section~5.4). Under equation~(2), this is predicted whenever residual event uncertainty $\Sigma_{t,T}$ decreases as information arrives, reducing $|\lambda_t|$ regardless of its structural source.
+\emph{Time-varying decay.} The pricing wedge declines from $\hat\lambda(0.05)=0.173$ at market opening to $\hat\lambda(0.80)=0.037$ near resolution (Section~5.3). Under equation~(2), this is predicted whenever residual event uncertainty $\Sigma_{t,T}$ decreases as information arrives, reducing $|\lambda_t|$ regardless of its structural source.
 
 \emph{Volume effect.} The negative coefficient on $\ln(\text{Volume})$ in the hierarchical model (Table~5) is predicted by market-structure models---inventory risk, adverse selection, capital constraints---but is \emph{not} predicted by pure cognitive bias explanations, which imply $\lambda$ should be invariant to liquidity.
 
@@ -937,11 +934,11 @@ sample contains \(N = 13{,}738\) contracts spanning sports, politics,
 crypto, economics, and other categories. For each contract, I extract
 the \emph{opening price} (first 5\% of the market's lifetime) and the
 \emph{resolution outcome} (1 if the event occurred, 0 otherwise). For
-the time-varying analysis (Section 5.4), I also extract prices at ten
+the time-varying analysis (Section 5.3), I also extract prices at ten
 percentage-of-lifetime horizons and at fixed clock-time intervals before
 resolution.
 
-For the cross-platform analysis (Section 5.5), I use a separate dataset:
+For the cross-platform analysis (Section 5.4), I use a separate dataset:
 aligned daily prices for the Greenland acquisition contract on both
 Polymarket and Kalshi, collected via their respective APIs.
 
@@ -1151,7 +1148,7 @@ $\bar{p}^{\text{mkt}}$ & $\hat{p}^*$ & $N$ & $\hat{\lambda}$ & SE & 95\% CI \\
   \textbf{Non-constant \(\hat{\lambda}\) across bins.} The bin-level
   estimates range from \(-0.18\) to \(+0.49\), with systematically
   higher values at lower prices---the favorite-longshot bias. This
-  motivates the extended model in Section 5.3.
+  motivates the extended model in Section 5.2.
 \end{enumerate}
 
 \subsection{\texorpdfstring{Cross-Sectional Determinants of
@@ -1175,8 +1172,9 @@ standard errors without the need for bootstrap correction.
 \begin{table}[H]
 \centering
 \small
-\caption{One-stage hierarchical Wang MLE. Dependent variable: binary outcome $y_i$. Model: $\Pr(y_i = 1) = \Phi(\Phi^{-1}(p_i^{\text{mkt}}) - X_i\beta)$. Fisher and sandwich robust standard errors reported.}
+\caption{One-stage hierarchical Wang MLE. Dependent variable: binary outcome $y_i$. Model: $\Pr(y_i = 1) = \Phi(\Phi^{-1}(p_i^{\text{mkt}}) - X_i\beta)$. Fisher and sandwich robust standard errors reported. Significance: $^{***}p<0.001$, $^{**}p<0.01$, $^{*}p<0.05$.}
 \label{tab:hierarchical}
+\resizebox{\textwidth}{!}{%
 \begin{tabular}{lrrrrrr}
 \toprule
  & \multicolumn{3}{c}{Full sample ($N = 13{,}274$)} & \multicolumn{3}{c}{12-day subsample ($N = 2{,}134$)} \\
@@ -1194,7 +1192,8 @@ LR test ($\lambda = \text{const}$) & \multicolumn{3}{r}{$\chi^2 = 361.3$, $p < 1
 AIC & \multicolumn{3}{r}{$15{,}885.8$} & \multicolumn{3}{r}{$2{,}537.1$} \\
 $N$ & \multicolumn{3}{r}{13,274} & \multicolumn{3}{r}{2,134} \\
 \bottomrule
-\end{tabular}
+\end{tabular}%
+}
 \end{table}
 
 \textbf{Results.} Three variables are statistically significant in both
@@ -1204,7 +1203,7 @@ higher-liquidity markets carry smaller pricing wedges. (ii)
 \(\ln(\text{Duration})\) enters positively (\(\hat{\beta} = 0.143\),
 \(p < 10^{-15}\)), establishing a formal term structure of event
 risk---longer-duration contracts carry proportionally larger pricing
-wedges (Section 5.6). (iii) \textit{Extremity} \(|p - 0.5|\) enters
+wedges (Section 5.5). (iii) \textit{Extremity} \(|p - 0.5|\) enters
 negatively (\(\hat{\beta} = -0.477\), \(p < 10^{-5}\)), indicating that
 contracts near 50\% (maximum uncertainty) carry the highest pricing
 wedges, while extreme-probability contracts, where the outcome is more
@@ -1245,7 +1244,7 @@ contracts (mean 8.2 observations per contract) on the full sample.
 \begin{table}[H]
 \centering
 \small
-\caption{Stacked panel time-varying $\hat{\lambda}$. Model: $\Pr(y_i = 1 \mid p_{it}) = \Phi(\Phi^{-1}(p_{it}) - f(\tau_{it}) - X_i\beta)$, where $f(\tau) = \gamma_1\tau + \gamma_2\tau^2$. Contract-clustered standard errors (Liang--Zeger). Specification (1) includes only the time-decay function; specification (2) adds cross-sectional covariates.}
+\caption{Stacked panel time-varying $\hat{\lambda}$. Model: $\Pr(y_i = 1 \mid p_{it}) = \Phi(\Phi^{-1}(p_{it}) - f(\tau_{it}) - X_i\beta)$, where $f(\tau) = \gamma_1\tau + \gamma_2\tau^2$. Contract-clustered standard errors (Liang--Zeger). Specification (1) includes only the time-decay function; specification (2) adds cross-sectional covariates. Significance: $^{***}p<0.001$, $^{**}p<0.01$, $^{*}p<0.05$.}
 \label{tab:stacked_panel}
 \begin{tabular}{lrrrr}
 \toprule
@@ -1295,7 +1294,7 @@ per-horizon point estimates, which the smooth curve passes through
 (Figure \ref{fig:f_tau}). Adding covariates in specification (2) does
 not materially change the time-decay pattern: \(\gamma_1\) and
 \(\gamma_2\) remain significant and the covariate signs match those in
-Section 5.3.
+Section 5.2.
 
 On the full 28-day sample (\(N = 13{,}607\) contracts, \(111{,}889\)
 stacked observations), which includes a larger share of longer-duration
@@ -1307,7 +1306,7 @@ affects not only the \emph{level} of the pricing wedge (Table
 \ref{tab:hierarchical}) but also its \emph{persistence}: longer-horizon
 contracts exhibit both higher initial \(\lambda\) and slower convergence
 toward zero. This reinforces the term structure of event risk documented
-in Section 5.6.
+in Section 5.5.
 
 The time-varying pattern suggests that pricing wedges are embedded in
 the initial price-setting process---by market makers or early
@@ -1339,13 +1338,13 @@ liquidity), then Kalshi prices are systematically higher:
 
 I test this prediction using aligned daily data for the Greenland
 acquisition contract. The data are consistent with the framework: the
-mean spread is \(-5.73\) percentage points (Kalshi higher), with maximum
+mean spread is \(-5.15\) percentage points (Kalshi higher), with maximum
 divergence of 28.5 pp, consistent with \(\lambda_K > \lambda_P\).
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{analysis_greenland_cross_platform.png}
-\caption{Cross-platform analysis: Greenland acquisition contract. Top-left: raw prices on both platforms. Top-right: log-odds transformation. Bottom-left: price spread (mean $-5.73$ pp, Kalshi higher). Bottom-right: Hasbrouck (1995) Information Share. The persistent Kalshi premium is consistent with $\lambda_K > \lambda_P$.}
+\caption{Cross-platform analysis: Greenland acquisition contract. Top-left: raw prices on both platforms. Top-right: log-odds transformation. Bottom-left: price spread (mean $-5.15$ pp, Kalshi higher). Bottom-right: Hasbrouck (1995) Information Share. The persistent Kalshi premium is consistent with $\lambda_K > \lambda_P$.}
 \end{figure}
 
 \textbf{Granger causality.} Table \ref{tab:granger} shows that
@@ -1403,7 +1402,7 @@ boundary cutoff used to exclude boundary artifacts:
 \begin{table}[H]
 \centering
 \small
-\caption{Sensitivity of $\hat{\lambda}_{MLE}$ to price range restrictions. The estimate is stable across all tested cutoffs.}
+\caption{Sensitivity of $\hat{\lambda}_{MLE}$ to price range restrictions. The estimate is stable across all tested cutoffs. Significance: $^{***}p<0.001$, $^{**}p<0.01$, $^{*}p<0.05$.}
 \begin{tabular}{lrrrr}
 \toprule
 Price range & $N$ & $\hat{\lambda}_{MLE}$ & SE & $p$-value \\
@@ -1429,7 +1428,7 @@ contracts with non-stale quotes and below-median spreads.
 \begin{table}[H]
 \centering
 \small
-\caption{Sensitivity of $\hat{\lambda}_{MLE}$ to opening price construction. Each row uses a different method to extract the opening price from the hourly CLOB price history. All other estimation details are identical to the baseline specification (Section 5.2).}
+\caption{Sensitivity of $\hat{\lambda}_{MLE}$ to opening price construction. Each row uses a different method to extract the opening price from the hourly CLOB price history. All other estimation details are identical to the baseline specification (Section 5.1). Significance: $^{***}p<0.001$, $^{**}p<0.01$, $^{*}p<0.05$.}
 \label{tab:opening_robustness}
 \begin{tabular}{lrrrrr}
 \toprule
@@ -1462,7 +1461,7 @@ is split by contract duration:
 \begin{table}[H]
 \centering
 \small
-\caption{Wang parameter by contract duration. The pricing wedge increases monotonically with duration (Spearman $\rho = 0.90$, $p = 0.037$), establishing a term structure of event risk. Short-duration contracts ($<$24h) show mixed results in the directional specification---including a marginally significant \textit{negative} $\hat{\lambda}$ at 6--24h that vanishes under the complement-invariant specification (see below)---while longer contracts exhibit large positive pricing wedges.}
+\caption{Wang parameter by contract duration. The pricing wedge increases monotonically with duration (Spearman $\rho = 0.90$, $p = 0.037$), establishing a term structure of event risk. Short-duration contracts ($<$24h) show mixed results in the directional specification---including a marginally significant \textit{negative} $\hat{\lambda}$ at 6--24h that vanishes under the complement-invariant specification (see below)---while longer contracts exhibit large positive pricing wedges. Significance: $^{***}p<0.001$, $^{**}p<0.01$, $^{*}p<0.05$.}
 \begin{tabular}{lrrrr}
 \toprule
 Duration & $N$ & $\hat{\lambda}_{MLE}$ & SE & $p$-value \\
@@ -1562,10 +1561,9 @@ that Wang is significantly preferred over the power transform
 (\(V = 3.83\), \(p = 0.0001\)). The two-parameter logistic model
 achieves lower AIC and marginally lower BIC
 (\(\Delta\text{BIC} = 2.4\)); following Kass and Raftery (1995), a BIC
-difference below 2 is
-\texttt{not\ worth\ more\ than\ a\ bare\ mention\textquotesingle{}\textquotesingle{}\ and\ 2-\/-6\ constitutes\ only}positive'\,'
-evidence, placing the Wang--Logistic comparison in the inconclusive
-range. The Wang transform thus achieves comparable fit with one fewer
+difference below 2 is ``not worth more than a bare mention'' and
+2--6 constitutes only ``positive'' evidence, placing the Wang--Logistic
+comparison in the inconclusive range. The Wang transform thus achieves comparable fit with one fewer
 parameter, offering the best trade-off between parsimony and calibration
 quality.
 
@@ -1607,7 +1605,7 @@ each.\footnote{Categories are assigned by regex matching on contract titles: Spo
 \begin{table}[H]
 \centering
 \small
-\caption{Wang parameter by event category. The pricing wedge varies substantially across categories. Sports and politics markets---where informed trading is pervasive---show insignificant $\lambda$, while less-liquid categories exhibit significant positive pricing wedges.}
+\caption{Wang parameter by event category. The pricing wedge varies substantially across categories. Sports and politics markets---where informed trading is pervasive---show insignificant $\lambda$, while less-liquid categories exhibit significant positive pricing wedges. Significance: $^{***}p<0.001$, $^{**}p<0.01$, $^{*}p<0.05$.}
 \begin{tabular}{lrrrrl}
 \toprule
 Category & $N$ & $\hat{\lambda}_{MLE}$ & SE & 95\% CI & $p$-value \\
@@ -1628,7 +1626,7 @@ wedges, consistent with deep liquidity and informed participation in
 these categories. In contrast, crypto (\(\hat{\lambda} = 0.253\)),
 science/tech (\(\hat{\lambda} = 0.268\)), and other categories
 (\(\hat{\lambda} = 0.282\)) show large, significant premiums. This
-pattern is consistent with the volume effect (Section 5.3): sports and
+pattern is consistent with the volume effect (Section 5.2): sports and
 politics markets attract the most volume and the pricing wedge is
 competed to zero.
 
@@ -1639,7 +1637,7 @@ medium-volume contracts:
 \begin{table}[H]
 \centering
 \small
-\caption{Wang parameter by trading volume. High-volume markets ($>$\$10K) show pricing wedges statistically indistinguishable from zero; the aggregate $\hat{\lambda} = 0.176$ is driven by less-liquid contracts.}
+\caption{Wang parameter by trading volume. High-volume markets ($>$\$10K) show pricing wedges statistically indistinguishable from zero; the aggregate $\hat{\lambda} = 0.176$ is driven by less-liquid contracts. Significance: $^{***}p<0.001$, $^{**}p<0.01$, $^{*}p<0.05$.}
 \begin{tabular}{lrrrr}
 \toprule
 Volume tier & $N$ & $\hat{\lambda}_{MLE}$ & SE & $p$-value \\
@@ -1670,7 +1668,7 @@ power at \(N \geq 2{,}000\). At smaller effect sizes
 explaining why the pricing wedge may go undetected in smaller samples.
 
 \textbf{Information half-life.} The stacked panel spline model (Section
-5.4) directly yields a model-based half-life of 33\% of contract
+5.3) directly yields a model-based half-life of 33\% of contract
 lifetime on the 12-day subsample: the pricing wedge is halved by the
 time a contract has lived one-third of its duration. On the full 28-day
 sample---which includes more long-duration contracts---the decay
@@ -1704,7 +1702,7 @@ improve fit over the parsimonious Wang transform.
 
 \textbf{Complement-invariant estimation.} The Wang transform is not
 framing-invariant: relabeling event \(E\) as \(\neg E\) transforms
-\(\lambda\) to \(-\lambda\) (Remark 2). Since prediction market
+\(\lambda\) to \(-\lambda\) (Remark 6). Since prediction market
 exchanges enforce complementarity through linked contract architecture,
 the YES/NO label carries no independent payoff content at the
 contract-architecture level. The economically meaningful dimension is
@@ -1724,7 +1722,7 @@ complement-invariant Wang MLE estimates:
 \begin{table}[H]
 \centering
 \small
-\caption{Directional vs.\ complement-invariant Wang parameter estimates. The CI specification isolates the pricing wedge component that is invariant to YES/NO relabeling.}
+\caption{Directional vs.\ complement-invariant Wang parameter estimates. The CI specification isolates the pricing wedge component that is invariant to YES/NO relabeling. Significance: $^{***}p<0.001$, $^{**}p<0.01$, $^{*}p<0.05$.}
 \label{tab:ci_parallel}
 \begin{tabular}{lrrrrrr}
 \toprule
@@ -1765,7 +1763,7 @@ longshot outcomes, and with market-maker inventory risk models (Whelan,
 contracts.
 
 Under the CI specification, the cross-sectional determinants from
-Section 5.3 are qualitatively preserved: \(\ln(\text{Volume})\) remains
+Section 5.2 are qualitatively preserved: \(\ln(\text{Volume})\) remains
 significantly negative (\(\hat{\beta}_{CI} = -0.051\), \(p < 10^{-15}\))
 and \(\ln(\text{Duration})\) remains significantly positive
 (\(\hat{\beta}_{CI} = +0.081\), \(p < 10^{-10}\)). The volume and
@@ -1782,7 +1780,7 @@ artifact rather than a genuine economic effect.
 identification strategy, I construct an external benchmark that replaces
 ex-post resolution outcomes with an independent probability estimate
 derived entirely outside Polymarket: a pre-game Elo rating model for NBA
-basketball (see Appendix B for model details and validation). I match 51
+basketball (see Appendix~A.1 for model details and validation). I match 51
 Polymarket NBA game contracts to Elo pre-game probabilities and compute
 the contract-level Wang parameter as
 \(\hat{\lambda}_i = \Phi^{-1}(p_i^{\text{Polymarket}}) - \Phi^{-1}(\hat{p}_i^{\text{Elo}})\).
@@ -1811,7 +1809,7 @@ MLE.
 \end{figure}
 
 \textbf{Asymmetric Wang extension.} The non-constant bin-level
-\(\hat{\lambda}_k\) in Table\textasciitilde{}\ref{tab:calibration} and
+\(\hat{\lambda}_k\) in Table~\ref{tab:calibration} and
 the complement-invariant attenuation on the expanded sample both suggest
 that the pricing wedge varies with probability level. To test this
 directly, I estimate an asymmetric extension that allows the wedge to
@@ -1828,7 +1826,7 @@ estimated by maximum likelihood with numerical inversion.
 \begin{table}[H]
 \centering
 \small
-\caption{Asymmetric Wang extension: $\lambda(p) = \lambda_0 + \lambda_1(1/2 - p)$. The LR test compares the asymmetric model (2 parameters) against the standard Wang ($\lambda_1 = 0$, 1 parameter). Bootstrap confirmation on Kalshi (2,000 replications): $\hat{\lambda}_1 = 0.448 \pm 0.035$, 95\% CI excludes zero.}
+\caption{Asymmetric Wang extension: $\lambda(p) = \lambda_0 + \lambda_1(1/2 - p)$. The LR test compares the asymmetric model (2 parameters) against the standard Wang ($\lambda_1 = 0$, 1 parameter). Bootstrap confirmation on Kalshi (2,000 replications): $\hat{\lambda}_1 = 0.448 \pm 0.035$, 95\% CI excludes zero. Significance: $^{***}p<0.001$, $^{**}p<0.01$, $^{*}p<0.05$.}
 \label{tab:asymmetric_wang}
 \begin{tabular}{lrrrrrrr}
 \toprule
@@ -1863,7 +1861,7 @@ platform-ecology differences, including a greater share of
 longer-duration and favorite-heavy contracts. For this reason, the
 one-parameter Wang transform remains the paper's primary specification:
 it is BIC-optimal in the one-parameter class, has axiomatic and
-equilibrium foundations (Section\textasciitilde3.3), and provides
+equilibrium foundations (Section~3.3), and provides
 cross-platform comparability. The asymmetric extension is reported as a
 robustness refinement for platform-specific distributional
 heterogeneity, not as a replacement for the parsimonious baseline.
@@ -1891,13 +1889,13 @@ platforms, multiple years, and \(N = 291{,}309\) total contracts.
 Comparison}\label{cross-platform-comparison}
 
 Table \ref{tab:cross_platform} reports Wang parameter estimates for each
-data source. The estimation procedure is identical to Section 5.2:
+data source. The estimation procedure is identical to Section 5.1:
 Bernoulli MLE with standard errors from the numerical Hessian.
 
 \begin{table}[H]
 \centering
 \small
-\caption{Cross-platform Wang parameter estimates. All real-money platforms exhibit $\hat{\lambda} > 0$ (positive pricing wedge). Manifold, a play-money platform, shows $\hat{\lambda} < 0$ (overconfidence). Pooled estimate across all sources: $\hat{\lambda} = 0.183$ (SE $= 0.003$).}
+\caption{Cross-platform Wang parameter estimates. All real-money platforms exhibit $\hat{\lambda} > 0$ (positive pricing wedge). Manifold, a play-money platform, shows $\hat{\lambda} < 0$ (overconfidence). Pooled estimate across all sources: $\hat{\lambda} = 0.183$ (SE $= 0.003$). Significance: $^{***}p<0.001$, $^{**}p<0.01$, $^{*}p<0.05$.}
 \label{tab:cross_platform}
 \begin{tabular}{lrrrrrr}
 \toprule
@@ -1944,7 +1942,7 @@ Manifold (play-money) & 1,681 & $-$0.218$^{***}$ & 0.032 & 45.8 & $<10^{-11}$ & 
   (\(\hat{\lambda} \approx 0.15\)--\(0.17\)) \(<\) Kalshi
   (\(\hat{\lambda} = 0.19\)) \(<\) Metaculus (\(\hat{\lambda} = 0.29\))
   \(<\) Good Judgment Open (\(\hat{\lambda} = 0.57\)). This gradient is
-  consistent with the liquidity effect documented in Section 5.3:
+  consistent with the liquidity effect documented in Section 5.2:
   platforms with deeper liquidity and more sophisticated participants
   exhibit smaller pricing wedges.
 \item
@@ -1982,7 +1980,7 @@ broader differences in contract ecology and market microstructure. I
 therefore interpret the cross-platform covariate differences as a
 measurement- and composition-sensitive heterogeneity result, rather than
 as evidence that either platform's risk-premium structure falsifies the
-other. Details are reported in Appendix\textasciitilde A.
+other. Details are reported in Appendix~A.
 
 \subsection{Temporal Stability: Kalshi
 Year-by-Year}\label{temporal-stability-kalshi-year-by-year}
@@ -1995,7 +1993,7 @@ annual estimates.
 \begin{table}[H]
 \centering
 \small
-\caption{Kalshi Wang parameter by year. The pricing wedge is consistently positive and significant across all years with sufficient sample size, with $\hat{\lambda} \in [0.14, 0.29]$.}
+\caption{Kalshi Wang parameter by year. The pricing wedge is consistently positive and significant across all years with sufficient sample size, with $\hat{\lambda} \in [0.14, 0.29]$. Significance: $^{***}p<0.001$, $^{**}p<0.01$, $^{*}p<0.05$.}
 \label{tab:kalshi_temporal}
 \begin{tabular}{lrrrrl}
 \toprule
@@ -2178,7 +2176,7 @@ closing lines would strengthen identification.
 \textbf{Limitations.} The calibration recovers the composite selection parameter within the maintained Wang family;
 separately identifying its risk-bearing and behavioral components
 requires instruments or natural experiments. Candidates include regulatory shocks (Kalshi CFTC
-ruling), the time-varying pattern documented in Section 5.4 (which
+ruling), the time-varying pattern documented in Section 5.3 (which
 suggests market-microstructure rather than behavioral origins), and the
 cross-platform dimension (same event, different \(\lambda\)). The
 Manifold sign reversal (Section 6) provides suggestive evidence for the
@@ -2193,7 +2191,7 @@ extreme probabilities, the elevated \(\hat{\lambda}\) may reflect
 confidence-related distortions rather than a purely risk-bearing
 interpretation of the estimated selection parameter; the extended model
 finds extremity is a significant predictor but cannot distinguish risk
-from misperception. The external benchmark analysis (Section 5.6), using an
+from misperception. The external benchmark analysis (Section 5.5), using an
 Elo rating model as an independent probability estimate for 51 NBA
 contracts, provides directional support for a positive pricing wedge
 (\(\hat{\lambda} = 0.125\), \(p = 0.014\)), though the sample is small
@@ -2217,9 +2215,12 @@ wedges in prediction markets.
 
 \vspace{1em}
 
-\newpage
+\section*{Acknowledgments}
 
-\section*{References}\label{references}
+\paragraph{AI use disclosure.}
+During the preparation of this manuscript, the author used Claude (Anthropic; Claude Opus 4.6 and earlier models during the project) for code assistance related to data processing and estimation, for robustness-check scripting, and for language and organizational support. All AI-assisted outputs were critically reviewed, verified, and revised by the author. All substantive research judgments, model choices, interpretation of results, and final writing decisions were made by the author, who takes full responsibility for the content of this manuscript.
+
+\newpage
 
 \begin{thebibliography}{99}
 \small
@@ -2231,9 +2232,6 @@ wedges in prediction markets.
   Prediction Markets. \emph{Proceedings of the 10th ACM Conference on
   Electronic Commerce (EC '09)}.
 
-\bibitem{artzner1999} Artzner, P., Delbaen, F., Eber, J.-M. and Heath, D. (1999). Coherent
-  Measures of Risk. \emph{Mathematical Finance}, 9(3), 203--228.
-
 \bibitem{avellaneda2008} Avellaneda, M. and Stoikov, S. (2008). High-Frequency Trading in a
   Limit Order Book. \emph{Quantitative Finance}, 8(3), 217--224.
 
@@ -2241,19 +2239,19 @@ wedges in prediction markets.
   Implications of Probability Weighting for Security Prices.
   \emph{American Economic Review}, 98(5), 2066--2100.
 
+\bibitem{black1973} Black, F. and Scholes, M. (1973). The Pricing of Options and Corporate
+  Liabilities. \emph{Journal of Political Economy}, 81(3), 637--654.
+
 \bibitem{bottazzi2019} Bottazzi, G. and Giachini, D. (2019). Far from the Madding Crowd:
   Collective Wisdom in Prediction Markets. \emph{Quantitative Finance},
   19(9), 1461--1471.
 
-\bibitem{black1973} Black, F. and Scholes, M. (1973). The Pricing of Options and Corporate
-  Liabilities. \emph{Journal of Political Economy}, 81(3), 637--654.
+\bibitem{bühlmann1980} Bühlmann, H. (1980). An Economic Premium Principle. \emph{ASTIN
+  Bulletin}, 11(1), 52--60.
 
 \bibitem{bürgi2025} Bürgi, C., Deng, W. and Whelan, K. (2025). Makers and Takers: The
   Economics of the Kalshi Prediction Market. \emph{CEPR Discussion
   Paper} 20631.
-
-\bibitem{bühlmann1980} Bühlmann, H. (1980). An Economic Premium Principle. \emph{ASTIN
-  Bulletin}, 11(1), 52--60.
 
 \bibitem{cochrane2000} Cochrane, J.H. and Saa-Requejo, J. (2000). Beyond Arbitrage: Good-Deal
   Asset Price Bounds in Incomplete Markets. \emph{Journal of Political
@@ -2295,10 +2293,6 @@ wedges in prediction markets.
   and Their Relationship to Financial Theory. \emph{Applied Mathematical
   Finance}, 10(1), 19--47.
 
-\bibitem{hanson2007} Hanson, R. (2007). Logarithmic Market Scoring Rules for Modular
-  Combinatorial Information Aggregation. \emph{Journal of Prediction
-  Markets}, 1(1), 3--15.
-
 \bibitem{harrison1981} Harrison, J.M. and Pliska, S.R. (1981). Martingales and Stochastic
   Integrals in the Theory of Continuous Trading. \emph{Stochastic
   Processes and their Applications}, 11(3), 215--260.
@@ -2318,12 +2312,10 @@ wedges in prediction markets.
   Aversion and Heterogeneous Beliefs. \emph{Journal of Mathematical
   Economics}, 70, 105--114.
 
-\bibitem{hosmer2000} Hosmer, D.W. and Lemeshow, S. (2000). \emph{Applied Logistic
-  Regression}, 2nd ed.~Wiley.
-
-\bibitem{johnston2007} Johnston, M. (2007). Extension of the Capital Asset Pricing Model to
-  Non-normal Dependence Structures. \emph{ASTIN Bulletin}, 37(1),
-  35--52.
+\bibitem{huang2024} Huang, H.H., Sun, J. and Zhang, S. (2024). Asset Pricing for the
+  Lottery-Like Security Under Probability Weighting: Based on
+  Generalized Wang Transform. \emph{North American Journal of Economics
+  and Finance}, 71, 102078.
 
 \bibitem{jullien2000} Jullien, B. and Salanié, B. (2000). Estimating Preferences under Risk:
   The Case of Racetrack Bettors. \emph{Journal of Political Economy},
@@ -2331,11 +2323,6 @@ wedges in prediction markets.
 
 \bibitem{kass1995} Kass, R.E. and Raftery, A.E. (1995). Bayes Factors. \emph{Journal of
   the American Statistical Association}, 90(430), 773--795.
-
-\bibitem{huang2024} Huang, H.H., Sun, J. and Zhang, S. (2024). Asset Pricing for the
-  Lottery-Like Security Under Probability Weighting: Based on
-  Generalized Wang Transform. \emph{North American Journal of Economics
-  and Finance}, 71, 102078.
 
 \bibitem{kijima2008} Kijima, M. and Muromachi, Y. (2008). An Extension of the Wang
   Transform Derived from Bühlmann's Economic Premium Principle for
@@ -2386,13 +2373,13 @@ wedges in prediction markets.
 \bibitem{rubinstein1991} Rubinstein, M. and Reiner, E. (1991). Unscrambling the Binary Code.
   \emph{Risk Magazine}, 4(9), 75--83.
 
-\bibitem{servan-schreiber2004} Servan-Schreiber, E., Wolfers, J., Pennock, D.M. and Galebach, B.
-  (2004). Prediction Markets: Does Money Matter? \emph{Electronic
-  Markets}, 14(3), 243--251.
-
 \bibitem{schmeidler1986} Schmeidler, D. (1986). Integral Representation without Additivity.
   \emph{Proceedings of the American Mathematical Society}, 97(2),
   255--261.
+
+\bibitem{servan-schreiber2004} Servan-Schreiber, E., Wolfers, J., Pennock, D.M. and Galebach, B.
+  (2004). Prediction Markets: Does Money Matter? \emph{Electronic
+  Markets}, 14(3), 243--251.
 
 \bibitem{shin1991} Shin, H.S. (1991). Optimal Betting Odds Against Insider Traders.
   \emph{Economic Journal}, 101(408), 1179--1185.
@@ -2426,15 +2413,11 @@ wedges in prediction markets.
   Economics}, 21(2), 173--183.
 
 \bibitem{whelan2023} Whelan, K. (2023). On Prices and Returns in Commercial Prediction
-  Markets. \emph{Quantitative Finance}, 23(2), 283--295.
+  Markets. \emph{Quantitative Finance}, 23(11), 1699--1712.
 
 \bibitem{whelan2024} Whelan, K. (2024). Risk Aversion and Favourite-Longshot Bias in a
   Competitive Fixed-Odds Betting Market. \emph{Economica}, 91(361),
   188--209.
-
-\bibitem{wirch1999} Wirch, J.L. and Hardy, M.R. (1999). A Synthesis of Risk Measures for
-  Capital Adequacy. \emph{Insurance: Mathematics and Economics}, 25(3),
-  337--347.
 
 \bibitem{wolfers2004} Wolfers, J. and Zitzewitz, E. (2004). Prediction Markets.
   \emph{Journal of Economic Perspectives}, 18(2), 107--126.
@@ -2454,7 +2437,7 @@ wedges in prediction markets.
 \begin{table}[H]
 \centering
 \small
-\caption{Per-horizon separate MLEs (baseline calibration, 12-day subsample). These estimates are superseded by the stacked panel model (Section 5.4), which borrows strength across horizons and provides correct contract-clustered inference.}
+\caption{Per-horizon separate MLEs (baseline calibration, 12-day subsample). These estimates are superseded by the stacked panel model (Section 5.3), which borrows strength across horizons and provides correct contract-clustered inference. Significance: $^{***}p<0.001$, $^{**}p<0.01$, $^{*}p<0.05$.}
 \label{tab:horizons_appendix}
 \begin{tabular}{lrrrrl}
 \toprule
@@ -2486,7 +2469,7 @@ Lifetime \% & $N$ & $\hat{\lambda}_{MLE}$ & SE & 95\% CI & $p$-value \\
 Details}\label{b.-external-benchmark-details}
 
 This appendix provides methodological details for the external benchmark
-validation reported in Section 5.6.
+validation reported in Section 5.5.
 
 \textbf{Elo model specification.} I build Elo ratings from the complete
 2025--26 NBA regular season (1,135 games, 30 teams) using a standard
@@ -2512,7 +2495,7 @@ while the residual noise inflates the contract-level \(\hat{\lambda}_i\)
 estimates relative to what a sportsbook-based benchmark would yield.
 
 \textbf{Matching procedure.} I identify Polymarket NBA game contracts by
-regex matching on the title format ``Team A vs.~Team B'\,', requiring
+regex matching on the title format ``Team A vs.~Team B,'' requiring
 both team names to normalize to one of 30 canonical NBA team names via
 an alias table. Each contract is matched to the closest Elo game
 involving the same team pair within a \([-1, +5]\)-day window around the

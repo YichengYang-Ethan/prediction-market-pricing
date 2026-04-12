@@ -167,30 +167,33 @@ Contract type (scalar MLE):
 
 | Sign | Fresh | Pre-computed | Total |
 |------|-------|-------------|-------|
-| Positive (+) | 31 | 26 | 57 |
-| Negative (-) | 9 | 4 | 13 |
+| Positive (+) | 27 | 28 | 55 |
+| Negative (-) | 13 | 2 | 15 |
 
-### Lambda significance (p < 0.05) across all cells with p-values:
+### Lambda significance (p < 0.05) across cells with p-values:
 
 | Significance | Fresh | Pre-computed | Total |
 |-------------|-------|-------------|-------|
-| p < 0.05 | 31 | 27 | 58 |
+| p < 0.05 | 31 | 23 | 54 |
 | p >= 0.05 | 9 | 3 | 12 |
+| No p-value (stacked panel) | 0 | 4 | 4 |
 
 ### Notable patterns:
 
-1. **Positive lambda is the dominant finding**: 57/70 cells show positive lambda (consistent with risk premia pricing).
+1. **Positive lambda is the dominant finding**: 55/70 cells show positive lambda (consistent with risk premia pricing).
 
-2. **The 13 negative-lambda cells come from**:
-   - Manifold Markets (6 cells): Structural anomaly -- play-money/subsidy-driven market
-   - Complement-invariant on Metaculus/GJOpen (6 cells): Reflecting asymmetric resolution rather than risk
-   - Kalshi-Tech (1 cell): Marginal, lambda=-0.022, not significant
+2. **The 15 negative-lambda cells come from**:
+   - Manifold Markets (6 cells): both directional and complement-invariant specifications across three price filters -- structural anomaly, play-money/subsidy-driven market
+   - Complement-invariant on Metaculus (3 cells) and GJOpen (3 cells): reflecting asymmetric resolution rather than risk
+   - Complement-invariant on CSET/INFER (1 cell, (0.02,0.98) filter): small, not significant (lambda = -0.032, p = 0.84)
+   - Kalshi-Tech category (1 cell): marginal, lambda = -0.022, not significant
+   - Kalshi medium-duration (24h-7d) hierarchical (1 cell): lambda = -0.951, statistically significant
 
 3. **Fresh vs pre-computed consistency**: Fresh Polymarket lambda (0.14) aligns closely with pre-computed scalar baseline (0.17). The gap is expected given different sample composition (2025 vs 2020-2026) and sample size (985 vs 13,196).
 
 4. **Filter stability**: Across all platforms, lambda changes by at most ~10% when varying the price filter from (0.02,0.98) to (0.10,0.90). The estimate is not driven by extreme probabilities.
 
-5. **Cross-platform ordering**: GJOpen (0.57) > CSET/INFER (0.64-0.87) > Metaculus (0.29-0.33) > Kalshi (0.18) > Polymarket (0.14-0.17) > Manifold (-0.21). The ordering suggests that less liquid, lower-volume platforms show larger risk premia.
+5. **Cross-platform ordering**: CSET/INFER (0.64-0.87) > GJOpen (0.57) > Metaculus (0.29-0.33) > Kalshi (0.18) > Polymarket (0.14-0.17) > Manifold (-0.21). The ordering suggests that less liquid, lower-volume platforms show larger risk premia.
 
 ---
 

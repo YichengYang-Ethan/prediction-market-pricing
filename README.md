@@ -2,7 +2,9 @@
 
 **Yicheng Yang** | University of Illinois Urbana-Champaign | [yy85@illinois.edu](mailto:yy85@illinois.edu)
 
-**Working Paper** -- March 2026
+**Working Paper** -- April 2026
+
+**Preprint**: [SSRN 6468338](https://ssrn.com/abstract=6468338)
 
 **Blog**: [https://yichengyang-ethan.github.io/](https://yichengyang-ethan.github.io/)
 
@@ -50,7 +52,9 @@ $$\lambda_i = \beta_0 + \beta_1 \ln(1+V_i) + \beta_2 \ln(1+D_i) + \beta_3 |p_i -
 | Manifold (play-money) | 1,681 | **-0.218** | 0.032 | $<10^{-11}$ |
 | **Pooled** | **291,309** | **0.183** | **0.003** | **$<10^{-15}$** |
 
-Manifold's negative $\lambda$ serves as a natural negative control: absent real financial stakes, participants are overconfident rather than risk-averse.
+Manifold's negative $\lambda$ provides a cross-platform contrast: the sign reversal is consistent with financial stakes affecting the direction of the wedge, though the cross-platform design does not isolate financial stakes from other cross-platform differences in market mechanism, user composition, and contract topic mix.
+
+**Companion note**: A focused 6-page empirical letter on the real-money vs. play-money contrast is available in `paper/frl_draft_v3.tex`.
 
 ## Repository Structure
 
@@ -130,11 +134,13 @@ See [`replication_guide.md`](replication_guide.md) for the full pipeline and exp
 
 - **Polymarket**: Public via [Gamma API](https://gamma-api.polymarket.com) and [CLOB API](https://clob.polymarket.com). Raw pulls included in `data/raw/`.
 - **Kalshi**: Public via [Kalshi API](https://trading-api.kalshi.com/trade-api/v2). Raw pulls included in `data/raw/`.
-- **Metaculus, GJOpen, INFER, Manifold**: Public APIs. See `data/README.md` for endpoints.
+- **Metaculus, GJOpen, INFER, Manifold**: HuggingFace datasets included in `data/` (see `data/huggingface_*.parquet`). These enable full replication of the fresh robustness rerun (70-cell lattice across platforms, filters, and specifications; see `paper/fresh_robustness_rerun.md`).
 - **NBA Elo ratings**: FiveThirtyEight (public). Processed file in `data/processed/`.
 - **Implied odds**: The Odds API (free tier). Processed file in `data/processed/`.
 
 No proprietary or restricted-access data is used.
+
+**Replication note**: The main Polymarket and Kalshi estimation datasets (`combined_analysis_dataset.parquet`, `kalshi_analysis_dataset.parquet`) are not distributed in this repo due to size (~250MB). They can be reconstructed from the public Polymarket Gamma/CLOB APIs and Kalshi Trading API v2 using the fetch scripts described in `replication_guide.md`. The HuggingFace datasets included in `data/` are sufficient to replicate the multi-platform fresh robustness results.
 
 ## Software Requirements
 
@@ -148,11 +154,11 @@ If you use this code or data, please cite:
 
 ```bibtex
 @article{yang2026pricing,
-  title   = {Pricing Prediction Markets: Risk Premiums, Incomplete Markets, and a Decomposition Framework},
+  title   = {Pricing Prediction Markets: Incomplete Markets, Selection Rules, and Risk Premia},
   author  = {Yang, Yicheng},
   year    = {2026},
   journal = {Working Paper},
-  note    = {University of Illinois Urbana-Champaign}
+  note    = {University of Illinois Urbana-Champaign. SSRN 6468338}
 }
 ```
 

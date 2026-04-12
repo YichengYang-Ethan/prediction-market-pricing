@@ -1,4 +1,6 @@
 \documentclass[12pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
 \usepackage[margin=1in]{geometry}
 \usepackage{amsmath,amssymb}
 \usepackage{booktabs}
@@ -9,18 +11,18 @@
 \linespread{1.25}\selectfont
 
 \title{Do Prediction Market Prices Equal Probabilities?\\Evidence from a Play-Money Contrast}
-\author{Yicheng Yang\thanks{University of Illinois Urbana-Champaign. Email: \texttt{yy85@illinois.edu}. Replication code and data: \url{https://github.com/YichengYang-Ethan/prediction-market-pricing}.}}
+\author{Yicheng Yang\thanks{Corresponding author. University of Illinois Urbana-Champaign, 601 E John Street, Champaign, IL 61820, USA. Email: \texttt{yy85@illinois.edu}. Replication code and data: \url{https://github.com/YichengYang-Ethan/prediction-market-pricing}.}}
 \date{April 2026}
 
 \begin{document}
 \maketitle
 
 \begin{abstract}
-\noindent Prediction market prices are widely interpreted as event probabilities, yet whether they embed systematic distortions is difficult to assess without either an external benchmark or a credible contrast case. This note exploits a natural contrast: the play-money platform Manifold, where participants face no financial stakes. Using a one-parameter Wang specification as a measurement device, I estimate platform-level price--probability wedges on 290,730 resolved contracts across six platforms. The two traded real-money venues, Polymarket and Kalshi, yield positive and highly significant estimates, while Manifold yields a negative estimate---a sign reversal consistent with confidence-related distortions becoming relatively more important when financial stakes are absent. Three forecasting platforms also exhibit positive estimates, though their economic interpretation differs from traded venues. The cross-platform sign pattern is robust to sample restrictions and complement-invariant specifications. The results provide compact evidence that prediction market prices need not equal physical probabilities and that play-money markets offer a useful contrast case for interpreting price--probability wedges.
+\noindent Prediction market prices are widely interpreted as event probabilities. Using a one-parameter Wang specification purely as a measurement device, this note compares traded real-money platforms (Polymarket, Kalshi) with the play-money platform Manifold and documents a sign reversal in the estimated price--probability wedge. On 290,730 resolved contracts, real-money venues yield positive wedges ($\hat\lambda \approx 0.16$--$0.19$), while Manifold yields a negative wedge ($\hat\lambda = -0.218$); the Polymarket--Manifold and Kalshi--Manifold differences both exceed 0.38 in magnitude with implied $z$-statistics above 11. The contrast is consistent with financial stakes affecting the direction of the wedge, but the cross-platform design does not isolate financial stakes from other cross-platform differences in market mechanism, user composition, and contract topic mix. The pattern is robust to alternative price measures, complement-invariant specification, and sample restrictions. The results provide compact evidence that prediction market prices need not equal physical probabilities.
 
 \medskip
 \noindent\textbf{JEL Classification:} G13, G14, D81\\
-\noindent\textbf{Keywords:} prediction markets, Wang transform, price--probability wedge, play-money markets, favorite-longshot bias
+\noindent\textbf{Keywords:} prediction markets, Wang transform, incomplete markets, play-money markets, favorite-longshot bias
 \end{abstract}
 
 \newpage
@@ -35,7 +37,7 @@ Prediction markets are nonetheless widely used as probability proxies (Wolfers a
 
 This note sidesteps the benchmark problem by exploiting a \emph{natural contrast}: the play-money platform Manifold, where participants trade tokens with no financial value. If the price--probability wedge on real-money platforms reflects risk-bearing costs---inventory risk, capital lockup, adverse selection (Whelan, 2024; Shin, 1991)---then removing financial stakes should attenuate or possibly reverse the wedge. If instead the wedge mainly reflects cognitive distortions, it should be more likely to persist with similar sign.
 
-I estimate a one-parameter Wang transform specification on 290,730 resolved contracts across six platforms. The main finding is a \emph{sign reversal}: traded real-money venues (Polymarket, Kalshi) exhibit positive wedges, while Manifold exhibits a negative wedge. This pattern is consistent with the interpretation that risk-bearing forces are more important on traded venues, while confidence-related distortions dominate when financial stakes are absent.
+I estimate a one-parameter Wang transform specification on 290,730 resolved contracts across six platforms. The main finding is a \emph{sign reversal}: traded real-money venues (Polymarket, Kalshi) exhibit positive wedges, while Manifold exhibits a negative wedge. This pattern is consistent with financial stakes affecting the direction of the wedge, though the cross-platform design does not separately identify financial stakes from other cross-platform differences in market mechanism, user composition, and contract topic mix; the precise structural source of the sign reversal cannot be identified from this comparison alone.
 
 This note uses the Wang transform purely as a measurement device. A separate working paper (Yang, 2026) develops one structural foundation for this specification.
 
@@ -66,10 +68,10 @@ I estimate platform-level wedges on six platforms spanning three distinct instit
 
 \item \textbf{Forecasting tournaments.} Metaculus ($N = 1{,}845$), Good Judgment Open ($N = 692$), and INFER ($N = 90$), sourced from HuggingFace (2015--2024). Participants submit probability estimates under reputational or prize-based incentives. These platforms are included as ancillary evidence; their economic object differs from traded venues since participants do not bear direct financial risk.
 
-\item \textbf{Play-money platform.} Manifold ($N = 1{,}681$), sourced from HuggingFace (2015--2024). Participants trade with tokens carrying no financial value, providing a natural contrast that removes risk-bearing costs while preserving cognitive factors.
+\item \textbf{Play-money platform.} Manifold ($N = 1{,}681$), sourced from HuggingFace (2015--2024). Participants trade with tokens carrying no financial value, providing a cross-platform contrast in which financial stakes are absent. Manifold also differs from traded real-money venues along other dimensions (automated market maker architecture rather than a central limit order book, a user base skewed toward the rationalist and effective-altruism communities, and a community-created contract pool), so the comparison is a cross-platform contrast rather than a clean isolation of financial stakes.
 \end{itemize}
 
-All contracts are filtered to $p \in (0.02, 0.98)$ at the platform level; the reported counts reflect each platform's full filtered sample as used in the cross-platform analysis. Total sample: $N = 290{,}730$ resolved contracts across six platforms spanning 2015--2026.\footnote{A separate working paper (Yang, 2026) reports a pooled total of 291,309 contracts including 579 Polymarket observations sourced from a multi-platform forecasting dataset. Those observations are excluded here to maintain a clean one-row-per-platform structure.}
+All contracts are filtered to $p \in (0.02, 0.98)$ at the platform level. Because public price histories differ across platforms, the baseline uses the earliest comparable public quote available on each platform: the opening-window midpoint price (first 5\% of contract lifetime) for Polymarket, the earliest archived public historical quote available in Kalshi's API for Kalshi, and the first community prediction for the HuggingFace-sourced platforms (Metaculus, Good Judgment Open, INFER, Manifold). This asymmetry reflects data availability rather than a common opening-price concept; alternative mid-life and near-settlement measures are reported as robustness checks in Section~\ref{sec:robustness}. Total sample: $N = 290{,}730$ resolved contracts across six platforms spanning 2015--2026.\footnote{A separate working paper (Yang, 2026) reports a pooled total of 291,309 contracts including 579 Polymarket observations sourced from a multi-platform forecasting dataset. Those observations are excluded here to maintain a clean one-row-per-platform structure.}
 
 %% ============================================================
 \section{Results}
@@ -80,42 +82,50 @@ Table~\ref{tab:platform} reports the central result: the sign of the estimated W
 \begin{table}[h]
 \centering
 \footnotesize
-\caption{Platform-level Wang parameter estimates. Traded real-money venues (Panel A) and the play-money platform (Panel C) are the primary comparison; forecasting tournaments (Panel B) provide ancillary evidence. Standard errors from observed Fisher information; significance: $^{***}p<0.001$, $^{**}p<0.01$, $^{*}p<0.05$.}
+\caption{Platform-level Wang parameter estimates. Panel A shows the central contrast between traded real-money venues (Polymarket, Kalshi) and the play-money platform (Manifold). Panel B shows ancillary evidence from forecasting tournaments, whose economic object differs from traded venues since participants submit probability estimates rather than placing capital at risk. All estimates use the platform-level cross-platform sample filtered to $p \in (0.02, 0.98)$. Standard errors from observed Fisher information; significance: $^{***}p<0.001$, $^{**}p<0.01$, $^{*}p<0.05$.}
 \label{tab:platform}
 \begin{tabular}{llrrrl}
 \toprule
 & Platform & $N$ & $\hat\lambda_{\mathrm{MLE}}$ & SE & Significance \\
 \midrule
-\multicolumn{6}{l}{\textit{Panel A: Traded real-money venues}} \\
-& Polymarket (pooled) & 14,723 & 0.164$^{***}$ & 0.011 & $p < 10^{-15}$ \\
-& Kalshi (2021--2026) & 271,699 & 0.187$^{***}$ & 0.003 & $p < 10^{-15}$ \\
+\multicolumn{6}{l}{\textit{Panel A: Central contrast --- real-money vs.\ play-money}} \\
+& Polymarket (pooled, real-money) & 14,723 & 0.164$^{***}$ & 0.011 & $p < 10^{-15}$ \\
+& Kalshi (real-money, 2021--2026) & 271,699 & 0.187$^{***}$ & 0.003 & $p < 10^{-15}$ \\
+& Manifold (play-money) & 1,681 & $-$0.218$^{***}$ & 0.032 & $p < 10^{-11}$ \\
 \midrule
-\multicolumn{6}{l}{\textit{Panel B: Forecasting tournaments (ancillary)}} \\
+\multicolumn{6}{l}{\textit{Panel B: Ancillary evidence --- forecasting tournaments}} \\
 & Metaculus & 1,845 & 0.287$^{***}$ & 0.033 & $p < 10^{-15}$ \\
 & Good Judgment Open & 692 & 0.570$^{***}$ & 0.055 & $p < 10^{-15}$ \\
 & INFER & 90 & 0.635$^{***}$ & 0.180 & $p < 0.001$ \\
-\midrule
-\multicolumn{6}{l}{\textit{Panel C: Play-money platform}} \\
-& Manifold & 1,681 & $-$0.218$^{***}$ & 0.032 & $p < 10^{-11}$ \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-Three findings emerge. First, both traded real-money venues yield positive and highly significant estimates ($\hat\lambda \approx 0.16$--$0.19$), indicating a positive price--probability wedge. Second, Manifold yields $\hat\lambda = -0.218$---a sign reversal. Removing financial stakes does not merely attenuate the wedge; it flips its direction. This is consistent with confidence-related distortions (overconfidence, miscalibration) dominating when risk-bearing costs are absent. Third, forecasting tournaments also exhibit positive estimates, though typically larger in magnitude. The economic interpretation of $\lambda$ on these platforms differs from traded venues: participants submit probability assessments rather than placing capital at risk, so the positive distortion may reflect different mechanisms (e.g., extremity aversion in forecast elicitation rather than inventory risk).
+The central result is visible in Panel A. Both traded real-money venues yield positive and highly significant estimates ($\hat\lambda \approx 0.16$--$0.19$), while Manifold yields $\hat\lambda = -0.218$. Across the real-money/play-money contrast the estimated wedge changes sign rather than merely attenuating. The pairwise differences are large relative to their standard errors: Polymarket minus Manifold equals $0.382$ (SE $\approx 0.034$, implied $z \approx 11.2$) and Kalshi minus Manifold equals $0.405$ (SE $\approx 0.032$, implied $z \approx 12.7$).\footnote{Standard errors for pairwise differences are computed as $\sqrt{\mathrm{SE}_1^2 + \mathrm{SE}_2^2}$, which treats the platform samples as independent.} This pattern is consistent with financial stakes affecting the direction of the wedge, though the cross-platform design does not separately identify financial stakes from other cross-platform differences in platform mechanism, user composition, and contract topic mix (see Section~\ref{sec:robustness}).
 
-The magnitude gradient across traded venues---Polymarket ($\hat\lambda \approx 0.17$) slightly below Kalshi ($\hat\lambda \approx 0.19$)---is consistent with the view that deeper, more liquid markets compress the wedge further, though differences in price timing and contract ecology preclude a clean causal interpretation.
+Panel B reports ancillary evidence from forecasting tournaments. These platforms also exhibit positive wedges, often larger in magnitude than the traded venues, but their economic object differs since participants do not place capital at risk; they are therefore reported as supporting rather than central evidence.
 
 %% ============================================================
-\section{Robustness}
+\section{Robustness}\label{sec:robustness}
 %% ============================================================
 
-The sign reversal is robust along several dimensions. Re-estimating with alternative price measures (5-price opening average, midlife price, near-settlement price) preserves the positive sign on Polymarket and Kalshi and the negative sign on Manifold. Using a complement-invariant specification that reorients each contract to the less-likely outcome attenuates the magnitude on all platforms but preserves the sign pattern. Restricting to $p \in (0.10, 0.90)$ or to contracts with duration $> 7$ days leaves the sign pattern unchanged.
+The sign reversal is robust along several dimensions. Re-estimating with alternative price measures (5-price opening average, midlife price, near-settlement price) preserves the positive sign on Polymarket and Kalshi and the negative sign on Manifold. Using a complement-invariant specification that reorients each contract to the less-likely outcome attenuates the magnitude and preserves the positive/negative sign contrast between traded real-money venues and Manifold, though it reverses the sign on some forecasting platforms where asymmetric resolution rates rather than risk premia may drive the directional estimate. Restricting to $p \in (0.10, 0.90)$ or to contracts with duration $> 7$ days leaves the sign pattern unchanged.
+
+\paragraph{Caveats to the Manifold contrast.} Manifold differs from Polymarket and Kalshi along dimensions other than the play-money treatment: it uses an automated market maker rather than a central limit order book, its user base skews toward the rationalist and effective-altruism communities, which may exhibit distinct calibration patterns, and its community-created contract pool emphasizes different topics than the standardized event contracts dominant on the traded real-money venues. These design and population differences cannot be fully separated from the play-money treatment in this cross-sectional comparison. A cleaner test would exploit within-platform variation---for example, episodes in which Manifold has offered real-money prizes on selected markets---or matched-question designs across platforms.
 
 %% ============================================================
 \section{Conclusion}
 %% ============================================================
 
-Prediction market prices on traded real-money venues embed a positive price--probability wedge that reverses sign on the play-money platform Manifold, consistent with risk-bearing costs dominating on traded venues and confidence-related distortions dominating absent financial stakes. Identifying the structural source of the wedge requires richer microdata or exogenous variation; but the sign reversal itself shows that prediction market prices cannot always be read literally as probabilities.
+Prediction market prices on traded real-money venues embed a positive price--probability wedge that reverses sign on the play-money platform Manifold. The contrast is consistent with financial stakes affecting the direction of the wedge, but the cross-platform design does not isolate financial stakes from other cross-platform differences in market mechanism, user composition, and contract topic mix; the precise structural source of the wedge cannot be identified from this comparison alone. Even so, the sign reversal itself shows that prediction market prices cannot always be read literally as probabilities, regardless of which mechanism dominates. Cleaner identification would require within-platform variation in financial stakes or matched-question designs across platforms with comparable market mechanisms---both natural extensions for future work.
+
+\paragraph{Funding.} This research did not receive any specific grant from funding agencies in the public, commercial, or not-for-profit sectors.
+
+\paragraph{Declaration of competing interest.} The author declares no competing interests.
+
+\section*{Declaration of Generative AI and AI-assisted Technologies in the Manuscript Preparation Process}
+
+During the preparation of this work, the author used Claude (Anthropic; Claude Opus 4.6 and earlier models during the project) for code assistance related to data processing and estimation, for robustness-check scripting, and for language and organizational support during manuscript preparation. All AI-assisted outputs were critically reviewed, verified, and revised by the author. All substantive research judgments, model choices, interpretation of results, and final writing decisions were made by the author, who takes full responsibility for the content of this article.
 
 %% ============================================================
 \footnotesize
